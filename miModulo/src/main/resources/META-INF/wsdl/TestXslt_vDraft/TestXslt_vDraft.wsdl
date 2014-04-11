@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:TDCs="http://www.isban.es/webservices/TDCs" xmlns:cbtypes="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/banesto/internet/cbTypes/vDraft" xmlns:fault="http://www.gruposantander.es/webservices/genericFault" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/internet/TestIvr/vDraft" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/internet/TestIvr/vDraft">
+    <documentation>TestXslt</documentation>
+    <types>
+        <xs:schema targetNamespace="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/internet/TestIvr/vDraft">
+            <xs:import namespace="http://www.gruposantander.es/webservices/genericFault" schemaLocation="./schemas/fault.xsd"/>
+            <xs:import namespace="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/banesto/internet/cbTypes/vDraft" schemaLocation="./schemas/TestXslt_cb_types_vDraft.xsd"/>
+            <xs:import namespace="http://www.isban.es/webservices/TDCs" schemaLocation="./schemas/ws_TDCs.xsd"/>
+            <xs:element name="tratarPeticion">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="entrada" nillable="true" type="cbtypes:com.banesto.al.soapac.sample.cb.CB_ServDocNoConc_E_Type"/>
+                    </xs:sequence>
+                    <xs:attribute fixed="TestXslt" name="facade" type="TDCs:DESCRIPCION_GENERAL_Type"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="tratarPeticionResponse">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="testAltair">
+                <xs:complexType>
+                    <xs:sequence/>
+                    <xs:attribute fixed="TestXslt" name="facade" type="TDCs:DESCRIPCION_GENERAL_Type"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="testAltairResponse">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
+    <message name="tratarPeticion_Input">
+        <part element="tns:tratarPeticion" name="tratarPeticion_InputPart"/>
+    </message>
+    <message name="tratarPeticion_Output">
+        <part element="tns:tratarPeticionResponse" name="tratarPeticion_OutputPart"/>
+    </message>
+    <message name="tratarPeticion_Fault">
+        <part element="fault:Exception" name="tratarPeticion_FaultPart"/>
+    </message>
+    <message name="testAltair_Input">
+        <part element="tns:testAltair" name="testAltair_InputPart"/>
+    </message>
+    <message name="testAltair_Output">
+        <part element="tns:testAltairResponse" name="testAltair_OutputPart"/>
+    </message>
+    <message name="testAltair_Fault">
+        <part element="fault:Exception" name="testAltair_FaultPart"/>
+    </message>
+    <portType name="TestXsltPortTypeHTTP">
+        <operation name="testAltair">
+            <input message="tns:testAltair_Input" name="testAltair_Input"/>
+            <output message="tns:testAltair_Output" name="testAltair_Output"/>
+            <fault message="tns:testAltair_Fault" name="testAltair_Fault"/>
+        </operation>
+        <operation name="tratarPeticion">
+            <input message="tns:tratarPeticion_Input" name="tratarPeticion_Input"/>
+            <output message="tns:tratarPeticion_Output" name="tratarPeticion_Output"/>
+            <fault message="tns:tratarPeticion_Fault" name="tratarPeticion_Fault"/>
+        </operation>
+    </portType>
+    <binding name="TestXsltSoapBindingHTTP" type="tns:TestXsltPortTypeHTTP">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="testAltair">
+            <soap:operation soapAction="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/internet/TestXslt/vDraft/testAltair" style="document"/>
+            <input name="testAltair_Input">
+                <soap:body use="literal"/>
+            </input>
+            <output name="testAltair_Output">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="testAltair_Fault">
+                <soap:fault name="testAltair_Fault" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="tratarPeticion">
+            <soap:operation soapAction="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/internet/TestXslt/vDraft/tratarPeticion" style="document"/>
+            <input name="tratarPeticion_Input">
+                <soap:body use="literal"/>
+            </input>
+            <output name="tratarPeticion_Output">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="tratarPeticion_Fault">
+                <soap:fault name="tratarPeticion_Fault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="TestXslt_Service">
+        <port binding="tns:TestXsltSoapBindingHTTP" name="TestXsltPortHTTP">
+            <soap:address location="http://180.105.4.43:8080/SOAPAC_ESCE/ws/HTTPListener"/>
+        </port>
+    </service>
+</definitions>

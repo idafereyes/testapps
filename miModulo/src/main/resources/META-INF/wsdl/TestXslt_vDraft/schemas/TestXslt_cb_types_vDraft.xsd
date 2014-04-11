@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:TDCs="http://www.isban.es/webservices/TDCs" xmlns:cbtypes="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/banesto/internet/cbTypes/vDraft" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/banesto/internet/cbTypes/vDraft">
+    <xs:import namespace="http://www.isban.es/webservices/TDCs" schemaLocation="./ws_TDCs.xsd"/>
+    <xs:complexType name="com.banesto.al.soapac.sample.cb.CB_ServDocNoConc_E_Type">
+        <xs:annotation>
+            <xs:appinfo>ContextBean</xs:appinfo>
+            <xs:appinfo>com.banesto.al.soapac.sample.cb.CB_ServDocNoConc_E</xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ParamResponses" type="cbtypes:com.banesto.al.soapac.sample.cb.CB_ParamResponses_Type"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="com.banesto.al.soapac.sample.cb.CB_ParamResponses_Type">
+        <xs:annotation>
+            <xs:appinfo>ContextBean</xs:appinfo>
+            <xs:appinfo>com.banesto.al.soapac.sample.cb.CB_ServDocNoConc_E</xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="ParamResponse" nillable="true" type="cbtypes:com.banesto.al.soapac.sample.cb.CB_ParamResponse_Type"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="com.banesto.al.soapac.sample.cb.CB_ParamResponse_Type">
+        <xs:annotation>
+            <xs:appinfo>ContextBean</xs:appinfo>
+            <xs:appinfo>com.banesto.al.soapac.sample.cb.CB_ServDocNoConc_E</xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Name" type="TDCs:DESCRIPCION_BREVE_Type"/>
+            <xs:element minOccurs="0" name="ValParam" type="TDCs:DESCRIPCION_BREVE_Type"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

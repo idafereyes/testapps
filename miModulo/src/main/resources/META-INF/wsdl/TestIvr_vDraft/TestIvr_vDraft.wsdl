@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:TDCs="http://www.isban.es/webservices/TDCs" xmlns:fault="http://www.gruposantander.es/webservices/genericFault" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/internet/TestIvr/vDraft" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/internet/TestIvr/vDraft">
+    <documentation>TestIvr</documentation>
+    <types>
+        <xs:schema targetNamespace="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/internet/TestIvr/vDraft">
+            <xs:import namespace="http://www.gruposantander.es/webservices/genericFault" schemaLocation="./schemas/fault.xsd"/>
+            <xs:import namespace="http://www.isban.es/webservices/TDCs" schemaLocation="./schemas/ws_TDCs.xsd"/>
+            <xs:element name="testIvr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="param1" nillable="true" type="TDCs:DESCRIPCION_CORTA_Type"/>
+                    </xs:sequence>
+                    <xs:attribute fixed="TestIvr" name="facade" type="TDCs:DESCRIPCION_GENERAL_Type"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="testIvrResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="methodResult" type="TDCs:DESCRIPCION_CORTA_Type">
+                            <xs:annotation>
+                                <xs:documentation>resultado</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
+    <message name="testIvr_Input">
+        <part element="tns:testIvr" name="testIvr_InputPart"/>
+    </message>
+    <message name="testIvr_Output">
+        <part element="tns:testIvrResponse" name="testIvr_OutputPart"/>
+    </message>
+    <message name="testIvr_Fault">
+        <part element="fault:Exception" name="testIvr_FaultPart"/>
+    </message>
+    <portType name="TestIvrPortTypeHTTP">
+        <operation name="testIvr">
+            <input message="tns:testIvr_Input" name="testIvr_Input"/>
+            <output message="tns:testIvr_Output" name="testIvr_Output"/>
+            <fault message="tns:testIvr_Fault" name="testIvr_Fault"/>
+        </operation>
+    </portType>
+    <binding name="TestIvrSoapBindingHTTP" type="tns:TestIvrPortTypeHTTP">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="testIvr">
+            <soap:operation soapAction="http://www.isban.es/webservices/BLOCK/Sample/F_soapac_sample/internet/TestIvr/vDraft/testIvr" style="document"/>
+            <input name="testIvr_Input">
+                <soap:body use="literal"/>
+            </input>
+            <output name="testIvr_Output">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="testIvr_Fault">
+                <soap:fault name="testIvr_Fault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="TestIvr_Service">
+        <port binding="tns:TestIvrSoapBindingHTTP" name="TestIvrPortHTTP">
+            <soap:address location="http://180.105.101.122:8080/SOAPAC_ESCE/ws/TestListener"/>
+        </port>
+    </service>
+</definitions>
