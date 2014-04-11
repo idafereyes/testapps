@@ -1,0 +1,93 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_modSayAsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="main" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="testFormat"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testFormat" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="testFormat">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.testFormat"></evaluate>
+		<set name="flashScope.testFormat.name" value="'testFormat'" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'modSayAs'"/>
+		<evaluate expression="flashScope.testFormat.grammars.add(flashScope.grammar1)" />
+		
+        <evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios1.wording"/>
+        <set name="flashScope.testFormatmainAudios1.wording.text" value="'Probando formats:'"/>
+        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios2"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios2.wording"/>
+        <set name="flashScope.testFormatmainAudios2.wording.text" value="'12172005'"/>
+        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios2.wording.sayAs" />
+        <set name="flashScope.testFormatmainAudios2.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+        <set name="flashScope.testFormatmainAudios2.wording.sayAs.format" value="'mdy'"/>
+        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios3"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios3.wording"/>
+        <set name="flashScope.testFormatmainAudios3.wording.text" value="'12/17/2005'"/>
+        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios3.wording.sayAs" />
+        <set name="flashScope.testFormatmainAudios3.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+        <set name="flashScope.testFormatmainAudios3.wording.sayAs.format" value="'mdy'"/>
+        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios4"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios4.wording"/>
+        <set name="flashScope.testFormatmainAudios4.wording.text" value="'12/17/2005'"/>
+        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios4.wording.sayAs" />
+        <set name="flashScope.testFormatmainAudios4.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+        <set name="flashScope.testFormatmainAudios4.wording.sayAs.format" value="'mdy'"/>
+        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios4)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios5"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios5.wording"/>
+        <set name="flashScope.testFormatmainAudios5.wording.text" value="'17/12/2005'"/>
+        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios5.wording.sayAs" />
+        <set name="flashScope.testFormatmainAudios5.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+        <set name="flashScope.testFormatmainAudios5.wording.sayAs.format" value="'dmy'"/>
+        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios5)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios6"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios6.wording"/>
+        <set name="flashScope.testFormatmainAudios6.wording.text" value="'17/12/2005'"/>
+        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios6.wording.sayAs" />
+        <set name="flashScope.testFormatmainAudios6.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+        <set name="flashScope.testFormatmainAudios6.wording.sayAs.format" value="'ydm'"/>
+        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios6)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios7"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios7.wording"/>
+        <set name="flashScope.testFormatmainAudios7.wording.text" value="'12/2005'"/>
+        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios7.wording.sayAs" />
+        <set name="flashScope.testFormatmainAudios7.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+        <set name="flashScope.testFormatmainAudios7.wording.sayAs.format" value="'my'"/>
+        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios7)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios8"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios8.wording"/>
+        <set name="flashScope.testFormatmainAudios8.wording.text" value="'12/17'"/>
+        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios8.wording.sayAs" />
+        <set name="flashScope.testFormatmainAudios8.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+        <set name="flashScope.testFormatmainAudios8.wording.sayAs.format" value="'md'"/>
+        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios8)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios9"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios9.wording"/>
+        <set name="flashScope.testFormatmainAudios9.wording.text" value="'2005/12'"/>
+        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios9.wording.sayAs" />
+        <set name="flashScope.testFormatmainAudios9.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+        <set name="flashScope.testFormatmainAudios9.wording.sayAs.format" value="'ym'"/>
+        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios9)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios10"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios10.wording"/>
+        <set name="flashScope.testFormatmainAudios10.wording.text" value="'12172005'"/>
+        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios10.wording.sayAs" />
+        <set name="flashScope.testFormatmainAudios10.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+        <set name="flashScope.testFormatmainAudios10.wording.sayAs.format" value="'mdy'"/>
+        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios10)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.testFormat)"/>			
+	<transition to="render_testFormat"/>
+</action-state>
+
+<view-state id="render_testFormat" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="Final"/>
+</view-state>
+</flow> 
