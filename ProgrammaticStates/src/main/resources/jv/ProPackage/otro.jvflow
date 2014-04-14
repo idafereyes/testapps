@@ -2,7 +2,7 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:operations="http://jvoice.vectorsf.com/operations/1.0" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
   <pi:Diagram visible="true" gridUnit="10" diagramTypeId="jVoiceDiagram" name="otro" snapToGrid="true" pictogramLinks="/0/@link /0/@children.0/@link /0/@children.1/@link /0/@connections.0/@link" version="0.10.0">
     <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
-    <link businessObjects="_OCiXsMO4EeOcLNIprXbXxg"/>
+    <link businessObjects="_qp2K0MPCEeODE5N7zfuhRg"/>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
       <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.2" lineWidth="0" lineStyle="UNSPECIFIED" filled="true" lineVisible="false" width="556" height="3" x="189">
@@ -15,7 +15,7 @@
         <points x="272" y="2"/>
         <points x="2" y="2"/>
       </graphicsAlgorithm>
-      <link businessObjects="_OEth8MO4EeOcLNIprXbXxg"/>
+      <link businessObjects="_qp3Y8MPCEeODE5N7zfuhRg"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.0"/>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
@@ -39,7 +39,7 @@
           <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
-      <link businessObjects="_OEwlQMO4EeOcLNIprXbXxg"/>
+      <link businessObjects="_qp5OIcPCEeODE5N7zfuhRg"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.0"/>
     </children>
     <styles background="/0/@colors.4" foreground="/0/@colors.3" lineWidth="1" filled="true" lineVisible="true" id="mainRectangleStyle" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
@@ -47,7 +47,7 @@
     <styles foreground="/0/@colors.6" lineStyle="UNSPECIFIED" filled="false" lineVisible="false" id="finalTextStyle" font="/0/@fonts.0"/>
     <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.1/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_OE2E0MO4EeOcLNIprXbXxg"/>
+      <link businessObjects="_qp84gMPCEeODE5N7zfuhRg"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -72,10 +72,10 @@
     <colors red="188" green="188" blue="188"/>
     <fonts name="Arial" size="10"/>
   </pi:Diagram>
-  <operations:Flow id="_OCiXsMO4EeOcLNIprXbXxg" name="otro" description="otro" helperClass="com.isb.programmaticStates.components.ProPackage.Otro">
-    <states xsi:type="operations:InitialState" id="_OEth8MO4EeOcLNIprXbXxg" name="Initial" outgoingTransitions="_OE2E0MO4EeOcLNIprXbXxg"/>
-    <states xsi:type="operations:FinalState" id="_OEwlQMO4EeOcLNIprXbXxg" name="Final" incomingTransitions="_OE2E0MO4EeOcLNIprXbXxg"/>
-    <transitions id="_OE2E0MO4EeOcLNIprXbXxg" source="_OEth8MO4EeOcLNIprXbXxg" target="_OEwlQMO4EeOcLNIprXbXxg" eventName="Ok"/>
-    <beans id="_OCiXscO4EeOcLNIprXbXxg" name="it" fqdn="com.isb.programmaticStates.components.ProPackage.Otro" nameBean="otro" prototype="true"/>
+  <operations:Flow id="_qp2K0MPCEeODE5N7zfuhRg" name="otro" description="otro" helperClass="com.isb.programmaticStates.components.ProPackage.Otro">
+    <states xsi:type="operations:InitialState" id="_qp3Y8MPCEeODE5N7zfuhRg" name="Initial" outgoingTransitions="_qp84gMPCEeODE5N7zfuhRg"/>
+    <states xsi:type="operations:FinalState" id="_qp5OIcPCEeODE5N7zfuhRg" name="Final" incomingTransitions="_qp84gMPCEeODE5N7zfuhRg"/>
+    <transitions id="_qp84gMPCEeODE5N7zfuhRg" source="_qp3Y8MPCEeODE5N7zfuhRg" target="_qp5OIcPCEeODE5N7zfuhRg" eventName="Ok"/>
+    <beans id="_qp2K0cPCEeODE5N7zfuhRg" name="it" fqdn="com.isb.programmaticStates.components.ProPackage.Otro" nameBean="otro" prototype="true"/>
   </operations:Flow>
 </xmi:XMI>
