@@ -1,0 +1,7 @@
+output testSayAs
+
+audios{
+	main:
+		say as time "1157h"
+		say as  phone "914708888"
+}

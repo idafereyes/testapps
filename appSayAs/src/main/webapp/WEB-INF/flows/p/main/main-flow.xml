@@ -14,11 +14,11 @@ start-state= "_jVoiceCheckInit" >
 <action-state id="_jVoiceCheckInit">
 	<evaluate expression="jVoiceArchData.initialized" />
 		<transition on="no" to="_jVoiceInit"/>
-		<transition to="testFormat"/>
+		<transition to="testSayAs"/>
 	</action-state>
 
 <view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
-	<transition to="testFormat" >
+	<transition to="testSayAs" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>
@@ -90,4 +90,21 @@ start-state= "_jVoiceCheckInit" >
 <view-state id="render_testFormat" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
 	<transition on="match" to="Final"/>
 </view-state>
+<action-state id="testSayAs">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.testSayAs"></evaluate>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems1.wording"/>
+		<set name="flashScope.testSayAsaudioItems1.wording.text" value="'1157h'"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems1.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems1.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).TIME"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems2"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems2.wording"/>
+		<set name="flashScope.testSayAsaudioItems2.wording.text" value="'914708888'"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems2.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems2.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).PHONE"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems2)"/> 
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.testSayAs)"/>
+	<transition to="testFormat"/>
+</action-state>
+
 </flow> 
