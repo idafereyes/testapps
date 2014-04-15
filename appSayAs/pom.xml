@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
@@ -12,26 +12,26 @@
     <dependency>
       <groupId>com.vectorsf</groupId>
       <artifactId>jvoiceframework-flow</artifactId>
-      <version>1.4.0-SNAPSHOT</version>
+      <version>1.4.0</version>
     </dependency>
     <dependency>
-    	<groupId>modSayAs</groupId>
-    	<artifactId>modSayAs</artifactId>
-    	<version>1.0.0-SNAPSHOT</version>
+      <groupId>modSayAs</groupId>
+      <artifactId>modSayAs</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <repositories>
     <repository>
-      <id>jvoiceSnapshot</id>
-      <name>Jvoice snapshot repository</name>
-      <url>http://repository-felixvelasco.forge.cloudbees.com/snapshot/snapshot/</url>
+      <id>jvoice</id>
+      <name>Jvoice repository</name>
+      <url>http://repository-felixvelasco.forge.cloudbees.com/release/</url>
     </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
-      <id>jvoiceSnapshot</id>
-      <name>Jvoice snapshot repository</name>
-      <url>http://repository-felixvelasco.forge.cloudbees.com/snapshot/snapshot/</url>
+      <id>jvoice</id>
+      <name>Jvoice repository</name>
+      <url>http://repository-felixvelasco.forge.cloudbees.com/release/</url>
     </pluginRepository>
   </pluginRepositories>
   <build>
@@ -39,7 +39,7 @@
       <plugin>
         <groupId>com.vectorsf.jvoice</groupId>
         <artifactId>application-builder</artifactId>
-        <version>1.4.0-SNAPSHOT</version>
+        <version>1.4.0</version>
         <executions>
           <execution>
             <phase>generate-resources</phase>
