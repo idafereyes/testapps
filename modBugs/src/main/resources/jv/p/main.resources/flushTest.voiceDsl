@@ -1,0 +1,10 @@
+output flushTest
+{
+	bargein false
+	flush true
+}
+
+audios{
+	main:
+		say wording "TTS text"
+}
