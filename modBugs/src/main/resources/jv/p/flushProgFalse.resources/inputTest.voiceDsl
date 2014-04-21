@@ -1,0 +1,10 @@
+input inputTest
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		say wording "Probado el flush a false en estado programatico." 
+}
+

@@ -1,0 +1,54 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_modBugsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="flushCustom" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="flush"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="flush" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="flush">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.flush"></evaluate>
+		<set name="flashScope.flush.flush" value="true" />
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.flushaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.flushaudioItems1.wording"/>
+		<set name="flashScope.flushaudioItems1.wording.text" value="'Vamos a probar un flush con un custom detras'"/>
+		<evaluate expression="flashScope.flush.audioItems.add(flashScope.flushaudioItems1)"/>
+	</on-entry>
+	
+	<evaluate expression="flowProcessor.process(flashScope.flush)"/>
+	
+<transition to="render_flush"/>
+</action-state>
+
+<view-state id="render_flush" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="success" to="render_testCustom"/>
+</view-state>
+
+
+<view-state id="render_testCustom" view="#{flowProcessor.getRenderer().getView()}">    
+	<transition to="testCustom"/>
+</view-state>
+
+<view-state id="testCustom" view="testCustom.jsp">
+	<transition to="Final"/>
+</view-state>
+</flow> 

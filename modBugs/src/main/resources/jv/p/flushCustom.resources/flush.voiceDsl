@@ -1,0 +1,9 @@
+output flush
+{
+	flush true
+}
+
+audios{
+	main:
+		say wording "Vamos a probar un flush con un custom detras"
+}

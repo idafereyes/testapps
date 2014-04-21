@@ -1,0 +1,9 @@
+output testFlushFalse
+{
+	flush false
+}
+
+audios{
+	main:
+		say wording "Probamos el flush a false"
+}

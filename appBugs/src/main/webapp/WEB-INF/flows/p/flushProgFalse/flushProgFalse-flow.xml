@@ -1,0 +1,67 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_modBugsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="flushProgFalse" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="testFlushFalse"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testFlushFalse" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="testFlushFalse">
+	<on-entry>
+		<evaluate expression="flowScope.it.testFlushFalse()" result="flashScope.lastProgrammableOutput"/>
+		<evaluate expression="flowProcessor.process(flashScope.lastProgrammableOutput)" />
+	</on-entry>
+	
+	<evaluate expression="flashScope.lastProgrammableOutput.flush"/>
+	<transition on="yes" to="render_testFlushFalse"/>
+<transition to="inputTest"/>
+	
+</action-state>	
+
+<view-state id="render_testFlushFalse" view="#{flowProcessor.getRenderer().getView()}">
+		<transition on="success" to="inputTest"/>
+	</view-state>			
+
+
+<action-state id="inputTest">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.inputTest"></evaluate>
+		<set name="flashScope.inputTest.name" value="'inputTest'" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'modBugs'"/>
+		<evaluate expression="flashScope.inputTest.grammars.add(flashScope.grammar1)" />
+		
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.inputTestmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.inputTestmainAudios1.wording"/>
+			        <set name="flashScope.inputTestmainAudios1.wording.text" value="'Probado el flush a false en estado programatico.'"/>
+			        <evaluate expression="flashScope.inputTest.mainAudios.add(flashScope.inputTestmainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.inputTest)"/>
+	<transition to="render_inputTest"/>
+</action-state>
+
+<view-state id="render_inputTest" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="Final"/>
+</view-state>
+</flow> 

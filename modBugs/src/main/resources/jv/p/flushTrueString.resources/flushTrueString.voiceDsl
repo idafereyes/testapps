@@ -1,0 +1,9 @@
+output flushTrueString
+{
+	flush "true"
+}
+
+audios{
+	main:
+		say wording "Vamos a probar el flush a true seteado como String"
+}
