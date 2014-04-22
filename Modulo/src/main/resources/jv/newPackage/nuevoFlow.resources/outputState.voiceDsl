@@ -1,0 +1,13 @@
+output outputState
+
+audios{
+	main:
+		say wording "El mensaje grabado tiene una duracion de "
+        say as number "${lastRecordResult.getDuration()}"
+        say wording "milisegundos. El mensaje grabado tiene un tamanio de "
+        say as number "${lastRecordResult.getSize()}"
+        say wording ". El nombre del fichero de audio es "
+        say wording "${lastRecordResult.getFileName()}"
+        say wording ". El term char es "
+        say wording "${lastRecordResult.getTermchar()}"
+}

@@ -1,0 +1,10 @@
+record recordState
+
+{
+	filename "recordFileName" 
+} 
+
+audios{ 
+	main:
+		say wording "voy a decir esto"	
+}
