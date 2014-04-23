@@ -29,6 +29,8 @@
     
     <beans:bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
         <beans:property name="flowExecutor" ref="flowExecutor"/>
+        <!-- Fuerza a devolver un código 303 en vez de 302 para las redirecciones -->
+        <beans:property name="redirectHttp10Compatible" value="false"/>
     </beans:bean>
 
 	<webflow:flow-executor id="flowExecutor" flow-registry="flowRegistry" >
