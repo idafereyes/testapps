@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:operations="http://jvoice.vectorsf.com/operations/1.0" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
-  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="jVoiceDiagram" name="main" snapToGrid="true" pictogramLinks="/0/@link /0/@children.0/@link /0/@children.1/@link /0/@connections.0/@link /0/@children.2/@link /0/@children.3/@link /0/@connections.1/@link /0/@children.4/@link /0/@children.5/@link /0/@connections.2/@link /0/@connections.3/@link /0/@children.6/@link /0/@connections.4/@link /0/@children.7/@link /0/@connections.5/@link /0/@children.8/@link /0/@connections.6/@link /0/@connections.7/@link /0/@children.9/@link /0/@connections.8/@link" version="0.10.0">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="jVoiceDiagram" name="mainHangup" snapToGrid="true" pictogramLinks="/0/@link /0/@children.0/@link /0/@children.1/@link /0/@connections.0/@link /0/@children.2/@link /0/@children.3/@link /0/@connections.1/@link /0/@children.4/@link /0/@connections.2/@link /0/@children.5/@link /0/@connections.3/@link /0/@children.6/@link /0/@connections.4/@link /0/@children.7/@link /0/@connections.5/@link /0/@children.8/@link /0/@connections.6/@link /0/@children.9/@link /0/@connections.7/@link /0/@connections.8/@link" version="0.10.0">
     <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
-    <link businessObjects="_fkVCEMU6EeOkTsmyiftJyQ"/>
+    <link businessObjects="_pdpmgMnuEeOvIagzFQwlcA"/>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.2" lineWidth="0" lineStyle="UNSPECIFIED" filled="true" lineVisible="false" width="556" height="3" x="442">
+      <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.2" lineWidth="0" lineStyle="UNSPECIFIED" filled="true" lineVisible="false" width="556" height="3" x="204">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="roundedRectangle"/>
         <points/>
         <points x="556"/>
@@ -15,12 +15,12 @@
         <points x="272" y="2"/>
         <points x="2" y="2"/>
       </graphicsAlgorithm>
-      <link businessObjects="_fmAdEMU6EeOkTsmyiftJyQ"/>
+      <link businessObjects="_pdqNkMnuEeOvIagzFQwlcA"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.0"/>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" lineVisible="false" width="48" height="28" x="390" y="790" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" lineVisible="false" width="48" height="28" x="450" y="870" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
         <graphicsAlgorithmChildren xsi:type="al:Polygon" lineStyle="UNSPECIFIED" width="48" height="28" style="/0/@styles.1">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="statePolygon"/>
@@ -39,218 +39,217 @@
           <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
-      <link businessObjects="_fmQUsMU6EeOkTsmyiftJyQ"/>
-      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.7"/>
+      <link businessObjects="_pdrbsMnuEeOvIagzFQwlcA"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.8"/>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="58" x="301" y="340" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="58" x="370" y="70" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
-        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="28" style="/0/@styles.4">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="28" style="/0/@styles.3">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="topRectangle"/>
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="45" height="28" style="/0/@styles.1">
             <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_subflow" stretchH="false" stretchV="false" proportional="false">
               <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
             </graphicsAlgorithmChildren>
           </graphicsAlgorithmChildren>
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="101" height="28" x="55" style="/0/@styles.5" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushFalse">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="146" height="28" x="55" style="/0/@styles.4" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushFalseHangupFalse">
             <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
           </graphicsAlgorithmChildren>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
-      <link businessObjects="_4r6iAMVwEeOX1MXxFkXxtQ"/>
-      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.1"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.4">
-        <properties key="TOOLTIP" value="Final"/>
-        <properties key="EVENT_NAME" value="Final"/>
-        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.10" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
-        <location x="10" y="32"/>
-      </anchors>
-    </children>
-    <children xsi:type="pi:ContainerShape" visible="true" active="true">
-      <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="58" x="301" y="250" style="/0/@styles.0">
-        <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
-        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="28" style="/0/@styles.4">
-          <properties key="org.eclipse.graphiti.pattern.id.id" value="topRectangle"/>
-          <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="45" height="28" style="/0/@styles.1">
-            <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_subflow" stretchH="false" stretchV="false" proportional="false">
-              <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
-            </graphicsAlgorithmChildren>
-          </graphicsAlgorithmChildren>
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="101" height="28" x="55" style="/0/@styles.5" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushTrueString">
-            <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
-          </graphicsAlgorithmChildren>
-        </graphicsAlgorithmChildren>
-      </graphicsAlgorithm>
-      <link businessObjects="_t1t_EMVxEeOX1MXxFkXxtQ"/>
-      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.3"/>
+      <link businessObjects="_sMcvEMnuEeOvIagzFQwlcA"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.0"/>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.1">
         <properties key="TOOLTIP" value="Final"/>
         <properties key="EVENT_NAME" value="Final"/>
-        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.10" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.9" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
         <location x="10" y="32"/>
       </anchors>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="58" x="380" y="90" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="270" height="58" x="340" y="160" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
-        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="28" style="/0/@styles.4">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="270" height="28" style="/0/@styles.3">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="topRectangle"/>
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="45" height="28" style="/0/@styles.1">
             <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_subflow" stretchH="false" stretchV="false" proportional="false">
               <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
             </graphicsAlgorithmChildren>
           </graphicsAlgorithmChildren>
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="101" height="28" x="55" style="/0/@styles.5" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushProgFalse">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="191" height="28" x="55" style="/0/@styles.4" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushFalseHangupFalseTran">
             <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
           </graphicsAlgorithmChildren>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
-      <link businessObjects="_rPOOsMkmEeOMkI2HHoRMbg"/>
-      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.8"/>
+      <link businessObjects="_ufuZQMnuEeOvIagzFQwlcA"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.1"/>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.2">
         <properties key="TOOLTIP" value="Final"/>
         <properties key="EVENT_NAME" value="Final"/>
-        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.10" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.9" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
         <location x="10" y="32"/>
       </anchors>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="58" x="312" y="160" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="58" x="370" y="260" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
-        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="28" style="/0/@styles.4">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="28" style="/0/@styles.3">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="topRectangle"/>
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="45" height="28" style="/0/@styles.1">
             <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_subflow" stretchH="false" stretchV="false" proportional="false">
               <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
             </graphicsAlgorithmChildren>
           </graphicsAlgorithmChildren>
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="101" height="28" x="55" style="/0/@styles.5" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushProgTrue">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="146" height="28" x="55" style="/0/@styles.4" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushFalseHangupTrue">
             <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
           </graphicsAlgorithmChildren>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
-      <link businessObjects="_7IJPMMkmEeOMkI2HHoRMbg"/>
+      <link businessObjects="_xN0XMMnuEeOvIagzFQwlcA"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.2"/>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.3">
         <properties key="TOOLTIP" value="Final"/>
         <properties key="EVENT_NAME" value="Final"/>
-        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.10" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.9" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
         <location x="10" y="32"/>
       </anchors>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="135" height="58" x="334" y="450" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="270" height="58" x="363" y="360" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
-        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="135" height="28" style="/0/@styles.4">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="270" height="28" style="/0/@styles.3">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="topRectangle"/>
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="45" height="28" style="/0/@styles.1">
             <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_subflow" stretchH="false" stretchV="false" proportional="false">
               <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
             </graphicsAlgorithmChildren>
           </graphicsAlgorithmChildren>
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="56" height="28" x="55" style="/0/@styles.5" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushTrue">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="191" height="28" x="55" style="/0/@styles.4" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushFalseHangupTrueTran">
             <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
           </graphicsAlgorithmChildren>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
-      <link businessObjects="_K5C8IMknEeOMkI2HHoRMbg"/>
+      <link businessObjects="_z5It8MnuEeOvIagzFQwlcA"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.3"/>
+      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.4">
+        <properties key="TOOLTIP" value="Final"/>
+        <properties key="EVENT_NAME" value="Final"/>
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.9" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
+        <location x="10" y="32"/>
+      </anchors>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="58" x="390" y="450" style="/0/@styles.0">
+        <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="28" style="/0/@styles.3">
+          <properties key="org.eclipse.graphiti.pattern.id.id" value="topRectangle"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="45" height="28" style="/0/@styles.1">
+            <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_subflow" stretchH="false" stretchV="false" proportional="false">
+              <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
+            </graphicsAlgorithmChildren>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="146" height="28" x="55" style="/0/@styles.4" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushTrueHangupFalse">
+            <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link businessObjects="_2jD9kMnuEeOvIagzFQwlcA"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.4"/>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.5">
         <properties key="TOOLTIP" value="Final"/>
         <properties key="EVENT_NAME" value="Final"/>
-        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.10" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.9" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
         <location x="10" y="32"/>
       </anchors>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="58" x="301" y="580" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="58" x="390" y="550" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
-        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="28" style="/0/@styles.4">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="28" style="/0/@styles.3">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="topRectangle"/>
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="45" height="28" style="/0/@styles.1">
             <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_subflow" stretchH="false" stretchV="false" proportional="false">
               <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
             </graphicsAlgorithmChildren>
           </graphicsAlgorithmChildren>
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="101" height="28" x="55" style="/0/@styles.5" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushCustom">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="146" height="28" x="55" style="/0/@styles.4" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushTrueHangupFalseTra">
             <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
           </graphicsAlgorithmChildren>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
-      <link businessObjects="_MxXIoMknEeOMkI2HHoRMbg"/>
+      <link businessObjects="_5iaqoMnuEeOvIagzFQwlcA"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.5"/>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.6">
         <properties key="TOOLTIP" value="Final"/>
         <properties key="EVENT_NAME" value="Final"/>
-        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.10" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.9" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
         <location x="10" y="32"/>
       </anchors>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="58" x="267" y="670" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="58" x="370" y="640" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
-        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="28" style="/0/@styles.4">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="225" height="28" style="/0/@styles.3">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="topRectangle"/>
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="45" height="28" style="/0/@styles.1">
             <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_subflow" stretchH="false" stretchV="false" proportional="false">
               <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
             </graphicsAlgorithmChildren>
           </graphicsAlgorithmChildren>
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="146" height="28" x="55" style="/0/@styles.5" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushFalseCustom">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="146" height="28" x="55" style="/0/@styles.4" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushTrueHangupTrue">
             <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
           </graphicsAlgorithmChildren>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
-      <link businessObjects="_PfSHcMknEeOMkI2HHoRMbg"/>
+      <link businessObjects="_7SpSIMnuEeOvIagzFQwlcA"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.6"/>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.7">
         <properties key="TOOLTIP" value="Final"/>
         <properties key="EVENT_NAME" value="Final"/>
-        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.10" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.9" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
         <location x="10" y="32"/>
       </anchors>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="58" x="630" y="33" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="270" height="58" x="380" y="740" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
-        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="180" height="28" style="/0/@styles.4">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="270" height="28" style="/0/@styles.3">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="topRectangle"/>
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="45" height="28" style="/0/@styles.1">
             <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_subflow" stretchH="false" stretchV="false" proportional="false">
               <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
             </graphicsAlgorithmChildren>
           </graphicsAlgorithmChildren>
-          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="101" height="28" x="55" style="/0/@styles.5" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushSinConfig">
+          <graphicsAlgorithmChildren xsi:type="al:Text" lineStyle="UNSPECIFIED" width="191" height="28" x="55" style="/0/@styles.4" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED" value="flushTrueHangupTrueTrans">
             <properties key="org.eclipse.graphiti.pattern.id.id" value="nameText"/>
           </graphicsAlgorithmChildren>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
-      <link businessObjects="_xw8lkMlCEeOhIswzv8TCFw"/>
-      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.0"/>
+      <link businessObjects="_9JVuAMnuEeOvIagzFQwlcA"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.7"/>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.8">
         <properties key="TOOLTIP" value="Final"/>
         <properties key="EVENT_NAME" value="Final"/>
-        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.10" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.9" lineWidth="1" filled="false" transparency="0.0" width="22" height="24" font="/0/@fonts.1" value="Final"/>
         <location x="10" y="32"/>
       </anchors>
     </children>
     <styles background="/0/@colors.4" foreground="/0/@colors.3" lineWidth="1" filled="true" lineVisible="true" id="mainRectangleStyle" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
     <styles background="/0/@colors.5" lineWidth="0" lineStyle="UNSPECIFIED" filled="true" lineVisible="false" id="imageRectangleStyle" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
     <styles foreground="/0/@colors.6" lineStyle="UNSPECIFIED" filled="false" lineVisible="false" id="finalTextStyle" font="/0/@fonts.0"/>
-    <styles foreground="/0/@colors.8" lineWidth="1" lineVisible="true" id="verticalLineStyle" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
     <styles background="/0/@colors.6" lineWidth="0" lineStyle="UNSPECIFIED" filled="true" lineVisible="false" id="topRectangleStyle" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED"/>
     <styles foreground="/0/@colors.1" lineStyle="UNSPECIFIED" filled="false" lineVisible="false" id="mainTextStyle" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_LEFT"/>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.9/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.2/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_fmTYAMU6EeOkTsmyiftJyQ"/>
+      <link businessObjects="_pdufAMnuEeOvIagzFQwlcA"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -265,9 +264,26 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.1" end="/0/@children.2/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.2/@anchors.1" end="/0/@children.3/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_wL_S4MVxEeOX1MXxFkXxtQ"/>
+      <link businessObjects="_u2eFUMnuEeOvIagzFQwlcA"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
+          <points x="-7" y="4"/>
+          <points x="2"/>
+          <points x="-7" y="-4"/>
+          <points x="-1"/>
+          <points x="-7" y="4"/>
+          <points x="-3"/>
+          <points x="-7" y="-4"/>
+          <points x="-5"/>
+          <points x="-7" y="4"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.1" end="/0/@children.4/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
+      <link businessObjects="_yjcGUMnuEeOvIagzFQwlcA"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -284,7 +300,7 @@
     </connections>
     <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.4/@anchors.1" end="/0/@children.5/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_80wiAMkmEeOMkI2HHoRMbg"/>
+      <link businessObjects="_0QsSUMnuEeOvIagzFQwlcA"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -299,26 +315,9 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.5/@anchors.1" end="/0/@children.3/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.5/@anchors.1" end="/0/@children.6/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_A1QjAMknEeOMkI2HHoRMbg"/>
-      <connectionDecorators visible="true" locationRelative="true" location="1.0">
-        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
-          <points x="-7" y="4"/>
-          <points x="2"/>
-          <points x="-7" y="-4"/>
-          <points x="-1"/>
-          <points x="-7" y="4"/>
-          <points x="-3"/>
-          <points x="-7" y="-4"/>
-          <points x="-5"/>
-          <points x="-7" y="4"/>
-        </graphicsAlgorithm>
-      </connectionDecorators>
-    </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.2/@anchors.1" end="/0/@children.6/@anchors.0">
-      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_LcH0AMknEeOMkI2HHoRMbg"/>
+      <link businessObjects="_3h49UMnuEeOvIagzFQwlcA"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -335,7 +334,7 @@
     </connections>
     <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.6/@anchors.1" end="/0/@children.7/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_NKvR8MknEeOMkI2HHoRMbg"/>
+      <link businessObjects="_5487UMnuEeOvIagzFQwlcA"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -352,7 +351,7 @@
     </connections>
     <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.7/@anchors.1" end="/0/@children.8/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_Pz9W8MknEeOMkI2HHoRMbg"/>
+      <link businessObjects="_7kvuwMnuEeOvIagzFQwlcA"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -367,9 +366,9 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.8/@anchors.1" end="/0/@children.1/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.8/@anchors.1" end="/0/@children.9/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_QDwGcMknEeOMkI2HHoRMbg"/>
+      <link businessObjects="_-AdjQMnuEeOvIagzFQwlcA"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -384,9 +383,9 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.9/@anchors.1" end="/0/@children.4/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.9/@anchors.1" end="/0/@children.1/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_y4_ywMlCEeOhIswzv8TCFw"/>
+      <link businessObjects="_-MhCQMnuEeOvIagzFQwlcA"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -409,48 +408,47 @@
     <colors red="41" green="76" blue="123"/>
     <colors red="53" green="100" blue="162"/>
     <colors red="188" green="188" blue="188"/>
-    <colors red="222" green="222" blue="222"/>
     <colors red="119" green="119" blue="119"/>
     <colors/>
     <fonts name="Arial" size="10"/>
     <fonts name="Arial" size="8"/>
   </pi:Diagram>
-  <operations:Flow id="_fkVCEMU6EeOkTsmyiftJyQ" name="main" description="main" helperClass="com.isb.modBugs.components.p.Main">
-    <states xsi:type="operations:InitialState" id="_fmAdEMU6EeOkTsmyiftJyQ" name="Initial" outgoingTransitions="_fmTYAMU6EeOkTsmyiftJyQ"/>
-    <states xsi:type="operations:FinalState" id="_fmQUsMU6EeOkTsmyiftJyQ" name="Final" incomingTransitions="_QDwGcMknEeOMkI2HHoRMbg" final="true"/>
-    <states xsi:type="operations:CallFlowState" id="_4r6iAMVwEeOX1MXxFkXxtQ" name="flushFalse" incomingTransitions="_wL_S4MVxEeOX1MXxFkXxtQ" outgoingTransitions="_LcH0AMknEeOMkI2HHoRMbg">
-      <subflow href="flushFalse.jvflow#_sIkWMMVwEeOX1MXxFkXxtQ"/>
+  <operations:Flow id="_pdpmgMnuEeOvIagzFQwlcA" name="mainHangup" description="mainHangup" helperClass="com.isb.modBugs.components.catchHangup.MainHangup">
+    <states xsi:type="operations:InitialState" id="_pdqNkMnuEeOvIagzFQwlcA" name="Initial" outgoingTransitions="_pdufAMnuEeOvIagzFQwlcA"/>
+    <states xsi:type="operations:FinalState" id="_pdrbsMnuEeOvIagzFQwlcA" name="Final" incomingTransitions="_-MhCQMnuEeOvIagzFQwlcA" final="true"/>
+    <states xsi:type="operations:CallFlowState" id="_sMcvEMnuEeOvIagzFQwlcA" name="flushFalseHangupFalse" incomingTransitions="_pdufAMnuEeOvIagzFQwlcA" outgoingTransitions="_u2eFUMnuEeOvIagzFQwlcA">
+      <subflow href="flushFalseHangupFalse.jvflow#_ko47oMltEeOEYbM0Ya2piQ"/>
     </states>
-    <states xsi:type="operations:CallFlowState" id="_t1t_EMVxEeOX1MXxFkXxtQ" name="flushTrueString" incomingTransitions="_A1QjAMknEeOMkI2HHoRMbg" outgoingTransitions="_wL_S4MVxEeOX1MXxFkXxtQ">
-      <subflow href="flushTrueString.jvflow#_Yq18wMVxEeOX1MXxFkXxtQ"/>
+    <states xsi:type="operations:CallFlowState" id="_ufuZQMnuEeOvIagzFQwlcA" name="flushFalseHangupFalseTran" incomingTransitions="_u2eFUMnuEeOvIagzFQwlcA" outgoingTransitions="_yjcGUMnuEeOvIagzFQwlcA">
+      <subflow href="flushFalseHangupFalseTran.jvflow#_Y60GUMnuEeOvIagzFQwlcA"/>
     </states>
-    <states xsi:type="operations:CallFlowState" id="_rPOOsMkmEeOMkI2HHoRMbg" name="flushProgFalse" incomingTransitions="_y4_ywMlCEeOhIswzv8TCFw" outgoingTransitions="_80wiAMkmEeOMkI2HHoRMbg">
-      <subflow href="flushProgFalse.jvflow#_W93q0MklEeOMkI2HHoRMbg"/>
+    <states xsi:type="operations:CallFlowState" id="_xN0XMMnuEeOvIagzFQwlcA" name="flushFalseHangupTrue" incomingTransitions="_yjcGUMnuEeOvIagzFQwlcA" outgoingTransitions="_0QsSUMnuEeOvIagzFQwlcA">
+      <subflow href="flushFalseHangupTrue.jvflow#__V-CRMltEeOEYbM0Ya2piQ"/>
     </states>
-    <states xsi:type="operations:CallFlowState" id="_7IJPMMkmEeOMkI2HHoRMbg" name="flushProgTrue" incomingTransitions="_80wiAMkmEeOMkI2HHoRMbg" outgoingTransitions="_A1QjAMknEeOMkI2HHoRMbg">
-      <subflow href="flushProgTrue.jvflow#_LRRrZMkmEeOMkI2HHoRMbg"/>
+    <states xsi:type="operations:CallFlowState" id="_z5It8MnuEeOvIagzFQwlcA" name="flushFalseHangupTrueTran" incomingTransitions="_0QsSUMnuEeOvIagzFQwlcA" outgoingTransitions="_3h49UMnuEeOvIagzFQwlcA">
+      <subflow href="flushFalseHangupTrueTran.jvflow#_MKW6xMluEeOEYbM0Ya2piQ"/>
     </states>
-    <states xsi:type="operations:CallFlowState" id="_K5C8IMknEeOMkI2HHoRMbg" name="flushTrue" incomingTransitions="_LcH0AMknEeOMkI2HHoRMbg" outgoingTransitions="_NKvR8MknEeOMkI2HHoRMbg">
-      <subflow href="flushTrue.jvflow#_ETqjk8knEeOMkI2HHoRMbg"/>
+    <states xsi:type="operations:CallFlowState" id="_2jD9kMnuEeOvIagzFQwlcA" name="flushTrueHangupFalse" incomingTransitions="_3h49UMnuEeOvIagzFQwlcA" outgoingTransitions="_5487UMnuEeOvIagzFQwlcA">
+      <subflow href="flushTrueHangupFalse.jvflow#_XnXwpMluEeOEYbM0Ya2piQ"/>
     </states>
-    <states xsi:type="operations:CallFlowState" id="_MxXIoMknEeOMkI2HHoRMbg" name="flushCustom" incomingTransitions="_NKvR8MknEeOMkI2HHoRMbg" outgoingTransitions="_Pz9W8MknEeOMkI2HHoRMbg">
-      <subflow href="flushCustom.jvflow#_jrn3tMVzEeOX1MXxFkXxtQ"/>
+    <states xsi:type="operations:CallFlowState" id="_5iaqoMnuEeOvIagzFQwlcA" name="flushTrueHangupFalseTra" incomingTransitions="_5487UMnuEeOvIagzFQwlcA" outgoingTransitions="_7kvuwMnuEeOvIagzFQwlcA">
+      <subflow href="flushTrueHangupFalseTra.jvflow#_jHptxMnuEeOvIagzFQwlcA"/>
     </states>
-    <states xsi:type="operations:CallFlowState" id="_PfSHcMknEeOMkI2HHoRMbg" name="flushFalseCustom" incomingTransitions="_Pz9W8MknEeOMkI2HHoRMbg" outgoingTransitions="_QDwGcMknEeOMkI2HHoRMbg">
-      <subflow href="flushFalseCustom.jvflow#_jrn3tMVzEeOX1MXxFkXxtQ"/>
+    <states xsi:type="operations:CallFlowState" id="_7SpSIMnuEeOvIagzFQwlcA" name="flushTrueHangupTrue" incomingTransitions="_7kvuwMnuEeOvIagzFQwlcA" outgoingTransitions="_-AdjQMnuEeOvIagzFQwlcA">
+      <subflow href="flushTrueHangupTrue.jvflow#_howWBMluEeOEYbM0Ya2piQ"/>
     </states>
-    <states xsi:type="operations:CallFlowState" id="_xw8lkMlCEeOhIswzv8TCFw" name="flushSinConfig" incomingTransitions="_fmTYAMU6EeOkTsmyiftJyQ" outgoingTransitions="_y4_ywMlCEeOhIswzv8TCFw">
-      <subflow href="flushSinConfig.jvflow#_Oe2J4MlCEeOhIswzv8TCFw"/>
+    <states xsi:type="operations:CallFlowState" id="_9JVuAMnuEeOvIagzFQwlcA" name="flushTrueHangupTrueTrans" incomingTransitions="_-AdjQMnuEeOvIagzFQwlcA" outgoingTransitions="_-MhCQMnuEeOvIagzFQwlcA">
+      <subflow href="flushTrueHangupTrueTrans.jvflow#_pB8KFMluEeOEYbM0Ya2piQ"/>
     </states>
-    <transitions id="_fmTYAMU6EeOkTsmyiftJyQ" source="_fmAdEMU6EeOkTsmyiftJyQ" target="_xw8lkMlCEeOhIswzv8TCFw" eventName="Ok"/>
-    <transitions id="_wL_S4MVxEeOX1MXxFkXxtQ" source="_t1t_EMVxEeOX1MXxFkXxtQ" target="_4r6iAMVwEeOX1MXxFkXxtQ" eventName="Final"/>
-    <transitions id="_80wiAMkmEeOMkI2HHoRMbg" source="_rPOOsMkmEeOMkI2HHoRMbg" target="_7IJPMMkmEeOMkI2HHoRMbg" eventName="Final"/>
-    <transitions id="_A1QjAMknEeOMkI2HHoRMbg" source="_7IJPMMkmEeOMkI2HHoRMbg" target="_t1t_EMVxEeOX1MXxFkXxtQ" eventName="Final"/>
-    <transitions id="_LcH0AMknEeOMkI2HHoRMbg" source="_4r6iAMVwEeOX1MXxFkXxtQ" target="_K5C8IMknEeOMkI2HHoRMbg" eventName="Final"/>
-    <transitions id="_NKvR8MknEeOMkI2HHoRMbg" source="_K5C8IMknEeOMkI2HHoRMbg" target="_MxXIoMknEeOMkI2HHoRMbg" eventName="Final"/>
-    <transitions id="_Pz9W8MknEeOMkI2HHoRMbg" source="_MxXIoMknEeOMkI2HHoRMbg" target="_PfSHcMknEeOMkI2HHoRMbg" eventName="Final"/>
-    <transitions id="_QDwGcMknEeOMkI2HHoRMbg" source="_PfSHcMknEeOMkI2HHoRMbg" target="_fmQUsMU6EeOkTsmyiftJyQ" eventName="Final"/>
-    <transitions id="_y4_ywMlCEeOhIswzv8TCFw" source="_xw8lkMlCEeOhIswzv8TCFw" target="_rPOOsMkmEeOMkI2HHoRMbg" eventName="Final"/>
-    <beans id="_fkVCEcU6EeOkTsmyiftJyQ" name="it" fqdn="com.isb.modBugs.components.p.Main" nameBean="main" prototype="true"/>
+    <transitions id="_pdufAMnuEeOvIagzFQwlcA" source="_pdqNkMnuEeOvIagzFQwlcA" target="_sMcvEMnuEeOvIagzFQwlcA" eventName="Ok"/>
+    <transitions id="_u2eFUMnuEeOvIagzFQwlcA" source="_sMcvEMnuEeOvIagzFQwlcA" target="_ufuZQMnuEeOvIagzFQwlcA" eventName="Final"/>
+    <transitions id="_yjcGUMnuEeOvIagzFQwlcA" source="_ufuZQMnuEeOvIagzFQwlcA" target="_xN0XMMnuEeOvIagzFQwlcA" eventName="Final"/>
+    <transitions id="_0QsSUMnuEeOvIagzFQwlcA" source="_xN0XMMnuEeOvIagzFQwlcA" target="_z5It8MnuEeOvIagzFQwlcA" eventName="Final"/>
+    <transitions id="_3h49UMnuEeOvIagzFQwlcA" source="_z5It8MnuEeOvIagzFQwlcA" target="_2jD9kMnuEeOvIagzFQwlcA" eventName="Final"/>
+    <transitions id="_5487UMnuEeOvIagzFQwlcA" source="_2jD9kMnuEeOvIagzFQwlcA" target="_5iaqoMnuEeOvIagzFQwlcA" eventName="Final"/>
+    <transitions id="_7kvuwMnuEeOvIagzFQwlcA" source="_5iaqoMnuEeOvIagzFQwlcA" target="_7SpSIMnuEeOvIagzFQwlcA" eventName="Final"/>
+    <transitions id="_-AdjQMnuEeOvIagzFQwlcA" source="_7SpSIMnuEeOvIagzFQwlcA" target="_9JVuAMnuEeOvIagzFQwlcA" eventName="Final"/>
+    <transitions id="_-MhCQMnuEeOvIagzFQwlcA" source="_9JVuAMnuEeOvIagzFQwlcA" target="_pdrbsMnuEeOvIagzFQwlcA" eventName="Final"/>
+    <beans id="_pdpmgcnuEeOvIagzFQwlcA" name="it" fqdn="com.isb.modBugs.components.catchHangup.MainHangup" nameBean="mainHangup" prototype="true"/>
   </operations:Flow>
 </xmi:XMI>

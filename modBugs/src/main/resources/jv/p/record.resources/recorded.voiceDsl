@@ -1,0 +1,6 @@
+output recorded
+
+audios{
+	main:
+		say wording "Se ha realizado la grabación"
+}

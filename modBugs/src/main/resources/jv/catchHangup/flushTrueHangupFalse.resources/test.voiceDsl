@@ -1,0 +1,10 @@
+output test
+{
+	flush true
+	catchHangup false
+}
+
+audios{
+	main:
+		say wording "Probamos el flush a true y el catch hangup a false"
+}

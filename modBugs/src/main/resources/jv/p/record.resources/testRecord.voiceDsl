@@ -1,0 +1,10 @@
+record testRecord
+
+{
+	filename "recordFileName" 
+} 
+
+audios{ 
+	main:
+		say wording "Diga algo"	
+}

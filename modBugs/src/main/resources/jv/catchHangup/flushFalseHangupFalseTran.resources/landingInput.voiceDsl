@@ -1,0 +1,10 @@
+input landingInput
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		say wording "Prueba hecha. Pulse algo para la siguiente." 
+}
+

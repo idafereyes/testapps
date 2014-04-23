@@ -1,0 +1,6 @@
+output flushSinConfig
+
+audios{
+	main:
+		say wording "Probamos un prompt sin configuración"
+}
