@@ -1,0 +1,12 @@
+consultationTransfer testTransfer
+
+{	
+	destination "tel:xxx"
+	transferMaxtime 23s
+	transferTimeout 45s
+}
+
+audios{
+	main:
+		say wording "TTS text"
+}

@@ -7,4 +7,6 @@ output test
 audios{
 	main:
 		say wording "Probamos el flush y el catch hangup a false"
+		say wording "Pruebaaaaaa"
+		
 }

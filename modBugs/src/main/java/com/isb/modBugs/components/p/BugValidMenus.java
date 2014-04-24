@@ -1,4 +1,4 @@
-package com.isb.modBugs.components.catchHangup;
+package com.isb.modBugs.components.p;
 
 import java.io.Serializable;
 
@@ -8,18 +8,16 @@ import com.vectorsf.jvoiceframework.core.Menu;
 import com.vectorsf.jvoiceframework.core.bean.factory.JvoiceBeanService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Component
+@Component("com_isb_modBugs_components_p_BugValidMenus")
 @Scope("prototype")
-public class FlushFalseHangupFalse implements Serializable {
+public class BugValidMenus implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	// Add your methods here
 	@Autowired
 	private JvoiceBeanService jvoiceBeanService;
-	public Menu prueeeba() {
-		return jvoiceBeanService.getMenu();
-	}
-	public Menu state() {
-		return jvoiceBeanService.getMenu();
-	}
+	public Menu menuProg() {
+			return jvoiceBeanService.getMenu();
+		}
+
+	// Add your methods here
 }
