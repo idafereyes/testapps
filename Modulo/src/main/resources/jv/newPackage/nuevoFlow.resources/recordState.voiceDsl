@@ -1,7 +1,8 @@
 record recordState
 
 {
-	filename "recordFileName" 
+	filename "recordFileName.wav" 
+	beep true
 } 
 
 audios{ 
