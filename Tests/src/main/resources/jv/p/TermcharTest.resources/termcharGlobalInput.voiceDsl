@@ -1,0 +1,10 @@
+input termcharGlobalInput
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		say wording "Probando el termchar global en un input." 
+}
+

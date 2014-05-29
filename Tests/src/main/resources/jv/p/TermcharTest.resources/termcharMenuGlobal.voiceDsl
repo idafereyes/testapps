@@ -1,0 +1,15 @@
+menu termcharMenuGlobal
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+
+	main:
+		say wording "Probando termchar global en menu."  
+}
+
+options{
+	uno : "1"
+	dos : "2"	
+}

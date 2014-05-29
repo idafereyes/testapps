@@ -1,0 +1,13 @@
+input termcharInputDsl
+{
+	termchar ""
+}
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		say wording "Probando el termchar en un input con de ese ele." 
+}
+

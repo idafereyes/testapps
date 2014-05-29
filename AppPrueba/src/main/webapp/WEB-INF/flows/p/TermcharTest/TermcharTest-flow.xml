@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_TermcharTest" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'TermcharTest'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="termcharInputDsl"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="termcharInputDsl" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="termcharInputDsl">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.termcharInputDsl"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'termcharInputDsl'"/>
+		<set name="flashScope.termcharInputDsl.name" value="'termcharInputDsl'" />
+		<set name="flashScope.termcharInputDsl.termchar" value="&apos;&apos;" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'Tests'"/>
+		<evaluate expression="flashScope.termcharInputDsl.grammars.add(flashScope.grammar1)" />
+		
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.termcharInputDslmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.termcharInputDslmainAudios1.wording"/>
+			        <set name="flashScope.termcharInputDslmainAudios1.wording.text" value="&apos;Probando el termchar en un input con de ese ele.&apos;"/>
+			        <evaluate expression="flashScope.termcharInputDsl.mainAudios.add(flashScope.termcharInputDslmainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.termcharInputDsl)"/>
+	<transition to="render_termcharInputDsl"/>
+</action-state>
+
+<view-state id="render_termcharInputDsl" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="printLasResult"/>
+</view-state>
+<action-state id="termcharGlobalInput">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.termcharGlobalInput"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'termcharGlobalInput'"/>
+		<set name="flashScope.termcharGlobalInput.name" value="'termcharGlobalInput'" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<set name="flashScope.grammar1.module" value="'Tests'"/>
+		<evaluate expression="flashScope.termcharGlobalInput.grammars.add(flashScope.grammar1)" />
+		
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.termcharGlobalInputmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.termcharGlobalInputmainAudios1.wording"/>
+			        <set name="flashScope.termcharGlobalInputmainAudios1.wording.text" value="&apos;Probando el termchar global en un input.&apos;"/>
+			        <evaluate expression="flashScope.termcharGlobalInput.mainAudios.add(flashScope.termcharGlobalInputmainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.termcharGlobalInput)"/>
+	<transition to="render_termcharGlobalInput"/>
+</action-state>
+
+<view-state id="render_termcharGlobalInput" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="printLasResult2"/>
+</view-state>
+<action-state id="termcharMenuDsl">
+<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'termcharMenuDsl'"/>
+	<evaluate expression="jVoiceArchMenu" result="flashScope.termcharMenuDsl"/>
+	<set name="flashScope.termcharMenuDsl.name" value="'termcharMenuDsl'" />
+	<set name="flashScope.termcharMenuDsl.termchar" value="&apos;0&apos;" />
+	
+	<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+	<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+	<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+	<set name="flashScope.grammar1.module" value="'Tests'"/>
+	<evaluate expression="flashScope.termcharMenuDsl.grammars.add(flashScope.grammar1)" />
+	<evaluate expression="flashScope.termcharMenuDsl.addValueOption('uno','1')" />
+	<evaluate expression="flashScope.termcharMenuDsl.addValueOption('dos','2')" />
+	<evaluate expression="jVoiceArchAudioItem" result="flashScope.termcharMenuDslmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.termcharMenuDslmainAudios1.wording"/>
+	<set name="flashScope.termcharMenuDslmainAudios1.wording.text" value="&apos;Probando termchar con menu de ese ele.&apos;"/>
+	<evaluate expression="flashScope.termcharMenuDsl.mainAudios.add(flashScope.termcharMenuDslmainAudios1)"/>
+</on-entry>
+<evaluate expression="flowProcessor.process(flashScope.termcharMenuDsl)"/>
+	<transition to="render_termcharMenuDsl"></transition>
+</action-state>
+
+<view-state id="render_termcharMenuDsl" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="render_decision_termcharMenuDsl"/>
+</view-state>
+	
+<action-state id="render_decision_termcharMenuDsl">
+	<evaluate expression="lastInputResult.interpretation"></evaluate>
+	<transition on="1" to="printLasResult3"/>
+	<transition on="2" to="printLasResult3"/>
+</action-state>
+<action-state id="termcharInputProg">
+	<evaluate expression="flowProcessor.process(flowScope.it.termcharInputProg())"/>
+	<transition to="render_termcharInputProg"/>
+</action-state>
+
+<view-state id="render_termcharInputProg" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="printLasResult1"/>
+</view-state>
+<action-state id="termcharMenuGlobal">
+<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'termcharMenuGlobal'"/>
+	<evaluate expression="jVoiceArchMenu" result="flashScope.termcharMenuGlobal"/>
+	<set name="flashScope.termcharMenuGlobal.name" value="'termcharMenuGlobal'" />
+	
+	<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+	<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+	<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+	<set name="flashScope.grammar1.module" value="'Tests'"/>
+	<evaluate expression="flashScope.termcharMenuGlobal.grammars.add(flashScope.grammar1)" />
+	<evaluate expression="flashScope.termcharMenuGlobal.addValueOption('uno','1')" />
+	<evaluate expression="flashScope.termcharMenuGlobal.addValueOption('dos','2')" />
+	<evaluate expression="jVoiceArchAudioItem" result="flashScope.termcharMenuGlobalmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.termcharMenuGlobalmainAudios1.wording"/>
+	<set name="flashScope.termcharMenuGlobalmainAudios1.wording.text" value="&apos;Probando termchar global en menu.&apos;"/>
+	<evaluate expression="flashScope.termcharMenuGlobal.mainAudios.add(flashScope.termcharMenuGlobalmainAudios1)"/>
+</on-entry>
+<evaluate expression="flowProcessor.process(flashScope.termcharMenuGlobal)"/>
+	<transition to="render_termcharMenuGlobal"></transition>
+</action-state>
+
+<view-state id="render_termcharMenuGlobal" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="render_decision_termcharMenuGlobal"/>
+</view-state>
+	
+<action-state id="render_decision_termcharMenuGlobal">
+	<evaluate expression="lastInputResult.interpretation"></evaluate>
+	<transition on="1" to="printLasResult4"/>
+	<transition on="2" to="printLasResult4"/>
+</action-state>
+<action-state id="printLasResult">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult'"/>
+	</on-entry>
+   <evaluate expression="flowScope.it.printLasResult()"
+   />
+   
+
+	<transition to="termcharInputProg"></transition>
+</action-state>
+<action-state id="printLasResult1">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult1'"/>
+	</on-entry>
+   <evaluate expression="flowScope.it.printLasResult()"
+   />
+   
+
+	<transition to="termcharGlobalInput"></transition>
+</action-state>
+<action-state id="printLasResult2">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult2'"/>
+	</on-entry>
+   <evaluate expression="flowScope.it.printLasResult()"
+   />
+   
+
+	<transition to="termcharMenuDsl"></transition>
+</action-state>
+<action-state id="printLasResult3">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult3'"/>
+	</on-entry>
+   <evaluate expression="flowScope.it.printLasResult()"
+   />
+   
+
+	<transition to="termcharMenuGlobal"></transition>
+</action-state>
+<action-state id="printLasResult4">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult4'"/>
+	</on-entry>
+   <evaluate expression="flowScope.it.printLasResult()"
+   />
+   
+
+	<transition to="Final"></transition>
+</action-state>
+</flow> 
