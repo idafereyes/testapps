@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_NoInputRecord" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'NoInputRecord'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="testNIRecord"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testNIRecord" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="testNIRecord">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testNIRecord'"/>
+		<evaluate expression="jVoiceArchRecord" result="flashScope.testNIRecord" />
+		<set name="flashScope.testNIRecord.fileName" value="&apos;recordFileName.wav&apos;" />
+		<set name="flashScope.testNIRecord.maxNoInput" value="&apos;2&apos;" />
+<evaluate expression="jVoiceArchAudioItem" result="flashScope.testNIRecordaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.testNIRecordaudioItems1.wording"/>
+<set name="flashScope.testNIRecordaudioItems1.wording.text" value="&apos;Diga algo&apos;"/>
+<evaluate expression="flashScope.testNIRecord.audioItems.add(flashScope.testNIRecordaudioItems1)"/>
+<evaluate expression="jVoiceArchAudioItem" result="flashScope.testNIRecordnoInputAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.testNIRecordnoInputAudios1.wording"/>
+<set name="flashScope.testNIRecordnoInputAudios1.wording.text" value="&apos;No le he escuchado&apos;"/>
+<evaluate expression="flashScope.testNIRecord.noInputAudios.add(flashScope.testNIRecordnoInputAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testNIRecordnoInputAudios2"/><set name="flashScope.testNIRecordnoInputAudios2.src" value="locutionProvider.getAudioSrc(&apos;prueba&apos;,'Tests')"/>
+<evaluate expression="flashScope.testNIRecord.noInputAudios.add(flashScope.testNIRecordnoInputAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testNIRecordnoInputAudios3"/><set name="flashScope.testNIRecordnoInputAudios3.src" value="locutionProvider.getAudioSrc(&apos;prueba2&apos;,'Tests')"/>
+<evaluate expression="jVoiceArchWording" result="flashScope.testNIRecordnoInputAudios3.wording"/>
+<set name="flashScope.testNIRecordnoInputAudios3.wording.text" value="&apos;Repita&apos;"/>
+<evaluate expression="flashScope.testNIRecord.noInputAudios.add(flashScope.testNIRecordnoInputAudios3)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.testNIRecord)"/>		
+	<transition to="render_testNIRecord"/>
+</action-state>
+
+<view-state id="render_testNIRecord" view="#{flowProcessor.getRenderer().getView()}" model="lastRecordResult">
+	<transition on="recorded" to="testNIRecordProg">
+		<evaluate expression="recordingService.saveRecording(lastRecordResult.temprecording, lastRecordResult.fileName)"/>
+	</transition>
+</view-state>
+<action-state id="testNIRecordProg">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testNIRecordProg'"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flowScope.it.testNIRecordProg())"/>
+	<transition to="render_testNIRecordProg"/>
+</action-state>
+
+<view-state id="render_testNIRecordProg" view="#{flowProcessor.getRenderer().getView()}" model="lastRecordResult">
+	<transition on="recorded" to="Final">
+		<evaluate expression="recordingService.saveRecording(lastRecordResult.temprecording, lastRecordResult.fileName)"/>
+	</transition>
+</view-state>
+</flow> 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_InputProperties" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'InputProperties'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="TestInputProps"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="TestInputProps" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="TestInputProps">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.TestInputProps"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'TestInputProps'"/>
+		<set name="flashScope.TestInputProps.name" value="'TestInputProps'" />
+		<set name="flashScope.TestInputProps.bargein" value="&apos;false&apos;" />
+		<set name="flashScope.TestInputProps.confidence" value="&apos;0.4&apos;" />
+		<set name="flashScope.TestInputProps.completetimeout" value="&apos;2s&apos;" />
+		<set name="flashScope.TestInputProps.incompletetimeout" value="&apos;3s&apos;" />
+		<set name="flashScope.TestInputProps.interdigittimeout" value="&apos;4s&apos;" />
+		<set name="flashScope.TestInputProps.maxAttempts" value="&apos;5&apos;" />
+		<set name="flashScope.TestInputProps.maxNoInput" value="&apos;4&apos;" />
+		<set name="flashScope.TestInputProps.maxNoMatch" value="&apos;4&apos;" />
+		<set name="flashScope.TestInputProps.maxspeechtimeout" value="&apos;60s&apos;" />
+		<set name="flashScope.TestInputProps.recordutterance" value="&apos;true&apos;" />
+		<set name="flashScope.TestInputProps.sensitivity" value="&apos;0.1&apos;" />
+		<set name="flashScope.TestInputProps.speedvsaccuracy" value="&apos;0.2&apos;" />
+		
+		<set name="flashScope.TestInputProps.termchar" value="&apos;0&apos;" />
+		<set name="flashScope.TestInputProps.timeout" value="&apos;7s&apos;" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<evaluate expression="flashScope.TestInputProps.grammars.add(flashScope.grammar1)" />
+		
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.TestInputPropsmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.TestInputPropsmainAudios1.wording"/>
+			        <set name="flashScope.TestInputPropsmainAudios1.wording.text" value="&apos;Probando Properties en input&apos;"/>
+			        <evaluate expression="flashScope.TestInputProps.mainAudios.add(flashScope.TestInputPropsmainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.TestInputProps)"/>
+	<transition to="render_TestInputProps"/>
+</action-state>
+
+<view-state id="render_TestInputProps" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="TestInputPropProg"/>
+</view-state>
+<action-state id="TestInputPropProg">
+<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'TestInputPropProg'"/>
+	<evaluate expression="jVoiceArchMenu" result="flashScope.TestInputPropProg"/>
+	<set name="flashScope.TestInputPropProg.name" value="'TestInputPropProg'" />
+	<set name="flashScope.TestInputPropProg.bargein" value="&apos;false&apos;" />
+	<set name="flashScope.TestInputPropProg.confidence" value="&apos;0.9&apos;" />
+	<set name="flashScope.TestInputPropProg.completetimeout" value="&apos;2s&apos;" />
+	<set name="flashScope.TestInputPropProg.incompletetimeout" value="&apos;3s&apos;" />
+	<set name="flashScope.TestInputPropProg.interdigittimeout" value="&apos;4s&apos;" />
+	<set name="flashScope.TestInputPropProg.maxAttempts" value="&apos;5&apos;" />
+	<set name="flashScope.TestInputPropProg.maxNoInput" value="&apos;4&apos;" />
+	<set name="flashScope.TestInputPropProg.maxNoMatch" value="&apos;4&apos;" />
+	<set name="flashScope.TestInputPropProg.maxspeechtimeout" value="&apos;60s&apos;" />
+	<set name="flashScope.TestInputPropProg.recordutterance" value="&apos;true&apos;" />
+	<set name="flashScope.TestInputPropProg.sensitivity" value="&apos;0.1&apos;" />
+	<set name="flashScope.TestInputPropProg.speedvsaccuracy" value="&apos;0.2&apos;" />
+	
+	<set name="flashScope.TestInputPropProg.termchar" value="&apos;0&apos;" />
+	<set name="flashScope.TestInputPropProg.timeout" value="&apos;5s&apos;" />
+	
+	<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+	<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+	<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+	<evaluate expression="flashScope.TestInputPropProg.grammars.add(flashScope.grammar1)" />
+	<evaluate expression="flashScope.TestInputPropProg.addValueOption('uno','1')" />
+	<evaluate expression="flashScope.TestInputPropProg.addValueOption('dos','2')" />
+	<evaluate expression="jVoiceArchAudioItem" result="flashScope.TestInputPropProgmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.TestInputPropProgmainAudios1.wording"/>
+	<set name="flashScope.TestInputPropProgmainAudios1.wording.text" value="&apos;Probando Properties en menu&apos;"/>
+	<evaluate expression="flashScope.TestInputPropProg.mainAudios.add(flashScope.TestInputPropProgmainAudios1)"/>
+</on-entry>
+<evaluate expression="flowProcessor.process(flashScope.TestInputPropProg)"/>
+	<transition to="render_TestInputPropProg"></transition>
+</action-state>
+
+<view-state id="render_TestInputPropProg" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="render_decision_TestInputPropProg"/>
+</view-state>
+	
+<action-state id="render_decision_TestInputPropProg">
+	<evaluate expression="lastInputResult.interpretation"></evaluate>
+	<transition on="1" to="Final"/>
+	<transition on="2" to="Final"/>
+</action-state>
+</flow> 

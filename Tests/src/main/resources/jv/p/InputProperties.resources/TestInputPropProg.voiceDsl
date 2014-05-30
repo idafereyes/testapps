@@ -1,0 +1,31 @@
+menu TestInputPropProg
+{
+	bargein false
+	confidence 0.9
+	completetimeout 2s
+	incompletetimeout 3s
+	interdigittimeout 4s
+	maxAttempts 5
+	maxNoInput 4
+	maxNoMatch 4
+	maxspeechtimeout 60s
+	recordutterance true
+	sensitivity 0.1
+	speedvsaccuracy 0.2
+	termchar "0"
+	timeout 5s	
+}
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+
+	main:
+ 		say wording "Probando Properties en menu" 
+}
+
+options{
+	uno : "1"
+	dos : "2"	
+}

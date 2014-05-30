@@ -1,0 +1,16 @@
+record testNIRecord
+
+{
+	filename "recordFileName.wav"
+	maxNoInput 2 
+} 
+
+audios{ 
+	main:
+		say wording "Diga algo"
+		
+	noinput:
+		say wording "No le he escuchado"
+		say src "prueba"
+		say src "prueba2" wording "Repita"	
+}

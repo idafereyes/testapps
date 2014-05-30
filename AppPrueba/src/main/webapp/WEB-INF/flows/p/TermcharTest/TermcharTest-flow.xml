@@ -32,12 +32,12 @@ start-state= "_jVoiceCheckInit" >
 		<evaluate expression="jVoiceArchInput" result="flashScope.termcharInputDsl"></evaluate>
 		<set name="flowScope.jvoiceCurrentStateName" value="'termcharInputDsl'"/>
 		<set name="flashScope.termcharInputDsl.name" value="'termcharInputDsl'" />
+		
 		<set name="flashScope.termcharInputDsl.termchar" value="&apos;&apos;" />
 		
 		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
 		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
 		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
-		<set name="flashScope.grammar1.module" value="'Tests'"/>
 		<evaluate expression="flashScope.termcharInputDsl.grammars.add(flashScope.grammar1)" />
 		
 			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.termcharInputDslmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.termcharInputDslmainAudios1.wording"/>
@@ -60,7 +60,6 @@ start-state= "_jVoiceCheckInit" >
 		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
 		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
 		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
-		<set name="flashScope.grammar1.module" value="'Tests'"/>
 		<evaluate expression="flashScope.termcharGlobalInput.grammars.add(flashScope.grammar1)" />
 		
 			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.termcharGlobalInputmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.termcharGlobalInputmainAudios1.wording"/>
@@ -79,12 +78,12 @@ start-state= "_jVoiceCheckInit" >
 	<set name="flowScope.jvoiceCurrentStateName" value="'termcharMenuDsl'"/>
 	<evaluate expression="jVoiceArchMenu" result="flashScope.termcharMenuDsl"/>
 	<set name="flashScope.termcharMenuDsl.name" value="'termcharMenuDsl'" />
+	
 	<set name="flashScope.termcharMenuDsl.termchar" value="&apos;0&apos;" />
 	
 	<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
 	<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
 	<set name="flashScope.grammar1.mode" value="'dtmf'"/>
-	<set name="flashScope.grammar1.module" value="'Tests'"/>
 	<evaluate expression="flashScope.termcharMenuDsl.grammars.add(flashScope.grammar1)" />
 	<evaluate expression="flashScope.termcharMenuDsl.addValueOption('uno','1')" />
 	<evaluate expression="flashScope.termcharMenuDsl.addValueOption('dos','2')" />
@@ -122,7 +121,6 @@ start-state= "_jVoiceCheckInit" >
 	<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
 	<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
 	<set name="flashScope.grammar1.mode" value="'dtmf'"/>
-	<set name="flashScope.grammar1.module" value="'Tests'"/>
 	<evaluate expression="flashScope.termcharMenuGlobal.grammars.add(flashScope.grammar1)" />
 	<evaluate expression="flashScope.termcharMenuGlobal.addValueOption('uno','1')" />
 	<evaluate expression="flashScope.termcharMenuGlobal.addValueOption('dos','2')" />
