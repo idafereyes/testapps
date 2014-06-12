@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"	
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
 xsi:schemaLocation="http://www.springframework.org/schema/webflow
@@ -12,10 +13,13 @@ start-state= "_jVoiceCheckInit" >
 
 
 <action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'main'"/>
+	</on-entry>
 	<evaluate expression="jVoiceArchData.initialized" />
-		<transition on="no" to="_jVoiceInit"/>
-		<transition to="testSayAs"/>
-	</action-state>
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="testSayAs"/>
+</action-state>
 
 <view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
 	<transition to="testSayAs" >
@@ -26,62 +30,167 @@ start-state= "_jVoiceCheckInit" >
 <action-state id="testFormat">
 	<on-entry>
 		<evaluate expression="jVoiceArchInput" result="flashScope.testFormat"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testFormat'"/>
 		<set name="flashScope.testFormat.name" value="'testFormat'" />
 		
 		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
 		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
 		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
-		<set name="flashScope.grammar1.module" value="'modSayAs'"/>
 		<evaluate expression="flashScope.testFormat.grammars.add(flashScope.grammar1)" />
 		
 			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios1.wording"/>
-			        <set name="flashScope.testFormatmainAudios1.wording.text" value="'Probando formats:'"/>
+			        <set name="flashScope.testFormatmainAudios1.wording.text" value="&apos;Probando formats en el date:&apos;"/>
 			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios2"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios2.wording"/>
-			        <set name="flashScope.testFormatmainAudios2.wording.text" value="'12172005'"/>
+			        <set name="flashScope.testFormatmainAudios2.wording.text" value="&apos;20050312&apos;"/>
 			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios2.wording.sayAs" />
 			        <set name="flashScope.testFormatmainAudios2.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
-			        <set name="flashScope.testFormatmainAudios2.wording.sayAs.format" value="'mdy'"/>
-			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios3"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios3.wording"/>
-			        <set name="flashScope.testFormatmainAudios3.wording.text" value="'12/17/2005'"/>
-			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios3.wording.sayAs" />
-			        <set name="flashScope.testFormatmainAudios3.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
-			        <set name="flashScope.testFormatmainAudios3.wording.sayAs.format" value="'mdy'"/>
+			        <set name="flashScope.testFormatmainAudios2.wording.sayAs.format" value="'yyyy/MM/dd'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios3"/><set name="flashScope.testFormatmainAudios3.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
 			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios4"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios4.wording"/>
-			        <set name="flashScope.testFormatmainAudios4.wording.text" value="'12/17/2005'"/>
+			        <set name="flashScope.testFormatmainAudios4.wording.text" value="&apos;2005/03/12&apos;"/>
 			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios4.wording.sayAs" />
 			        <set name="flashScope.testFormatmainAudios4.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
-			        <set name="flashScope.testFormatmainAudios4.wording.sayAs.format" value="'mdy'"/>
-			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios4)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios5"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios5.wording"/>
-			        <set name="flashScope.testFormatmainAudios5.wording.text" value="'17/12/2005'"/>
-			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios5.wording.sayAs" />
-			        <set name="flashScope.testFormatmainAudios5.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
-			        <set name="flashScope.testFormatmainAudios5.wording.sayAs.format" value="'dmy'"/>
+			        <set name="flashScope.testFormatmainAudios4.wording.sayAs.format" value="'yyyyMMdd'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios4)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios5"/><set name="flashScope.testFormatmainAudios5.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
 			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios5)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios6"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios6.wording"/>
-			        <set name="flashScope.testFormatmainAudios6.wording.text" value="'17/12/2005'"/>
+			        <set name="flashScope.testFormatmainAudios6.wording.text" value="&apos;2005-03-12&apos;"/>
 			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios6.wording.sayAs" />
 			        <set name="flashScope.testFormatmainAudios6.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
-			        <set name="flashScope.testFormatmainAudios6.wording.sayAs.format" value="'ydm'"/>
-			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios6)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios7"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios7.wording"/>
-			        <set name="flashScope.testFormatmainAudios7.wording.text" value="'12/2005'"/>
-			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios7.wording.sayAs" />
-			        <set name="flashScope.testFormatmainAudios7.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
-			        <set name="flashScope.testFormatmainAudios7.wording.sayAs.format" value="'my'"/>
-			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios7)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios8"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios8.wording"/>
-			        <set name="flashScope.testFormatmainAudios8.wording.text" value="'12/17'"/>
-			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios8.wording.sayAs" />
-			        <set name="flashScope.testFormatmainAudios8.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
-			        <set name="flashScope.testFormatmainAudios8.wording.sayAs.format" value="'md'"/>
+			        <set name="flashScope.testFormatmainAudios6.wording.sayAs.format" value="'yyyy-MM-dd'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios6)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios7"/><set name="flashScope.testFormatmainAudios7.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios7)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios8"/><set name="flashScope.testFormatmainAudios8.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
 			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios8)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios9"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios9.wording"/>
-			        <set name="flashScope.testFormatmainAudios9.wording.text" value="'2005/12'"/>
+			        <set name="flashScope.testFormatmainAudios9.wording.text" value="&apos;050312&apos;"/>
 			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios9.wording.sayAs" />
 			        <set name="flashScope.testFormatmainAudios9.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
-			        <set name="flashScope.testFormatmainAudios9.wording.sayAs.format" value="'ym'"/>
-			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios9)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios10"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios10.wording"/>
-			        <set name="flashScope.testFormatmainAudios10.wording.text" value="'12172005'"/>
-			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios10.wording.sayAs" />
-			        <set name="flashScope.testFormatmainAudios10.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
-			        <set name="flashScope.testFormatmainAudios10.wording.sayAs.format" value="'mdy'"/>
-			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios10)"/>
+			        <set name="flashScope.testFormatmainAudios9.wording.sayAs.format" value="'yy/MM/dd'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios9)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios10"/><set name="flashScope.testFormatmainAudios10.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios10)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios11"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios11.wording"/>
+			        <set name="flashScope.testFormatmainAudios11.wording.text" value="&apos;05/03/12&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios11.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios11.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios11.wording.sayAs.format" value="'yyMMdd'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios11)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios12"/><set name="flashScope.testFormatmainAudios12.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios12)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios13"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios13.wording"/>
+			        <set name="flashScope.testFormatmainAudios13.wording.text" value="&apos;05-03-12&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios13.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios13.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios13.wording.sayAs.format" value="'yy-MM-dd'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios13)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios14"/><set name="flashScope.testFormatmainAudios14.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios14)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios15"/><set name="flashScope.testFormatmainAudios15.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios15)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios16"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios16.wording"/>
+			        <set name="flashScope.testFormatmainAudios16.wording.text" value="&apos;03122005&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios16.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios16.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios16.wording.sayAs.format" value="'ddMMyyyy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios16)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios17"/><set name="flashScope.testFormatmainAudios17.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios17)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios18"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios18.wording"/>
+			        <set name="flashScope.testFormatmainAudios18.wording.text" value="&apos;03/12/2005&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios18.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios18.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios18.wording.sayAs.format" value="'dd/MM/yyyy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios18)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios19"/><set name="flashScope.testFormatmainAudios19.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios19)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios20"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios20.wording"/>
+			        <set name="flashScope.testFormatmainAudios20.wording.text" value="&apos;03-12-2005&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios20.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios20.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios20.wording.sayAs.format" value="'dd-MM-yyyy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios20)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios21"/><set name="flashScope.testFormatmainAudios21.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios21)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios22"/><set name="flashScope.testFormatmainAudios22.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios22)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios23"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios23.wording"/>
+			        <set name="flashScope.testFormatmainAudios23.wording.text" value="&apos;03122005&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios23.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios23.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios23.wording.sayAs.format" value="'MMddyyyy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios23)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios24"/><set name="flashScope.testFormatmainAudios24.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios24)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios25"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios25.wording"/>
+			        <set name="flashScope.testFormatmainAudios25.wording.text" value="&apos;03/12/2005&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios25.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios25.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios25.wording.sayAs.format" value="'MM/dd/yyyy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios25)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios26"/><set name="flashScope.testFormatmainAudios26.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios26)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios27"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios27.wording"/>
+			        <set name="flashScope.testFormatmainAudios27.wording.text" value="&apos;03-12-2005&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios27.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios27.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios27.wording.sayAs.format" value="'MM-dd-yyyy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios27)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios28"/><set name="flashScope.testFormatmainAudios28.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios28)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios29"/><set name="flashScope.testFormatmainAudios29.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios29)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios30"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios30.wording"/>
+			        <set name="flashScope.testFormatmainAudios30.wording.text" value="&apos;031205&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios30.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios30.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios30.wording.sayAs.format" value="'MMddyy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios30)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios31"/><set name="flashScope.testFormatmainAudios31.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios31)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios32"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios32.wording"/>
+			        <set name="flashScope.testFormatmainAudios32.wording.text" value="&apos;03/12/05&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios32.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios32.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios32.wording.sayAs.format" value="'MM/dd/yy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios32)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios33"/><set name="flashScope.testFormatmainAudios33.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios33)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios34"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios34.wording"/>
+			        <set name="flashScope.testFormatmainAudios34.wording.text" value="&apos;03-12-05&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios34.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios34.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios34.wording.sayAs.format" value="'MM-dd-yy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios34)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios35"/><set name="flashScope.testFormatmainAudios35.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios35)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios36"/><set name="flashScope.testFormatmainAudios36.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios36)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios37"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios37.wording"/>
+			        <set name="flashScope.testFormatmainAudios37.wording.text" value="&apos;031205&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios37.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios37.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios37.wording.sayAs.format" value="'ddMMyy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios37)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios38"/><set name="flashScope.testFormatmainAudios38.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios38)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios39"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios39.wording"/>
+			        <set name="flashScope.testFormatmainAudios39.wording.text" value="&apos;03/12/05&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios39.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios39.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios39.wording.sayAs.format" value="'dd/MM/yy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios39)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios40"/><set name="flashScope.testFormatmainAudios40.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios40)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios41"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios41.wording"/>
+			        <set name="flashScope.testFormatmainAudios41.wording.text" value="&apos;03-12-05&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios41.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios41.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios41.wording.sayAs.format" value="'dd-MM-yy'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios41)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios42"/><set name="flashScope.testFormatmainAudios42.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios42)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios43"/><set name="flashScope.testFormatmainAudios43.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios43)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios44"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios44.wording"/>
+			        <set name="flashScope.testFormatmainAudios44.wording.text" value="&apos;0312&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios44.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios44.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios44.wording.sayAs.format" value="'MMdd'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios44)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios45"/><set name="flashScope.testFormatmainAudios45.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios45)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios46"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios46.wording"/>
+			        <set name="flashScope.testFormatmainAudios46.wording.text" value="&apos;03/12&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios46.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios46.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios46.wording.sayAs.format" value="'MM/dd'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios46)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios47"/><set name="flashScope.testFormatmainAudios47.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios47)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios48"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios48.wording"/>
+			        <set name="flashScope.testFormatmainAudios48.wording.text" value="&apos;03-12&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios48.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios48.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios48.wording.sayAs.format" value="'MM-dd'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios48)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios49"/><set name="flashScope.testFormatmainAudios49.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios49)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios50"/><set name="flashScope.testFormatmainAudios50.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios50)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios51"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios51.wording"/>
+			        <set name="flashScope.testFormatmainAudios51.wording.text" value="&apos;0312&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios51.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios51.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios51.wording.sayAs.format" value="'ddMM'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios51)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios52"/><set name="flashScope.testFormatmainAudios52.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios52)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios53"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios53.wording"/>
+			        <set name="flashScope.testFormatmainAudios53.wording.text" value="&apos;03/12&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios53.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios53.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios53.wording.sayAs.format" value="'dd/MM'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios53)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios54"/><set name="flashScope.testFormatmainAudios54.src" value="locutionProvider.getAudioSrc(&apos;pause&apos;,'modSayAs')"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios54)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testFormatmainAudios55"/><evaluate expression="jVoiceArchWording" result="flashScope.testFormatmainAudios55.wording"/>
+			        <set name="flashScope.testFormatmainAudios55.wording.text" value="&apos;03-12&apos;"/>
+			        <evaluate expression="jVoiceArchSayAs" result="flashScope.testFormatmainAudios55.wording.sayAs" />
+			        <set name="flashScope.testFormatmainAudios55.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+			        <set name="flashScope.testFormatmainAudios55.wording.sayAs.format" value="'dd-MM'"/>
+			        <evaluate expression="flashScope.testFormat.mainAudios.add(flashScope.testFormatmainAudios55)"/>
 	</on-entry>
 	<evaluate expression="flowProcessor.process(flashScope.testFormat)"/>
 	<transition to="render_testFormat"/>
@@ -92,19 +201,58 @@ start-state= "_jVoiceCheckInit" >
 </view-state>
 <action-state id="testSayAs">
 	<on-entry>
-		<evaluate expression="jVoiceArchOutput" result="flashScope.testSayAs"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testSayAs'"/>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.testSayAs"/>
 		<evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems1.wording"/>
-		<set name="flashScope.testSayAsaudioItems1.wording.text" value="'1157h'"/>
+		<set name="flashScope.testSayAsaudioItems1.wording.text" value="&apos;1157&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems1.wording.sayAs" />
 		<set name="flashScope.testSayAsaudioItems1.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).TIME"/>
 		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems2"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems2.wording"/>
-		<set name="flashScope.testSayAsaudioItems2.wording.text" value="'914708888'"/>
+		<set name="flashScope.testSayAsaudioItems2.wording.text" value="&apos;11:57&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems2.wording.sayAs" />
-		<set name="flashScope.testSayAsaudioItems2.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).PHONE"/>
-		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems2)"/> 
+		<set name="flashScope.testSayAsaudioItems2.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).TIME"/>
+		<set name="flashScope.testSayAsaudioItems2.wording.sayAs.format" value="'HH:mm'"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems3"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems3.wording"/>
+		<set name="flashScope.testSayAsaudioItems3.wording.text" value="&apos;1157&apos;"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems3.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems3.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).TIME"/>
+		<set name="flashScope.testSayAsaudioItems3.wording.sayAs.format" value="'HHmm'"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems4"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems4.wording"/>
+		<set name="flashScope.testSayAsaudioItems4.wording.text" value="&apos;ABC&apos;"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems4.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems4.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).LETTERS"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems4)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems5"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems5.wording"/>
+		<set name="flashScope.testSayAsaudioItems5.wording.text" value="&apos;trv5&apos;"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems5.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems5.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).LETTERS"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems5)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems6"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems6.wording"/>
+		<set name="flashScope.testSayAsaudioItems6.wording.text" value="&apos;17&apos;"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems6.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems6.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).CURRENCY"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems6)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems7"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems7.wording"/>
+		<set name="flashScope.testSayAsaudioItems7.wording.text" value="&apos;10/12/2014&apos;"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems7.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems7.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems7)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems8"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems8.wording"/>
+		<set name="flashScope.testSayAsaudioItems8.wording.text" value="&apos;123456789&apos;"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems8.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems8.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DIGITS"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems8)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems9"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems9.wording"/>
+		<set name="flashScope.testSayAsaudioItems9.wording.text" value="&apos;123456789&apos;"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems9.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems9.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).NUMBER"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems9)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems10"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems10.wording"/>
+		<set name="flashScope.testSayAsaudioItems10.wording.text" value="&apos;91470465&apos;"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems10.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems10.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).PHONE"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems10)"/>
 	</on-entry>
+	
 	<evaluate expression="flowProcessor.process(flashScope.testSayAs)"/>
-	<transition to="testFormat"/>
+	
+<transition to="testFormat"/>
 </action-state>
+
+
 
 </flow> 

@@ -5,16 +5,77 @@ grammars{
 }
 audios{
  	main:
- 		say wording "Probando formats:" 
-  		say as date ("mdy") "12172005"
-        say as date ("mdy") "12/17/2005"
-        say as date ("mdy") "12/17/2005"
-        say as date ("dmy") "17/12/2005"
-        say as date ("ydm") "17/12/2005"
-        say as date ("my") "12/2005"
-        say as date ("md") "12/17"
-        say as date ("ym") "2005/12"
-        say as date ('mdy') "12172005"
+ 		say wording "Probando formats en el date:" 
+
+ 		say as date ("yyyy/MM/dd") "20050312"
+ 		say src "pause"
+        say as date ("yyyyMMdd") "2005/03/12"
+  		say src "pause"
+        say as date ("yyyy-MM-dd") "2005-03-12"
+ 
+  		say src "pause"
+ 		say src "pause"
+ 		
+ 	 	say as date ("yy/MM/dd") "050312"
+ 		say src "pause"
+        say as date ("yyMMdd") "05/03/12"
+  		say src "pause"
+        say as date ("yy-MM-dd") "05-03-12"
+
+ 		say src "pause"
+ 		say src "pause"      
+
+  		say as date ("ddMMyyyy") "03122005"
+   		say src "pause"
+        say as date ("dd/MM/yyyy") "03/12/2005"
+ 		say src "pause"
+        say as date ("dd-MM-yyyy") "03-12-2005"
+
+
+ 		say src "pause"
+ 		say src "pause"
+
+  		say as date ("MMddyyyy") "03122005"
+  		say src "pause"
+        say as date ("MM/dd/yyyy") "03/12/2005"
+   		say src "pause"
+        say as date ("MM-dd-yyyy") "03-12-2005"
+
+ 		say src "pause"
+ 		say src "pause"
+
+  		say as date ("MMddyy") "031205"
+   		say src "pause"
+        say as date ("MM/dd/yy") "03/12/05"
+ 		say src "pause"
+        say as date ("MM-dd-yy") "03-12-05"
+
+ 		say src "pause"
+ 		say src "pause"
+
+  		say as date ("ddMMyy") "031205"
+   		say src "pause"
+        say as date ("dd/MM/yy") "03/12/05"
+  		say src "pause"
+        say as date ("dd-MM-yy") "03-12-05"
+
+ 		say src "pause"
+ 		say src "pause"
+
+  		say as date ("MMdd") "0312"
+   		say src "pause"
+        say as date ("MM/dd") "03/12"
+ 		say src "pause"
+        say as date ("MM-dd") "03-12"
+
+ 		say src "pause"
+ 		say src "pause"
+
+  		say as date ("ddMM") "0312"
+ 		say src "pause"
+        say as date ("dd/MM") "03/12"
+  		say src "pause"
+        say as date ("dd-MM") "03-12"
         
 }
 
