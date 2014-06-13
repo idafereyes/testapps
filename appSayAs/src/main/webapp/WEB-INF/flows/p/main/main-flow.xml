@@ -204,48 +204,52 @@ start-state= "_jVoiceCheckInit" >
 		<set name="flowScope.jvoiceCurrentStateName" value="'testSayAs'"/>
 		<evaluate expression="jVoiceArchOutput" result="flashScope.testSayAs"/>
 		<evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems1.wording"/>
-		<set name="flashScope.testSayAsaudioItems1.wording.text" value="&apos;1157&apos;"/>
+		<set name="flashScope.testSayAsaudioItems1.wording.text" value="&apos;999999999999&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems1.wording.sayAs" />
-		<set name="flashScope.testSayAsaudioItems1.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).TIME"/>
+		<set name="flashScope.testSayAsaudioItems1.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).NUMBER"/>
 		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems2"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems2.wording"/>
-		<set name="flashScope.testSayAsaudioItems2.wording.text" value="&apos;11:57&apos;"/>
+		<set name="flashScope.testSayAsaudioItems2.wording.text" value="&apos;1157&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems2.wording.sayAs" />
 		<set name="flashScope.testSayAsaudioItems2.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).TIME"/>
-		<set name="flashScope.testSayAsaudioItems2.wording.sayAs.format" value="'HH:mm'"/>
 		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems3"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems3.wording"/>
-		<set name="flashScope.testSayAsaudioItems3.wording.text" value="&apos;1157&apos;"/>
+		<set name="flashScope.testSayAsaudioItems3.wording.text" value="&apos;11:57&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems3.wording.sayAs" />
 		<set name="flashScope.testSayAsaudioItems3.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).TIME"/>
-		<set name="flashScope.testSayAsaudioItems3.wording.sayAs.format" value="'HHmm'"/>
+		<set name="flashScope.testSayAsaudioItems3.wording.sayAs.format" value="'HH:mm'"/>
 		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems4"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems4.wording"/>
-		<set name="flashScope.testSayAsaudioItems4.wording.text" value="&apos;ABC&apos;"/>
+		<set name="flashScope.testSayAsaudioItems4.wording.text" value="&apos;1157&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems4.wording.sayAs" />
-		<set name="flashScope.testSayAsaudioItems4.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).LETTERS"/>
+		<set name="flashScope.testSayAsaudioItems4.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).TIME"/>
+		<set name="flashScope.testSayAsaudioItems4.wording.sayAs.format" value="'HHmm'"/>
 		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems4)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems5"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems5.wording"/>
-		<set name="flashScope.testSayAsaudioItems5.wording.text" value="&apos;trv5&apos;"/>
+		<set name="flashScope.testSayAsaudioItems5.wording.text" value="&apos;ABC&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems5.wording.sayAs" />
 		<set name="flashScope.testSayAsaudioItems5.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).LETTERS"/>
 		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems5)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems6"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems6.wording"/>
-		<set name="flashScope.testSayAsaudioItems6.wording.text" value="&apos;17&apos;"/>
+		<set name="flashScope.testSayAsaudioItems6.wording.text" value="&apos;trv5&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems6.wording.sayAs" />
-		<set name="flashScope.testSayAsaudioItems6.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).CURRENCY"/>
+		<set name="flashScope.testSayAsaudioItems6.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).LETTERS"/>
 		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems6)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems7"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems7.wording"/>
-		<set name="flashScope.testSayAsaudioItems7.wording.text" value="&apos;10/12/2014&apos;"/>
+		<set name="flashScope.testSayAsaudioItems7.wording.text" value="&apos;17&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems7.wording.sayAs" />
-		<set name="flashScope.testSayAsaudioItems7.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
+		<set name="flashScope.testSayAsaudioItems7.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).CURRENCY"/>
 		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems7)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems8"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems8.wording"/>
-		<set name="flashScope.testSayAsaudioItems8.wording.text" value="&apos;123456789&apos;"/>
+		<set name="flashScope.testSayAsaudioItems8.wording.text" value="&apos;10/12/2014&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems8.wording.sayAs" />
-		<set name="flashScope.testSayAsaudioItems8.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DIGITS"/>
+		<set name="flashScope.testSayAsaudioItems8.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DATE"/>
 		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems8)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems9"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems9.wording"/>
 		<set name="flashScope.testSayAsaudioItems9.wording.text" value="&apos;123456789&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems9.wording.sayAs" />
-		<set name="flashScope.testSayAsaudioItems9.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).NUMBER"/>
+		<set name="flashScope.testSayAsaudioItems9.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).DIGITS"/>
 		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems9)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems10"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems10.wording"/>
-		<set name="flashScope.testSayAsaudioItems10.wording.text" value="&apos;91470465&apos;"/>
+		<set name="flashScope.testSayAsaudioItems10.wording.text" value="&apos;123456789&apos;"/>
 		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems10.wording.sayAs" />
-		<set name="flashScope.testSayAsaudioItems10.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).PHONE"/>
-		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems10)"/>
+		<set name="flashScope.testSayAsaudioItems10.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).NUMBER"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems10)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testSayAsaudioItems11"/><evaluate expression="jVoiceArchWording" result="flashScope.testSayAsaudioItems11.wording"/>
+		<set name="flashScope.testSayAsaudioItems11.wording.text" value="&apos;91470465&apos;"/>
+		<evaluate expression="jVoiceArchSayAs" result="flashScope.testSayAsaudioItems11.wording.sayAs" />
+		<set name="flashScope.testSayAsaudioItems11.wording.sayAs.interpretAs" value="T(com.vectorsf.jvoiceframework.core.enums.InterpretAs).PHONE"/>
+		<evaluate expression="flashScope.testSayAs.audioItems.add(flashScope.testSayAsaudioItems11)"/>
 	</on-entry>
 	
 	<evaluate expression="flowProcessor.process(flashScope.testSayAs)"/>

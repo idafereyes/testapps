@@ -2,6 +2,7 @@ output testSayAs
 
 audios{
 	main:
+		say as number "999999999999"
 		say as time "1157"
 		say as time ("HH:mm") "11:57"
 		say as time ("HHmm") "1157"
