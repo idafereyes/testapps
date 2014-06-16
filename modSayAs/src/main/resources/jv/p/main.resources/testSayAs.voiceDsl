@@ -3,13 +3,16 @@ output testSayAs
 audios{
 	main:
 		say as number "999999999999"
+		say as time ("HHmmss") "120003"
+		say as time ("KKmmss") "110003"
+		say as time ("KKmmss a") "070003 AM"
 		say as time "1157"
 		say as time ("HH:mm") "11:57"
 		say as time ("HHmm") "1157"
 		say as letters "ABC"
 		say as letters "trv5"
 // No soportados por el numset todavía.
-//		say as phone "914708888"
+		say as phone "914708888"
 //		say as boolean "true"
 
 		// Estos están ahora mismo soportados por el numset
