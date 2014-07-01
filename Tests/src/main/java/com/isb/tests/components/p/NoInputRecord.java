@@ -32,7 +32,14 @@ public class NoInputRecord implements Serializable {
 		
 		rec.getAudioItems().add(ai);
 
+		AudioItem aiNI = jvoiceBeanService.getAudioItem();		
+		Wording wdNI = jvoiceBeanService.getWording();		
+		wdNI.setText("No ha dicho nada");
+		aiNI.setWording(wdNI);
 		
+		rec.getNoInputAudios().add(aiNI);
+		
+		rec.setTimeout("10s");
 		
 		return rec;
 	}

@@ -1,0 +1,20 @@
+input inputTest
+{
+	maxnbest "2"
+	confidence "0.1"
+}
+grammars{
+	//Para multislot solamente
+	voice "DrinkMulti"
+	// Para multislot y maxnbest
+	voice "Companies"
+}
+audios{
+ 	main: 
+ 		say wording "Diga una bebida y su tamaño"
+ 	noinput:
+ 		say wording "no ha dicho nada"
+ 	nomatch:
+ 		say wording "no le he entendido"
+}
+

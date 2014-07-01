@@ -1,0 +1,10 @@
+output testAniDnis
+
+audios{
+	main:
+		say wording "El ANI es el siguiente:"
+		say wording "${jVoiceArchData.ani}"
+		say wording "El DNIS es el siguiente:"
+		say wording "${jVoiceArchData.dnis}"
+		
+}

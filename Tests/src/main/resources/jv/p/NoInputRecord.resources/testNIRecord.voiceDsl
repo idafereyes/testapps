@@ -2,7 +2,8 @@ record testNIRecord
 
 {
 	filename "recordFileName.wav"
-	maxNoInput 2 
+	maxNoInput 2
+	timeout 7s
 } 
 
 audios{ 

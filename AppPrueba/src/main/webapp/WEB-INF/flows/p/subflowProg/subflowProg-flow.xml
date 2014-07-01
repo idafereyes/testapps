@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_SubflowProg" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'subflowProg'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="welcome"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="welcome" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="welcome">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'welcome'"/>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.welcome"/>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.welcomeaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.welcomeaudioItems1.wording"/>
+		<set name="flashScope.welcomeaudioItems1.wording.text" value="&apos;Prueba subflow programático&apos;"/>
+		<evaluate expression="flashScope.welcome.audioItems.add(flashScope.welcomeaudioItems1)"/>
+	</on-entry>
+	
+	<evaluate expression="flowProcessor.process(flashScope.welcome)"/>
+	
+<transition to="TermcharTest"/>
+</action-state>
+
+
+
+<subflow-state id="TermcharTest" subflow="p/TermcharTest">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'TermcharTest'"/>
+	</on-entry>
+	<transition to="Final">
+		<set name="flowScope.result" value="currentEvent.attributes.result" />
+	</transition>
+</subflow-state>
+</flow> 

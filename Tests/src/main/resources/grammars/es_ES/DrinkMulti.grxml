@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<grammar root="main" 
+        version="1.0" 
+        xml:lang="es-ES"
+        mode="voice" 
+        tag-format="semantics/1.0"
+        xmlns="http://www.w3.org/2001/06/grammar">
+
+   <rule id="main" scope="public">
+      <tag>rules.foodsize="medium";</tag>
+      <ruleref uri="#kindofdrink"/>
+       <item repeat="0-1">
+         <ruleref uri="#foodsize"/>
+      </item>
+     <tag>out.drinksize=rules.foodsize; out.type=rules.kindofdrink;</tag>
+   </rule>
+
+   <rule id="foodsize">
+      <one-of>
+         <item>mediano</item>
+         <item>grande</item>
+      </one-of>
+   </rule>
+   <rule id="kindofdrink">
+      <one-of>
+         <item>leche</item>
+         <item>colacao</item>
+      </one-of>
+   </rule>  
+</grammar>

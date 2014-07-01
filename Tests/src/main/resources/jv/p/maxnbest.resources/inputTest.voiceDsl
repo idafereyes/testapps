@@ -1,0 +1,19 @@
+input inputTest
+{
+	maxnbest "3"
+//	confidence "0.1"
+}
+grammars{
+	voice "NombresSimilares"
+	// Para gramáticas sin tags
+//	voice "NombresSimilaresSinTags"
+}
+audios{
+ 	main: 
+ 		say wording "Diga un nombre"
+ 	noinput:
+ 		say wording "no ha dicho nada"
+ 	nomatch:
+ 		say wording "no le he entendido"
+}
+

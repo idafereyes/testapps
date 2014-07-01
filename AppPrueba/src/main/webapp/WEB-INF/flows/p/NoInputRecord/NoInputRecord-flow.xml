@@ -33,6 +33,7 @@ start-state= "_jVoiceCheckInit" >
 		<evaluate expression="jVoiceArchRecord" result="flashScope.testNIRecord" />
 		<set name="flashScope.testNIRecord.fileName" value="&apos;recordFileName.wav&apos;" />
 		<set name="flashScope.testNIRecord.maxNoInput" value="&apos;2&apos;" />
+		<set name="flashScope.testNIRecord.timeout" value="&apos;7s&apos;" />
 <evaluate expression="jVoiceArchAudioItem" result="flashScope.testNIRecordaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.testNIRecordaudioItems1.wording"/>
 <set name="flashScope.testNIRecordaudioItems1.wording.text" value="&apos;Diga algo&apos;"/>
 <evaluate expression="flashScope.testNIRecord.audioItems.add(flashScope.testNIRecordaudioItems1)"/>

@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<grammar root="main" 
+        version="1.0" 
+        xml:lang="es-ES"
+        mode="voice" 
+        tag-format="semantics/1.0"
+        xmlns="http://www.w3.org/2001/06/grammar">
+
+  <rule id="main" scope="public">
+      <one-of>
+      <item> marta moreno <tag>out = 'marta moreno';</tag></item>
+      <item> marta morreno <tag>out = 'marta morreno';</tag></item>
+      <item> marta morino <tag>out = 'marta morino';</tag></item>
+      <item> marta moleno <tag>out = 'marta moleno';</tag></item>
+      <item> marta molino <tag>out = 'marta molino';</tag></item>
+	  <item> malta moleno <tag>out = 'malta moleno';</tag></item>
+      <item> malta molino <tag>out = 'malta molino';</tag></item>
+     </one-of>
+  </rule>
+  
+</grammar>

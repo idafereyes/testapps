@@ -1,0 +1,6 @@
+output welcome
+
+audios{
+	main:
+		say wording "Prueba subflow programático"
+}

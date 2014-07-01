@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_AniDnis" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'AniDnis'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="testAniDnis"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testAniDnis" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="testAniDnis">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testAniDnis'"/>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.testAniDnis"/>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.testAniDnisaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.testAniDnisaudioItems1.wording"/>
+		<set name="flashScope.testAniDnisaudioItems1.wording.text" value="&apos;El ANI es el siguiente:&apos;"/>
+		<evaluate expression="flashScope.testAniDnis.audioItems.add(flashScope.testAniDnisaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testAniDnisaudioItems2"/><evaluate expression="jVoiceArchWording" result="flashScope.testAniDnisaudioItems2.wording"/>
+		<set name="flashScope.testAniDnisaudioItems2.wording.text" value="jVoiceArchData.ani"/>
+		<evaluate expression="flashScope.testAniDnis.audioItems.add(flashScope.testAniDnisaudioItems2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testAniDnisaudioItems3"/><evaluate expression="jVoiceArchWording" result="flashScope.testAniDnisaudioItems3.wording"/>
+		<set name="flashScope.testAniDnisaudioItems3.wording.text" value="&apos;El DNIS es el siguiente:&apos;"/>
+		<evaluate expression="flashScope.testAniDnis.audioItems.add(flashScope.testAniDnisaudioItems3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testAniDnisaudioItems4"/><evaluate expression="jVoiceArchWording" result="flashScope.testAniDnisaudioItems4.wording"/>
+		<set name="flashScope.testAniDnisaudioItems4.wording.text" value="jVoiceArchData.dnis"/>
+		<evaluate expression="flashScope.testAniDnis.audioItems.add(flashScope.testAniDnisaudioItems4)"/>
+	</on-entry>
+	
+	<evaluate expression="flowProcessor.process(flashScope.testAniDnis)"/>
+	
+<transition to="Final"/>
+</action-state>
+
+
+
+</flow> 

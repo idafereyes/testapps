@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<grammar root="main" 
+        version="1.0" 
+        xml:lang="es-ES"
+        mode="voice" 
+        tag-format="semantics/1.0"
+        xmlns="http://www.w3.org/2001/06/grammar">
+
+  <rule id="main" scope="public">
+    <one-of>
+      <item>
+        <one-of>
+          <item>
+            sysco
+            <item repeat="0-1">
+              comidas
+            </item>
+          </item>
+        </one-of>
+        <tag>out.ticker = "SYSC"; out.coname = "Sysco Foods";</tag>
+      </item>
+      <item>
+        <one-of>
+          <item>
+            sisco
+            <item repeat="0-1">
+              sistemas
+            </item>
+          </item>
+        </one-of>
+        <tag>out.ticker = "CSCO"; out.coname = "Cisco Systems";</tag>
+      </item>
+      <!-- additional equities -->
+    </one-of>
+  </rule>
+ 
+</grammar>

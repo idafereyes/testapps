@@ -65,47 +65,50 @@ start-state= "_jVoiceCheckInit" >
 	<transition on="match" to="TestInputPropProg"/>
 </view-state>
 <action-state id="TestInputPropProg">
-<on-entry>
-	<set name="flowScope.jvoiceCurrentStateName" value="'TestInputPropProg'"/>
-	<evaluate expression="jVoiceArchMenu" result="flashScope.TestInputPropProg"/>
-	<set name="flashScope.TestInputPropProg.name" value="'TestInputPropProg'" />
-	<set name="flashScope.TestInputPropProg.bargein" value="&apos;false&apos;" />
-	<set name="flashScope.TestInputPropProg.confidence" value="&apos;0.9&apos;" />
-	<set name="flashScope.TestInputPropProg.completetimeout" value="&apos;2s&apos;" />
-	<set name="flashScope.TestInputPropProg.incompletetimeout" value="&apos;3s&apos;" />
-	<set name="flashScope.TestInputPropProg.interdigittimeout" value="&apos;4s&apos;" />
-	<set name="flashScope.TestInputPropProg.maxAttempts" value="&apos;5&apos;" />
-	<set name="flashScope.TestInputPropProg.maxNoInput" value="&apos;4&apos;" />
-	<set name="flashScope.TestInputPropProg.maxNoMatch" value="&apos;4&apos;" />
-	<set name="flashScope.TestInputPropProg.maxspeechtimeout" value="&apos;60s&apos;" />
-	<set name="flashScope.TestInputPropProg.recordutterance" value="&apos;true&apos;" />
-	<set name="flashScope.TestInputPropProg.sensitivity" value="&apos;0.1&apos;" />
-	<set name="flashScope.TestInputPropProg.speedvsaccuracy" value="&apos;0.2&apos;" />
 	
-	<set name="flashScope.TestInputPropProg.termchar" value="&apos;0&apos;" />
-	<set name="flashScope.TestInputPropProg.timeout" value="&apos;5s&apos;" />
 	
-	<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
-	<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
-	<set name="flashScope.grammar1.mode" value="'dtmf'"/>
-	<evaluate expression="flashScope.TestInputPropProg.grammars.add(flashScope.grammar1)" />
-	<evaluate expression="flashScope.TestInputPropProg.addValueOption('uno','1')" />
-	<evaluate expression="flashScope.TestInputPropProg.addValueOption('dos','2')" />
-	<evaluate expression="jVoiceArchAudioItem" result="flashScope.TestInputPropProgmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.TestInputPropProgmainAudios1.wording"/>
-	<set name="flashScope.TestInputPropProgmainAudios1.wording.text" value="&apos;Probando Properties en menu&apos;"/>
-	<evaluate expression="flashScope.TestInputPropProg.mainAudios.add(flashScope.TestInputPropProgmainAudios1)"/>
-</on-entry>
-<evaluate expression="flowProcessor.process(flashScope.TestInputPropProg)"/>
+
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'TestInputPropProg'"/>
+		<evaluate expression="jVoiceArchMenu" result="flashScope.TestInputPropProg"/>
+		<set name="flashScope.TestInputPropProg.name" value="'TestInputPropProg'" />
+		<set name="flashScope.TestInputPropProg.bargein" value="&apos;false&apos;" />
+		<set name="flashScope.TestInputPropProg.confidence" value="&apos;0.9&apos;" />
+		<set name="flashScope.TestInputPropProg.completetimeout" value="&apos;2s&apos;" />
+		<set name="flashScope.TestInputPropProg.incompletetimeout" value="&apos;3s&apos;" />
+		<set name="flashScope.TestInputPropProg.interdigittimeout" value="&apos;4s&apos;" />
+		<set name="flashScope.TestInputPropProg.maxAttempts" value="&apos;5&apos;" />
+		<set name="flashScope.TestInputPropProg.maxNoInput" value="&apos;4&apos;" />
+		<set name="flashScope.TestInputPropProg.maxNoMatch" value="&apos;4&apos;" />
+		<set name="flashScope.TestInputPropProg.maxspeechtimeout" value="&apos;60s&apos;" />
+		<set name="flashScope.TestInputPropProg.recordutterance" value="&apos;true&apos;" />
+		<set name="flashScope.TestInputPropProg.sensitivity" value="&apos;0.1&apos;" />
+		<set name="flashScope.TestInputPropProg.speedvsaccuracy" value="&apos;0.2&apos;" />
+		
+		<set name="flashScope.TestInputPropProg.termchar" value="&apos;0&apos;" />
+		<set name="flashScope.TestInputPropProg.timeout" value="&apos;5s&apos;" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<evaluate expression="flashScope.TestInputPropProg.grammars.add(flashScope.grammar1)" />
+		<evaluate expression="flashScope.TestInputPropProg.addValueOption('uno','1')" />
+		<evaluate expression="flashScope.TestInputPropProg.addValueOption('dos','2')" />
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.TestInputPropProgmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.TestInputPropProgmainAudios1.wording"/>
+		<set name="flashScope.TestInputPropProgmainAudios1.wording.text" value="&apos;Probando Properties en menu&apos;"/>
+		<evaluate expression="flashScope.TestInputPropProg.mainAudios.add(flashScope.TestInputPropProgmainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.TestInputPropProg)"/>
 	<transition to="render_TestInputPropProg"></transition>
 </action-state>
 
 <view-state id="render_TestInputPropProg" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
 	<transition on="match" to="render_decision_TestInputPropProg"/>
 </view-state>
+		<action-state id="render_decision_TestInputPropProg">
+		<evaluate expression="lastInputResult.interpretation"></evaluate>
+		<transition on="1" to="Final"/>
+		<transition on="2" to="Final"/>
 	
-<action-state id="render_decision_TestInputPropProg">
-	<evaluate expression="lastInputResult.interpretation"></evaluate>
-	<transition on="1" to="Final"/>
-	<transition on="2" to="Final"/>
 </action-state>
 </flow> 

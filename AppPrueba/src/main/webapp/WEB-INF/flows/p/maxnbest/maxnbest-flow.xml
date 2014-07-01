@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_Maxnbest" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'maxnbest'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="inputTest"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="inputTest" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="inputTest">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.inputTest"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'inputTest'"/>
+		<set name="flashScope.inputTest.name" value="'inputTest'" />
+		<set name="flashScope.inputTest.maxnbest" value="&apos;3&apos;" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="locutionProvider.getGrammarSrc(&apos;NombresSimilares&apos;)"/>
+		<set name="flashScope.grammar1.mode" value="'voice'"/>
+		<evaluate expression="flashScope.inputTest.grammars.add(flashScope.grammar1)" />
+		
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.inputTestmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.inputTestmainAudios1.wording"/>
+			        <set name="flashScope.inputTestmainAudios1.wording.text" value="&apos;Diga un nombre&apos;"/>
+			        <evaluate expression="flashScope.inputTest.mainAudios.add(flashScope.inputTestmainAudios1)"/>
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.inputTestnoMatchAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.inputTestnoMatchAudios1.wording"/>
+			        <set name="flashScope.inputTestnoMatchAudios1.wording.text" value="&apos;no le he entendido&apos;"/>
+			        <evaluate expression="flashScope.inputTest.noMatchAudios.add(flashScope.inputTestnoMatchAudios1)"/>
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.inputTestnoInputAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.inputTestnoInputAudios1.wording"/>
+			        <set name="flashScope.inputTestnoInputAudios1.wording.text" value="&apos;no ha dicho nada&apos;"/>
+			        <evaluate expression="flashScope.inputTest.noInputAudios.add(flashScope.inputTestnoInputAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.inputTest)"/>
+	<transition to="render_inputTest"/>
+</action-state>
+
+<view-state id="render_inputTest" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+	<transition on="match" to="Final"/>
+</view-state>
+</flow> 
