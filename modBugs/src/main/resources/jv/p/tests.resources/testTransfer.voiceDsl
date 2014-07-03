@@ -2,8 +2,6 @@ consultationTransfer testTransfer
 
 {	
 	destination "tel:xxx"
-	transferMaxtime 23s
-	transferTimeout 45s
 }
 
 audios{

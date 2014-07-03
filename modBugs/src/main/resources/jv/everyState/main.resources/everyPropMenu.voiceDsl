@@ -1,0 +1,25 @@
+menu everyPropMenu
+{
+	bargein true
+	confidence 0.9
+	interdigittimeout 2s
+	maxAttempts 3
+	maxNoInput 3
+	maxNoMatch 3
+	recordutterance false
+	timeout 5s	
+}
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+
+	main:
+		say wording "Menu"  
+}
+
+options{
+	optionName1 : "1"
+	optionName2 : "2"	
+}

@@ -1,0 +1,6 @@
+output testOutput
+
+audios{
+	main:
+		say wording "TTS text"
+}

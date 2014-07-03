@@ -1,0 +1,11 @@
+output everyProperty
+{
+	bargein true
+	flush false
+	catchHangup false
+}
+
+audios{
+	main:
+		say wording "Output"
+}

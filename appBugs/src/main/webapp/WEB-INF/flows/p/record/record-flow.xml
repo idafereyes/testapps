@@ -1,0 +1,58 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_modBugsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="record" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="testRecord"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testRecord" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="recorded">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.recorded"/>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.recordedaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.recordedaudioItems1.wording"/>
+		<set name="flashScope.recordedaudioItems1.wording.text" value="'Se ha realizado la grabación'"/>
+		<evaluate expression="flashScope.recorded.audioItems.add(flashScope.recordedaudioItems1)"/>
+	</on-entry>
+	
+	<evaluate expression="flowProcessor.process(flashScope.recorded)"/>
+	
+<transition to="Final"/>
+</action-state>
+
+
+
+<action-state id="testRecord">
+	<on-entry>
+		<evaluate expression="jVoiceArchRecord" result="flashScope.testRecord" />
+		<set name="flashScope.testRecord.fileName" value="'recordFileName'" />
+		        <evaluate expression="jVoiceArchAudioItem" result="flashScope.testRecordaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.testRecordaudioItems1.wording"/>
+		        <set name="flashScope.testRecordaudioItems1.wording.text" value="'Diga algo'"/>
+		        <evaluate expression="flashScope.testRecord.audioItems.add(flashScope.testRecordaudioItems1)"/>
+		</on-entry>
+		<evaluate expression="flowProcessor.process(flashScope.testRecord)"/>		
+	<transition to="render_testRecord"/>
+</action-state>
+
+<view-state id="render_testRecord" view="#{flowProcessor.getRenderer().getView()}" model="lastRecordResult">
+	<transition on="recorded" to="recorded">
+		<evaluate expression="recordingService.saveRecording(lastRecordResult.temprecording, lastRecordResult.fileName)"/>
+	</transition>
+</view-state>
+</flow> 

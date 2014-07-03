@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:operations="http://jvoice.vectorsf.com/operations/1.0" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
-  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="jVoiceDiagram" name="flushFalseHangupFalseTran" snapToGrid="true" pictogramLinks="/0/@link /0/@children.0/@link /0/@children.1/@link /0/@connections.0/@link /0/@children.2/@link /0/@children.3/@link /0/@connections.1/@link /0/@connections.2/@link /0/@connections.3/@link" version="0.10.0">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="jVoiceDiagram" name="flushFalseHangupFalseTran" snapToGrid="true" pictogramLinks="/0/@link /0/@children.0/@link /0/@children.1/@link /0/@connections.0/@link /0/@children.2/@link /0/@children.3/@link /0/@connections.1/@link /0/@connections.2/@link" version="0.10.0">
     <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
     <link businessObjects="_Y60GUMnuEeOvIagzFQwlcA"/>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
@@ -99,19 +99,12 @@
       </graphicsAlgorithm>
       <link businessObjects="_lj-9wMokEeONdakSKs0fug"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.0"/>
-      <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.3">
-        <properties key="TOOLTIP" value="hangup"/>
-        <properties key="EVENT_NAME" value="hangup"/>
-        <properties key="org.eclipse.graphiti.pattern.id.id" value="eventImage"/>
-        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" id="hangup_on" stretchH="false" stretchV="false" proportional="false"/>
-        <location x="55" y="32"/>
-      </anchors>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.2">
         <properties key="TOOLTIP" value="ok"/>
         <properties key="EVENT_NAME" value="ok"/>
         <properties key="org.eclipse.graphiti.pattern.id.id" value="eventImage"/>
         <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" id="ok_on" stretchH="false" stretchV="false" proportional="false"/>
-        <location x="10" y="32"/>
+        <location x="55" y="32"/>
       </anchors>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
@@ -170,7 +163,7 @@
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
       <link businessObjects="_lj_k0MokEeONdakSKs0fug"/>
-      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.2 /0/@connections.3"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.2"/>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.1">
         <properties key="TOOLTIP" value="ok"/>
         <properties key="EVENT_NAME" value="ok"/>
@@ -219,26 +212,9 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.2/@anchors.2" end="/0/@children.3/@anchors.0">
-      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_SOp14MomEeONnJQUM0cKNg"/>
-      <connectionDecorators visible="true" locationRelative="true" location="1.0">
-        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
-          <points x="-7" y="4"/>
-          <points x="2"/>
-          <points x="-7" y="-4"/>
-          <points x="-1"/>
-          <points x="-7" y="4"/>
-          <points x="-3"/>
-          <points x="-7" y="-4"/>
-          <points x="-5"/>
-          <points x="-7" y="4"/>
-        </graphicsAlgorithm>
-      </connectionDecorators>
-    </connections>
     <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.2/@anchors.1" end="/0/@children.3/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="2" filled="false" transparency="0.0"/>
-      <link businessObjects="_SZyH0MomEeONnJQUM0cKNg"/>
+      <link businessObjects="_6_b1gMxPEeO-8Zw7534Sfg"/>
       <connectionDecorators visible="true" locationRelative="true" location="1.0">
         <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.7" foreground="/0/@colors.7" lineWidth="1" filled="true" transparency="0.0">
           <points x="-7" y="4"/>
@@ -267,19 +243,17 @@
   <operations:Flow id="_Y60GUMnuEeOvIagzFQwlcA" name="flushFalseHangupFalseTran" description="flushFalseHangupFalseTran" helperClass="com.isb.modBugs.components.catchHangup.FlushFalseHangupFalseTran">
     <states xsi:type="operations:InitialState" id="_Y65l4MnuEeOvIagzFQwlcA" name="Initial" outgoingTransitions="_Y7FzIMnuEeOvIagzFQwlcA"/>
     <states xsi:type="operations:FinalState" id="_Y6_sgMnuEeOvIagzFQwlcA" name="Final" incomingTransitions="_ccWTYMnuEeOvIagzFQwlcA"/>
-    <states xsi:type="operations:PromptState" id="_lj-9wMokEeONdakSKs0fug" name="test" incomingTransitions="_Y7FzIMnuEeOvIagzFQwlcA" outgoingTransitions="_SOp14MomEeONnJQUM0cKNg _SZyH0MomEeONnJQUM0cKNg">
+    <states xsi:type="operations:PromptState" id="_lj-9wMokEeONdakSKs0fug" name="test" incomingTransitions="_Y7FzIMnuEeOvIagzFQwlcA" outgoingTransitions="_6_b1gMxPEeO-8Zw7534Sfg">
       <fireableEvents>ok</fireableEvents>
-      <fireableEvents>hangup</fireableEvents>
       <locution href="flushFalseHangupFalseTran.resources/test.voiceDsl#/"/>
     </states>
-    <states xsi:type="operations:InputState" id="_lj_k0MokEeONdakSKs0fug" name="landingInput" incomingTransitions="_SOp14MomEeONnJQUM0cKNg _SZyH0MomEeONnJQUM0cKNg" outgoingTransitions="_ccWTYMnuEeOvIagzFQwlcA">
+    <states xsi:type="operations:InputState" id="_lj_k0MokEeONdakSKs0fug" name="landingInput" incomingTransitions="_6_b1gMxPEeO-8Zw7534Sfg" outgoingTransitions="_ccWTYMnuEeOvIagzFQwlcA">
       <fireableEvents>ok</fireableEvents>
       <locution href="flushFalseHangupFalseTran.resources/landingInput.voiceDsl#/"/>
     </states>
     <transitions id="_Y7FzIMnuEeOvIagzFQwlcA" source="_Y65l4MnuEeOvIagzFQwlcA" target="_lj-9wMokEeONdakSKs0fug" eventName="Ok"/>
     <transitions id="_ccWTYMnuEeOvIagzFQwlcA" source="_lj_k0MokEeONdakSKs0fug" target="_Y6_sgMnuEeOvIagzFQwlcA" eventName="ok"/>
-    <transitions id="_SOp14MomEeONnJQUM0cKNg" source="_lj-9wMokEeONdakSKs0fug" target="_lj_k0MokEeONdakSKs0fug" eventName="ok"/>
-    <transitions id="_SZyH0MomEeONnJQUM0cKNg" source="_lj-9wMokEeONdakSKs0fug" target="_lj_k0MokEeONdakSKs0fug" eventName="hangup"/>
+    <transitions id="_6_b1gMxPEeO-8Zw7534Sfg" source="_lj-9wMokEeONdakSKs0fug" target="_lj_k0MokEeONdakSKs0fug" eventName="ok"/>
     <beans id="_Y60GUcnuEeOvIagzFQwlcA" name="it" fqdn="com.isb.modBugs.components.catchHangup.FlushFalseHangupFalseTran" nameBean="flushFalseHangupFalseTran" prototype="true"/>
   </operations:Flow>
 </xmi:XMI>

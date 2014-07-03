@@ -31,7 +31,7 @@ start-state= "_jVoiceCheckInit" >
 		<evaluate expression="flowProcessor.process(flashScope.lastProgrammableOutput)" />
 	</on-entry>
 	
-	<evaluate expression="flashScope.lastProgrammableOutput.flush"/>
+	<evaluate expression="flashScope.lastProgrammableOutput.isCatchHangupOrFlush()"/>
 	<transition on="yes" to="render_testFlushFalse"/>
 <transition to="inputTest"/>
 	

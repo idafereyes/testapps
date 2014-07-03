@@ -1,0 +1,15 @@
+record everyPropRecord
+
+{
+	filename "recordFileName.wav"
+	beep true
+	dtmfterm true
+	finalsilence 3s
+	keep false
+	maxtime 5s
+} 
+
+audios{ 
+	main:
+		say wording "Record"	
+}

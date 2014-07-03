@@ -1,0 +1,13 @@
+bridgeTransfer everyPropTransfer
+
+{	
+	destination "tel:649691219"
+	transferMaxtime 2s
+	transferTimeout 10s
+	transferaudio "audio"
+}
+
+audios{
+	main:
+		say wording "Transfer"
+}

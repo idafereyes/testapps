@@ -20,7 +20,7 @@
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="135" height="28" x="400" y="200" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="135" height="28" x="389" y="210" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
         <graphicsAlgorithmChildren xsi:type="al:Polygon" lineStyle="UNSPECIFIED" width="48" height="28" style="/0/@styles.1">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="statePolygon"/>
@@ -161,7 +161,7 @@
   <operations:Flow id="_3TjzYMlfEeObcJbjgwz3hA" name="customState" description="customState" helperClass="com.isb.modBugs.components.p.CustomState">
     <states xsi:type="operations:InitialState" id="_3TndwMlfEeObcJbjgwz3hA" name="Initial" outgoingTransitions="_3TuLcMlfEeObcJbjgwz3hA"/>
     <states xsi:type="operations:FinalState" id="_3TrIIMlfEeObcJbjgwz3hA" name="Final" incomingTransitions="_6avmwMlfEeObcJbjgwz3hA"/>
-    <states xsi:type="operations:CustomState" id="_5QxuAMlfEeObcJbjgwz3hA" name="testCustom" incomingTransitions="_3TuLcMlfEeObcJbjgwz3hA" outgoingTransitions="_6avmwMlfEeObcJbjgwz3hA" path="testCustom.jsp">
+    <states xsi:type="operations:CustomState" id="_5QxuAMlfEeObcJbjgwz3hA" name="testCustom" incomingTransitions="_3TuLcMlfEeObcJbjgwz3hA" outgoingTransitions="_6avmwMlfEeObcJbjgwz3hA" path="testCustom.jsp" bindingBean="miBean">
       <fireableEvents>ok</fireableEvents>
     </states>
     <transitions id="_3TuLcMlfEeObcJbjgwz3hA" source="_3TndwMlfEeObcJbjgwz3hA" target="_5QxuAMlfEeObcJbjgwz3hA" eventName="Ok"/>

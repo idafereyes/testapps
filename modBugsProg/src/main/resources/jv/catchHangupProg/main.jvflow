@@ -20,17 +20,17 @@
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="135" height="28" x="430" y="890" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" lineVisible="false" width="48" height="28" x="430" y="890" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
         <graphicsAlgorithmChildren xsi:type="al:Polygon" lineStyle="UNSPECIFIED" width="48" height="28" style="/0/@styles.1">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="statePolygon"/>
-          <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_final" stretchH="false" stretchV="false" proportional="false">
+          <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_hangup" stretchH="false" stretchV="false" proportional="false">
             <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
           </graphicsAlgorithmChildren>
           <points/>
           <points x="45"/>
           <points x="45" y="10"/>
-          <points x="42" y="14"/>
+          <points x="48" y="14"/>
           <points x="45" y="18"/>
           <points x="45" y="28"/>
           <points y="28"/>
@@ -415,7 +415,7 @@
   </pi:Diagram>
   <operations:Flow id="_VO7tpMnyEeOvIagzFQwlcA" name="main" description="main" helperClass="com.isb.modBugsProg.components.catchHangupProg.Main">
     <states xsi:type="operations:InitialState" id="_VO8UsMnyEeOvIagzFQwlcA" name="Initial" outgoingTransitions="_VO__EcnyEeOvIagzFQwlcA"/>
-    <states xsi:type="operations:FinalState" id="_VO9i08nyEeOvIagzFQwlcA" name="Final" incomingTransitions="_xD7ekMnyEeOvIagzFQwlcA"/>
+    <states xsi:type="operations:FinalState" id="_VO9i08nyEeOvIagzFQwlcA" name="Final" incomingTransitions="_xD7ekMnyEeOvIagzFQwlcA" final="true"/>
     <states xsi:type="operations:CallFlowState" id="_ZUzW0MnyEeOvIagzFQwlcA" name="flushFalseHangupFalse" incomingTransitions="_VO__EcnyEeOvIagzFQwlcA" outgoingTransitions="_mEk1EMnyEeOvIagzFQwlcA">
       <subflow href="flushFalseHangupFalse.jvflow#_El-pRMnwEeOvIagzFQwlcA"/>
     </states>

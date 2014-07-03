@@ -1,0 +1,43 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_modBugsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="flushSinConfig" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="flushSinConfig"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="flushSinConfig" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="flushSinConfig">
+	<on-entry>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.flushSinConfig"/>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.flushSinConfigaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.flushSinConfigaudioItems1.wording"/>
+		<set name="flashScope.flushSinConfigaudioItems1.wording.text" value="'Probamos un prompt sin configuración'"/>
+		<evaluate expression="flashScope.flushSinConfig.audioItems.add(flashScope.flushSinConfigaudioItems1)"/>
+	</on-entry>
+	
+	<evaluate expression="flowProcessor.process(flashScope.flushSinConfig)"/>
+	
+<transition to="Final"/>
+</action-state>
+
+
+
+</flow> 

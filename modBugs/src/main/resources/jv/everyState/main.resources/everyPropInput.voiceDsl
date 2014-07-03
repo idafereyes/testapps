@@ -1,0 +1,20 @@
+input everyPropInput
+{
+	bargein true
+	confidence 0.9
+	interdigittimeout 2s
+//	maxAttempts 3
+//	maxNoInput 3
+//	maxNoMatch 3
+	recordutterance false
+	timeout 5s	
+}
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		say wording "Input" 
+}
+

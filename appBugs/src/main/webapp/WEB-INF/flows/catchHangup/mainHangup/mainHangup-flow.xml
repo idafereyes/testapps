@@ -1,0 +1,74 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_modBugsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="mainHangup" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<evaluate expression="jVoiceArchData.initialized" />
+		<transition on="no" to="_jVoiceInit"/>
+		<transition to="flushFalseHangupFalse"/>
+	</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="flushFalseHangupFalse" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<subflow-state id="flushFalseHangupFalse" subflow="catchHangup/flushFalseHangupFalse">
+ <transition to="flushFalseHangupFalseTran">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="flushFalseHangupFalseTran" subflow="catchHangup/flushFalseHangupFalseTran">
+ <transition to="flushFalseHangupTrue">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="flushFalseHangupTrue" subflow="catchHangup/flushFalseHangupTrue">
+ <transition to="flushFalseHangupTrueTran">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="flushFalseHangupTrueTran" subflow="catchHangup/flushFalseHangupTrueTran">
+ <transition to="flushTrueHangupFalse">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="flushTrueHangupFalse" subflow="catchHangup/flushTrueHangupFalse">
+ <transition to="flushTrueHangupFalseTra">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="flushTrueHangupFalseTra" subflow="catchHangup/flushTrueHangupFalseTra">
+ <transition to="flushTrueHangupTrue">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="flushTrueHangupTrue" subflow="catchHangup/flushTrueHangupTrue">
+ <transition to="flushTrueHangupTrueTrans">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="flushTrueHangupTrueTrans" subflow="catchHangup/flushTrueHangupTrueTrans">
+ <transition to="Final">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+</flow> 

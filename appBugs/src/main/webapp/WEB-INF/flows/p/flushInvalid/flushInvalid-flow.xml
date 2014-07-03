@@ -27,8 +27,8 @@ start-state= "_jVoiceCheckInit" >
 </end-state>
 <action-state id="testFlushInvalid">
 	<on-entry>
-		<evaluate expression="jVoiceArchOutput" result="flashScope.testFlushInvalid"></evaluate>
-		<set name="flashScope.testFlushInvalid.flush" value="hola" />
+		<evaluate expression="jVoiceArchOutput" result="flashScope.testFlushInvalid"/>
+		<set name="flashScope.testFlushInvalid.flush" value="'hola'" />
 		<evaluate expression="jVoiceArchAudioItem" result="flashScope.testFlushInvalidaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.testFlushInvalidaudioItems1.wording"/>
 		<set name="flashScope.testFlushInvalidaudioItems1.wording.text" value="'Vamos a probar con unvalor de flush invalido.'"/>
 		<evaluate expression="flashScope.testFlushInvalid.audioItems.add(flashScope.testFlushInvalidaudioItems1)"/>

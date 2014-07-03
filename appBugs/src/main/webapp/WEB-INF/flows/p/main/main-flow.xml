@@ -14,11 +14,11 @@ start-state= "_jVoiceCheckInit" >
 <action-state id="_jVoiceCheckInit">
 	<evaluate expression="jVoiceArchData.initialized" />
 		<transition on="no" to="_jVoiceInit"/>
-		<transition to="flushProgFalse"/>
+		<transition to="flushSinConfig"/>
 	</action-state>
 
 <view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
-	<transition to="flushProgFalse" >
+	<transition to="flushSinConfig" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>
@@ -61,6 +61,12 @@ start-state= "_jVoiceCheckInit" >
 </subflow-state>
 <subflow-state id="flushFalseCustom" subflow="p/flushFalseCustom">
  <transition to="Final">
+ 	<set name="flowScope.result" value="currentEvent.attributes.result" />
+ </transition>
+
+</subflow-state>
+<subflow-state id="flushSinConfig" subflow="p/flushSinConfig">
+ <transition to="flushProgFalse">
  	<set name="flowScope.result" value="currentEvent.attributes.result" />
  </transition>
 
