@@ -1,0 +1,10 @@
+input prueba
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		say as digits "0123456789"
+}
+

@@ -2,6 +2,7 @@ output testSayAs
 
 audios{
 	main:
+		say as currency "17.81"
 		say as number "999999999999"
 		say as time ("HHmmss") "120003"
 		say as time ("KKmmss") "110003"
@@ -11,14 +12,11 @@ audios{
 		say as time ("HHmm") "1157"
 		say as letters "ABC"
 		say as letters "trv5"
-// No soportados por el numset todavía.
-		say as phone "914708888"
 //		say as boolean "true"
 
-		// Estos están ahora mismo soportados por el numset
-		say as currency "17"
+		say as currency ("EUR") "17.90"
 		say as date "10/12/2014"
-		say as digits "123456789"
-		say as number "123456789"
+		say as digits "0123456789"
+		say as number "0123456789"
 		say as phone "91470465"
 }

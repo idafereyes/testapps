@@ -7,18 +7,18 @@ audios{
  	main:
  		say wording "Probando formats en el date:" 
 
- 		say as date ("yyyy/MM/dd") "20050312"
+ 		say as date ("yyyy/MM/dd") "2005/03/12"
  		say src "pause"
-        say as date ("yyyyMMdd") "2005/03/12"
+        say as date ("yyyyMMdd") "20050312"
   		say src "pause"
         say as date ("yyyy-MM-dd") "2005-03-12"
  
   		say src "pause"
  		say src "pause"
  		
- 	 	say as date ("yy/MM/dd") "050312"
+ 	 	say as date ("yy/MM/dd") "05/03/12"
  		say src "pause"
-        say as date ("yyMMdd") "05/03/12"
+        say as date ("yyMMdd") "050312"
   		say src "pause"
         say as date ("yy-MM-dd") "05-03-12"
 
