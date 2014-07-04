@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"	
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
 xsi:schemaLocation="http://www.springframework.org/schema/webflow
@@ -9,10 +10,13 @@ start-state= "_jVoiceCheckInit" >
 
 
 <action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'flowWs'"/>
+	</on-entry>
 	<evaluate expression="jVoiceArchData.initialized" />
-		<transition on="no" to="_jVoiceInit"/>
-		<transition to="testWS"/>
-	</action-state>
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="testWS"/>
+</action-state>
 
 <view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
 	<transition to="testWS" >
@@ -21,11 +25,13 @@ start-state= "_jVoiceCheckInit" >
 </view-state>
 <view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
 <action-state id="testWS">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testWS'"/>
+	</on-entry>
    <evaluate expression="miBeanTestIvr.testWs()"
    />
    
 
-	 <transition to="Final"></transition>
-	
+	<transition to="Final"></transition>
 </action-state>
 </flow> 

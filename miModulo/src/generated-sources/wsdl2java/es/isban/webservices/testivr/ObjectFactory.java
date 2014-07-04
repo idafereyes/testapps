@@ -30,6 +30,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TestIvrResponse }
+     * 
+     */
+    public TestIvrResponse createTestIvrResponse() {
+        return new TestIvrResponse();
+    }
+
+    /**
+     * Create an instance of {@link TestIvr }
+     * 
+     */
+    public TestIvr createTestIvr() {
+        return new TestIvr();
+    }
+
+    /**
      * Create an instance of {@link Exception }
      * 
      */
@@ -83,22 +99,6 @@ public class ObjectFactory {
      */
     public Subcode createSubcode() {
         return new Subcode();
-    }
-
-    /**
-     * Create an instance of {@link TestIvrResponse }
-     * 
-     */
-    public TestIvrResponse createTestIvrResponse() {
-        return new TestIvrResponse();
-    }
-
-    /**
-     * Create an instance of {@link TestIvr }
-     * 
-     */
-    public TestIvr createTestIvr() {
-        return new TestIvr();
     }
 
 }

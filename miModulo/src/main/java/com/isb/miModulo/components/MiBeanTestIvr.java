@@ -15,8 +15,8 @@ import es.isban.webservices.testivr.TestIvrPortTypeHTTP;
 import es.isban.webservices.testivr.TestIvrResponse;
 
 @Component("miBeanTestIvr")
-//@Scope("prototype")
-@Scope(value = "singleton", proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Scope("prototype")
+//@Scope(value = "singleton", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class MiBeanTestIvr implements Serializable{
 
 	/**
@@ -29,6 +29,8 @@ public class MiBeanTestIvr implements Serializable{
 	
 	public void testWs(){
 		
+		System.out.println("********testWs");
+
 		TestIvrPortTypeHTTP webservice = webServiceProvider.getClient(TestIvrPortTypeHTTP.class, "TestIvrPortTypeHTTP");
 		
 		ObjectFactory obj = new ObjectFactory();

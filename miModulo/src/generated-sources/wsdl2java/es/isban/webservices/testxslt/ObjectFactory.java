@@ -30,6 +30,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ComBanestoAlSoapacSampleCbCBParamResponsesType }
+     * 
+     */
+    public ComBanestoAlSoapacSampleCbCBParamResponsesType createComBanestoAlSoapacSampleCbCBParamResponsesType() {
+        return new ComBanestoAlSoapacSampleCbCBParamResponsesType();
+    }
+
+    /**
+     * Create an instance of {@link ComBanestoAlSoapacSampleCbCBServDocNoConcEType }
+     * 
+     */
+    public ComBanestoAlSoapacSampleCbCBServDocNoConcEType createComBanestoAlSoapacSampleCbCBServDocNoConcEType() {
+        return new ComBanestoAlSoapacSampleCbCBServDocNoConcEType();
+    }
+
+    /**
+     * Create an instance of {@link ComBanestoAlSoapacSampleCbCBParamResponseType }
+     * 
+     */
+    public ComBanestoAlSoapacSampleCbCBParamResponseType createComBanestoAlSoapacSampleCbCBParamResponseType() {
+        return new ComBanestoAlSoapacSampleCbCBParamResponseType();
+    }
+
+    /**
      * Create an instance of {@link Exception }
      * 
      */
@@ -83,30 +107,6 @@ public class ObjectFactory {
      */
     public Subcode createSubcode() {
         return new Subcode();
-    }
-
-    /**
-     * Create an instance of {@link ComBanestoAlSoapacSampleCbCBParamResponsesType }
-     * 
-     */
-    public ComBanestoAlSoapacSampleCbCBParamResponsesType createComBanestoAlSoapacSampleCbCBParamResponsesType() {
-        return new ComBanestoAlSoapacSampleCbCBParamResponsesType();
-    }
-
-    /**
-     * Create an instance of {@link ComBanestoAlSoapacSampleCbCBServDocNoConcEType }
-     * 
-     */
-    public ComBanestoAlSoapacSampleCbCBServDocNoConcEType createComBanestoAlSoapacSampleCbCBServDocNoConcEType() {
-        return new ComBanestoAlSoapacSampleCbCBServDocNoConcEType();
-    }
-
-    /**
-     * Create an instance of {@link ComBanestoAlSoapacSampleCbCBParamResponseType }
-     * 
-     */
-    public ComBanestoAlSoapacSampleCbCBParamResponseType createComBanestoAlSoapacSampleCbCBParamResponseType() {
-        return new ComBanestoAlSoapacSampleCbCBParamResponseType();
     }
 
     /**

@@ -12,7 +12,7 @@
     <dependency>
       <groupId>com.vectorsf</groupId>
       <artifactId>jvoiceframework-flow</artifactId>
-      <version>1.4.0</version>
+      <version>1.9.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
  <repositories>
@@ -34,7 +34,7 @@
       <plugin>
         <groupId>com.vectorsf.jvoice</groupId>
         <artifactId>dsl-builder</artifactId>
-        <version>1.4.0</version>
+        <version>1.9.0-SNAPSHOT</version>
         <executions>
           <execution>
             <phase>generate-sources</phase>
@@ -47,7 +47,7 @@
       <plugin>
         <groupId>com.vectorsf.jvoice</groupId>
         <artifactId>dsl-builder</artifactId>
-        <version>1.4.0</version>
+        <version>1.9.0-SNAPSHOT</version>
         <executions>
           <execution>
             <phase>initialize</phase>
