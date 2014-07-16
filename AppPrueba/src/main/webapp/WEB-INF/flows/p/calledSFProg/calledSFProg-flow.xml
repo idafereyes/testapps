@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_CalledSFProg" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'calledSFProg'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="outputSF"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="outputSF" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="outputSF">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'outputSF'"/>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.outputSF"/>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.outputSFaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.outputSFaudioItems1.wording"/>
+		<set name="flashScope.outputSFaudioItems1.wording.text" value="&apos;Estamos en el subflujo programático.&apos;"/>
+		<evaluate expression="flashScope.outputSF.audioItems.add(flashScope.outputSFaudioItems1)"/>
+	</on-entry>
+	
+	<evaluate expression="flowProcessor.process(flashScope.outputSF)"/>
+	
+<transition to="Final"/>
+</action-state>
+
+
+
+</flow> 

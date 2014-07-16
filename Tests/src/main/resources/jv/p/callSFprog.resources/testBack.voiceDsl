@@ -1,0 +1,6 @@
+output testBack
+
+audios{
+	main:
+		say wording "Y estamos de vuelta del subflujo programático."
+}

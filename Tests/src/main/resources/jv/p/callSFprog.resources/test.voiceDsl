@@ -1,0 +1,6 @@
+output test
+
+audios{
+	main:
+		say wording "Hola. Vamos a llamar a un subflujo programáticamente."
+}

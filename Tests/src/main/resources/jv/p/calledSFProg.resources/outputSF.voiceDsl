@@ -1,0 +1,6 @@
+output outputSF
+
+audios{
+	main:
+		say wording "Estamos en el subflujo programático."
+}

@@ -44,11 +44,11 @@ start-state= "_jVoiceCheckInit" >
 
 
 <subflow-state id="TermcharTest" subflow="p/TermcharTest">
-	<on-entry>
-		<set name="flowScope.jvoiceCurrentStateName" value="'TermcharTest'"/>
-	</on-entry>
-	<transition to="Final">
-		<set name="flowScope.result" value="currentEvent.attributes.result" />
-	</transition>
-</subflow-state>
+		<on-entry>
+			<set name="flowScope.jvoiceCurrentStateName" value="'TermcharTest'"/>
+		</on-entry>
+		<transition to="Final">
+			<set name="flowScope.result" value="currentEvent.attributes.result" />
+		</transition>
+	</subflow-state>
 </flow> 
