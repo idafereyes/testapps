@@ -1,0 +1,6 @@
+output outputRec
+
+audios{
+	main:
+		say wording "Grabado. Hasta luego."
+}

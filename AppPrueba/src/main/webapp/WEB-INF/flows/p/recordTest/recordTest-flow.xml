@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_RecordTest" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'recordTest'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="stateRecord"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="stateRecord" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="stateRecord">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'stateRecord'"/>
+		<evaluate expression="jVoiceArchRecord" result="flashScope.stateRecord" />
+		<set name="flashScope.stateRecord.fileName" value="&apos;recordFileName.wav&apos;" />
+<evaluate expression="jVoiceArchAudioItem" result="flashScope.stateRecordaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.stateRecordaudioItems1.wording"/>
+<set name="flashScope.stateRecordaudioItems1.wording.text" value="&apos;Diga algo&apos;"/>
+<evaluate expression="flashScope.stateRecord.audioItems.add(flashScope.stateRecordaudioItems1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.stateRecord)"/>		
+	<transition to="render_stateRecord"/>
+</action-state>
+
+<view-state id="render_stateRecord" view="#{flowProcessor.getRenderer().getView()}" model="lastRecordResult">
+	<transition on="recorded" to="outputRec">
+		<evaluate expression="recordingService.saveRecording(lastRecordResult.temprecording, lastRecordResult.fileName)"/>
+	</transition>
+</view-state>
+<action-state id="outputRec">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'outputRec'"/>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.outputRec"/>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.outputRecaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.outputRecaudioItems1.wording"/>
+		<set name="flashScope.outputRecaudioItems1.wording.text" value="&apos;Grabado. Hasta luego.&apos;"/>
+		<evaluate expression="flashScope.outputRec.audioItems.add(flashScope.outputRecaudioItems1)"/>
+	</on-entry>
+	
+	<evaluate expression="flowProcessor.process(flashScope.outputRec)"/>
+	
+<transition to="Final"/>
+</action-state>
+
+
+
+</flow> 

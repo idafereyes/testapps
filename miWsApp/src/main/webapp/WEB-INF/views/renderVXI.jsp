@@ -1,2 +1,2 @@
-<%@ page language="java" contentType="application/vxml; charset=UTF-8" pageEncoding="UTF-8" %>${flowProcessor.render(flowExecutionUrl, pageContext.request.contextPath)}
+<%@ page language="java" contentType="application/vxml; charset=UTF-8" pageEncoding="UTF-8" %>${flowProcessor.render(flowExecutionUrl, pageContext.request.contextPath, pageContext.session.id)}
 

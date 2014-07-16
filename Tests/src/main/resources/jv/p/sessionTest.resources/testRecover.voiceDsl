@@ -1,0 +1,8 @@
+output testRecover
+
+audios{
+
+    main:
+        say wording "Se ha grabado lo siguiente en el utterance:"
+        say uri "${recoverPathGenerator.getRecoverUtterancePath(lastInputResult.fileName)}"    
+}

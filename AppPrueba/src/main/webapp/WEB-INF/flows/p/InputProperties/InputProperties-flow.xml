@@ -61,7 +61,7 @@ start-state= "_jVoiceCheckInit" >
 	<transition to="render_TestInputProps"/>
 </action-state>
 
-<view-state id="render_TestInputProps" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+<view-state id="render_TestInputProps" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="TestInputPropProg"/>
 </view-state>
 <action-state id="TestInputPropProg">

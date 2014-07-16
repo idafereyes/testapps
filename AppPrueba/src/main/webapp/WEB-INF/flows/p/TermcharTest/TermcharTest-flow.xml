@@ -48,7 +48,7 @@ start-state= "_jVoiceCheckInit" >
 	<transition to="render_termcharInputDsl"/>
 </action-state>
 
-<view-state id="render_termcharInputDsl" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+<view-state id="render_termcharInputDsl" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="printLasResult"/>
 </view-state>
 <action-state id="termcharGlobalInput">
@@ -70,7 +70,7 @@ start-state= "_jVoiceCheckInit" >
 	<transition to="render_termcharGlobalInput"/>
 </action-state>
 
-<view-state id="render_termcharGlobalInput" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+<view-state id="render_termcharGlobalInput" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="printLasResult2"/>
 </view-state>
 <action-state id="termcharMenuDsl">
@@ -112,7 +112,7 @@ start-state= "_jVoiceCheckInit" >
 	<transition to="render_termcharInputProg"/>
 </action-state>
 
-<view-state id="render_termcharInputProg" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+<view-state id="render_termcharInputProg" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="printLasResult1"/>
 </view-state>
 <action-state id="termcharMenuGlobal">

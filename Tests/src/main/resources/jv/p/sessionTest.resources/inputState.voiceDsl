@@ -1,0 +1,15 @@
+input inputState
+{
+//	recordutterance true
+//	maxnbest "2"
+//	confidence "0.1"
+}
+
+grammars{
+	voice "DrinkMulti"
+}
+audios{
+ 	main: 
+ 		say wording "Diga bebida y tamaño" 
+}
+

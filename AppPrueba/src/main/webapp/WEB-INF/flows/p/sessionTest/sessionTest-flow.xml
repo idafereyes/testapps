@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_SessionTest" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'sessionTest'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="inputState"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="inputState" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="inputState">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.inputState"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'inputState'"/>
+		<set name="flashScope.inputState.name" value="'inputState'" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="locutionProvider.getGrammarSrc(&apos;DrinkMulti&apos;)"/>
+		<set name="flashScope.grammar1.mode" value="'voice'"/>
+		<evaluate expression="flashScope.inputState.grammars.add(flashScope.grammar1)" />
+		
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.inputStatemainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.inputStatemainAudios1.wording"/>
+			        <set name="flashScope.inputStatemainAudios1.wording.text" value="&apos;Diga bebida y tamaño&apos;"/>
+			        <evaluate expression="flashScope.inputState.mainAudios.add(flashScope.inputStatemainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.inputState)"/>
+	<transition to="render_inputState"/>
+</action-state>
+
+<view-state id="render_inputState" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="print"/>
+</view-state>
+<action-state id="print">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'print'"/>
+	</on-entry>
+   <evaluate expression="flowScope.it.print()"
+   />
+   
+
+	<transition to="Final"></transition>
+</action-state>
+</flow> 

@@ -53,7 +53,7 @@ start-state= "_jVoiceCheckInit" >
 	<transition to="render_inputTest"/>
 </action-state>
 
-<view-state id="render_inputTest" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+<view-state id="render_inputTest" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="Final"/>
 </view-state>
 </flow> 

@@ -1,0 +1,10 @@
+record stateRecord
+
+{
+	filename "recordFileName.wav" 
+} 
+
+audios{ 
+	main:
+		say wording "Diga algo"	
+}
