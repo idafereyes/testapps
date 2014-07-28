@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"	
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
 xsi:schemaLocation="http://www.springframework.org/schema/webflow
@@ -25,23 +26,3 @@ start-state= "_jVoiceCheckInit" >
 <end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
 	<output name="result" value="''" />
 </end-state>
-<action-state id="testTransfer">
-<on-entry>
-	<evaluate expression="jVoiceArchConsultationTransfer" result = "flashScope.testTransfer"/>
-	<set name="flashScope.testTransfer.dest" value="''tel:xxx''"/>
-	<set name="flashScope.testTransfer.timeout" value="''45s''"/>
-	<evaluate expression="jVoiceArchAudioItem" result="flashScope.testTransferaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.testTransferaudioItems1.wording"/>
-	<set name="flashScope.testTransferaudioItems1.wording.text" value="'TTS text'"/>
-	<evaluate expression="flashScope.testTransfer.audioItems.add(flashScope.testTransferaudioItems1)"/>
-</on-entry>
-<evaluate expression="flowProcessor.process(flashScope.testTransfer)"/>	
-<transition to="render_testTransfer" />
-
-</action-state>
-
-<view-state id="render_testTransfer" view="#{flowProcessor.getRenderer().getView()}" model="lastTransferResult">
-
-<transition on="transferred" to="Final"/>
-
-</view-state>
-</flow> 

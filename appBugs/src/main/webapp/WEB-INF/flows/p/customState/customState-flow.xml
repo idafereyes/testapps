@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"	
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
 xsi:schemaLocation="http://www.springframework.org/schema/webflow
@@ -29,7 +30,7 @@ start-state= "_jVoiceCheckInit" >
 	<transition to="testCustom"/>
 </view-state>
 
-<view-state id="testCustom" view="testCustom.jsp">
+<view-state id="testCustom" view="custom/p/customState/testCustom">
 	<transition to="Final"/>
 </view-state>
 </flow> 

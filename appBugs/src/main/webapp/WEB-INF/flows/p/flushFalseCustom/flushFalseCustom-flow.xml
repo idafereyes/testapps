@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"	
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
 xsi:schemaLocation="http://www.springframework.org/schema/webflow
@@ -28,9 +29,9 @@ start-state= "_jVoiceCheckInit" >
 <action-state id="flushFalse">
 	<on-entry>
 		<evaluate expression="jVoiceArchOutput" result="flashScope.flushFalse"/>
-		<set name="flashScope.flushFalse.flush" value="'false'" />
+		<set name="flashScope.flushFalse.flush" value="&apos;false&apos;" />
 		<evaluate expression="jVoiceArchAudioItem" result="flashScope.flushFalseaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.flushFalseaudioItems1.wording"/>
-		<set name="flashScope.flushFalseaudioItems1.wording.text" value="'Vamos a probar un flush con un custom detras'"/>
+		<set name="flashScope.flushFalseaudioItems1.wording.text" value="&apos;Vamos a probar un flush con un custom detras&apos;"/>
 		<evaluate expression="flashScope.flushFalse.audioItems.add(flashScope.flushFalseaudioItems1)"/>
 	</on-entry>
 	
@@ -45,7 +46,7 @@ start-state= "_jVoiceCheckInit" >
 	<transition to="testCustom"/>
 </view-state>
 
-<view-state id="testCustom" view="testCustom.jsp">
+<view-state id="testCustom" view="custom/p/flushFalseCustom/testCustom">
 	<transition to="Final"/>
 </view-state>
 </flow> 

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"	
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
 xsi:schemaLocation="http://www.springframework.org/schema/webflow
@@ -28,9 +29,9 @@ start-state= "_jVoiceCheckInit" >
 <action-state id="flushTest">
 	<on-entry>
 		<evaluate expression="jVoiceArchOutput" result="flashScope.flushTest"/>
-		<set name="flashScope.flushTest.flush" value="'true'" />
+		<set name="flashScope.flushTest.flush" value="&apos;true&apos;" />
 		<evaluate expression="jVoiceArchAudioItem" result="flashScope.flushTestaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.flushTestaudioItems1.wording"/>
-		<set name="flashScope.flushTestaudioItems1.wording.text" value="'Vamos a probar el flush'"/>
+		<set name="flashScope.flushTestaudioItems1.wording.text" value="&apos;Vamos a probar el flush&apos;"/>
 		<evaluate expression="flashScope.flushTest.audioItems.add(flashScope.flushTestaudioItems1)"/>
 	</on-entry>
 	
@@ -56,7 +57,7 @@ start-state= "_jVoiceCheckInit" >
 		<evaluate expression="flashScope.inputTest.grammars.add(flashScope.grammar1)" />
 		
 			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.inputTestmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.inputTestmainAudios1.wording"/>
-			        <set name="flashScope.inputTestmainAudios1.wording.text" value="'Has llegado al input.'"/>
+			        <set name="flashScope.inputTestmainAudios1.wording.text" value="&apos;Has llegado al input.&apos;"/>
 			        <evaluate expression="flashScope.inputTest.mainAudios.add(flashScope.inputTestmainAudios1)"/>
 	</on-entry>
 	<evaluate expression="flowProcessor.process(flashScope.inputTest)"/>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"	
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
 xsi:schemaLocation="http://www.springframework.org/schema/webflow
@@ -28,10 +29,10 @@ start-state= "_jVoiceCheckInit" >
 <action-state id="test">
 	<on-entry>
 		<evaluate expression="jVoiceArchOutput" result="flashScope.test"/>
-		<set name="flashScope.test.flush" value="'true'" />
-		<set name="flashScope.test.catchHangup" value="'false'" />
+		<set name="flashScope.test.flush" value="&apos;true&apos;" />
+		<set name="flashScope.test.catchHangup" value="&apos;false&apos;" />
 		<evaluate expression="jVoiceArchAudioItem" result="flashScope.testaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.testaudioItems1.wording"/>
-		<set name="flashScope.testaudioItems1.wording.text" value="'Probamos el flush a true y el catch hangup a false'"/>
+		<set name="flashScope.testaudioItems1.wording.text" value="&apos;Probamos el flush a true y el catch hangup a false&apos;"/>
 		<evaluate expression="flashScope.test.audioItems.add(flashScope.testaudioItems1)"/>
 	</on-entry>
 	
@@ -57,7 +58,7 @@ start-state= "_jVoiceCheckInit" >
 		<evaluate expression="flashScope.landingInput.grammars.add(flashScope.grammar1)" />
 		
 			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.landingInputmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.landingInputmainAudios1.wording"/>
-			        <set name="flashScope.landingInputmainAudios1.wording.text" value="'Prueba hecha. Pulse algo para la siguiente.'"/>
+			        <set name="flashScope.landingInputmainAudios1.wording.text" value="&apos;Prueba hecha. Pulse algo para la siguiente.&apos;"/>
 			        <evaluate expression="flashScope.landingInput.mainAudios.add(flashScope.landingInputmainAudios1)"/>
 	</on-entry>
 	<evaluate expression="flowProcessor.process(flashScope.landingInput)"/>
