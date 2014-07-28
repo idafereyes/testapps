@@ -1,0 +1,13 @@
+input testDsl
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main:
+ 	  	say wording "Hola"
+ 		when("'attempts==0'"){
+  			say wording "Prueba intento" 		
+ 		}
+}
+

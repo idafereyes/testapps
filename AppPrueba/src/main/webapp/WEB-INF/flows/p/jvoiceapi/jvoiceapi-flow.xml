@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_Jvoiceapi" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'jvoiceapi'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="testOutput"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testOutput" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="test">
+	<evaluate expression="flowProcessor.process(flowScope.it.test())"/>
+	<transition to="render_test"/>
+</action-state>
+
+<view-state id="render_test" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="testDsl"/>
+</view-state>
+<action-state id="testDsl">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.testDsl"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testDsl'"/>
+		<set name="flashScope.testDsl.name" value="'testDsl'" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<evaluate expression="flashScope.testDsl.grammars.add(flashScope.grammar1)" />
+		
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.testDslmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.testDslmainAudios1.wording"/>
+			        <set name="flashScope.testDslmainAudios1.wording.text" value="&apos;Hola&apos;"/>
+			        <evaluate expression="flashScope.testDsl.mainAudios.add(flashScope.testDslmainAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testDslmainAudios2"/><evaluate expression="jVoiceArchWording" result="flashScope.testDslmainAudios2.wording"/>
+			        <set name="flashScope.testDslmainAudios2.wording.text" value="&apos;Prueba intento&apos;"/>
+			        <set name="flashScope.testDslmainAudios2.condition" value="'attempts==0'"/><evaluate expression="flashScope.testDsl.mainAudios.add(flashScope.testDslmainAudios2)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.testDsl)"/>
+	<transition to="render_testDsl"/>
+</action-state>
+
+<view-state id="render_testDsl" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="Final"/>
+</view-state>
+<action-state id="testOutput">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testOutput'"/>
+		<evaluate expression="flowScope.it.testOutput()" result="flashScope.lastProgrammableOutput"/>
+		<evaluate expression="flowProcessor.process(flashScope.lastProgrammableOutput)" />
+	</on-entry>
+	
+	<evaluate expression="flashScope.lastProgrammableOutput.isCatchHangupOrFlush()"/>
+	<transition on="yes" to="render_testOutput"/>
+<transition to="test"/>
+	
+</action-state>	
+
+<view-state id="render_testOutput" view="#{flowProcessor.getRenderer().getView()}">
+		<transition on="success" to="test"/>
+	</view-state>			
+
+
+</flow> 

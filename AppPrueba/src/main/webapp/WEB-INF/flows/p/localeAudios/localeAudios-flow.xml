@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_LocaleAudios" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'localeAudios'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="testLocale"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testLocale" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="testLocale">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testLocale'"/>
+		<evaluate expression="flowScope.it.testLocale()" result="flashScope.lastProgrammableOutput"/>
+		<evaluate expression="flowProcessor.process(flashScope.lastProgrammableOutput)" />
+	</on-entry>
+	
+	<evaluate expression="flashScope.lastProgrammableOutput.isCatchHangupOrFlush()"/>
+	<transition on="yes" to="render_testLocale"/>
+<transition to="Final"/>
+	
+</action-state>	
+
+<view-state id="render_testLocale" view="#{flowProcessor.getRenderer().getView()}">
+		<transition on="success" to="Final"/>
+	</view-state>			
+
+
+</flow> 
