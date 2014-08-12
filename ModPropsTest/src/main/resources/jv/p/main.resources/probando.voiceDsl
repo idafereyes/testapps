@@ -1,0 +1,6 @@
+output probando
+
+audios{
+	main:
+		say wording "Prueba de codificación"
+}

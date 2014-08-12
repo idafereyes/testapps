@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_ModPropsTestEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_modPropsTest_components_p_Main" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'main'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="probando"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="probando" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="testProperties">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testProperties'"/>
+	</on-entry>
+   <evaluate expression="flowScope.it.testProperties()"
+   />
+   
+
+	<transition to="Final"></transition>
+</action-state>
+<action-state id="probando">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'probando'"/>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.probando"/>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.probandoaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.probandoaudioItems1.wording"/>
+		<set name="flashScope.probandoaudioItems1.wording.text" value="&apos;Prueba de codificación&apos;"/>
+		<evaluate expression="flashScope.probando.audioItems.add(flashScope.probandoaudioItems1)"/>
+	</on-entry>
+	
+	<evaluate expression="flowProcessor.process(flashScope.probando)"/>
+	
+<transition to="testProperties"/>
+</action-state>
+
+
+
+</flow> 
