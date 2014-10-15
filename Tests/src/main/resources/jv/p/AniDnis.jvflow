@@ -97,7 +97,7 @@
           </graphicsAlgorithmChildren>
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
-      <link businessObjects="/1/@states.2"/>
+      <link businessObjects="_02Xh0E7uEeSRK4teE3FE3w"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.0"/>
       <anchors xsi:type="pi:FixPointAnchor" visible="true" active="true" outgoingConnections="/0/@connections.1">
         <properties key="TOOLTIP" value="ok"/>
@@ -161,12 +161,12 @@
   <operations:Flow id="_-WFzgOr0EeO_FK261x5rcg" name="AniDnis" description="AniDnis" helperClass="com.isb.tests.components.p.AniDnis">
     <states xsi:type="operations:InitialState" id="_-WIPwOr0EeO_FK261x5rcg" name="Initial" outgoingTransitions="_-WQyoOr0EeO_FK261x5rcg"/>
     <states xsi:type="operations:FinalState" id="_-WMhMOr0EeO_FK261x5rcg" name="Final" incomingTransitions="_AOjxAOr1EeO_FK261x5rcg" final="true"/>
-    <states xsi:type="operations:PromptState" name="testAniDnis" incomingTransitions="_-WQyoOr0EeO_FK261x5rcg" outgoingTransitions="_AOjxAOr1EeO_FK261x5rcg">
+    <states xsi:type="operations:PromptState" id="_02Xh0E7uEeSRK4teE3FE3w" name="testAniDnis" incomingTransitions="_-WQyoOr0EeO_FK261x5rcg" outgoingTransitions="_AOjxAOr1EeO_FK261x5rcg">
       <fireableEvents>ok</fireableEvents>
       <locution href="AniDnis.resources/testAniDnis.voiceDsl#/"/>
     </states>
-    <transitions id="_-WQyoOr0EeO_FK261x5rcg" source="_-WIPwOr0EeO_FK261x5rcg" target="/1/@states.2" eventName="Ok"/>
-    <transitions id="_AOjxAOr1EeO_FK261x5rcg" source="/1/@states.2" target="_-WMhMOr0EeO_FK261x5rcg" eventName="ok"/>
+    <transitions id="_-WQyoOr0EeO_FK261x5rcg" source="_-WIPwOr0EeO_FK261x5rcg" target="_02Xh0E7uEeSRK4teE3FE3w" eventName="Ok"/>
+    <transitions id="_AOjxAOr1EeO_FK261x5rcg" source="_02Xh0E7uEeSRK4teE3FE3w" target="_-WMhMOr0EeO_FK261x5rcg" eventName="ok"/>
     <beans id="_-WFzger0EeO_FK261x5rcg" name="it" fqdn="com.isb.tests.components.p.AniDnis" nameBean="com_isb_tests_components_p_AniDnis" prototype="true"/>
   </operations:Flow>
 </xmi:XMI>

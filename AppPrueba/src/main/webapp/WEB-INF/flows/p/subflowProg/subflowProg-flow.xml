@@ -26,7 +26,9 @@ start-state= "_jVoiceCheckInit" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>
-<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
 <action-state id="welcome">
 	<on-entry>
 		<set name="flowScope.jvoiceCurrentStateName" value="'welcome'"/>

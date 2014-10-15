@@ -12,26 +12,31 @@
     <dependency>
       <groupId>com.vectorsf</groupId>
       <artifactId>jvoiceframework-flow</artifactId>
-      <version>1.10.0-SNAPSHOT</version>
+      <version>1.12.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>Tests</groupId>
       <artifactId>Tests</artifactId>
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>com.vectorsf</groupId>
+      <artifactId>jvoiceframework-isban-logger</artifactId>
+      <version>1.12.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   <repositories>
     <repository>
-      <id>jvoiceSnapshot</id>
-      <name>Jvoice snapshot repository</name>
-      <url>http://repository-felixvelasco.forge.cloudbees.com/snapshot/snapshot/</url>
+      <id>jvoice-snapshots</id>
+      <name>jVoice releases repository</name>
+      <url>http://bksplatform.artifactoryonline.com/bksplatform/jvoice-snapshot</url>
     </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
-      <id>jvoiceSnapshot</id>
-      <name>Jvoice snapshot repository</name>
-      <url>http://repository-felixvelasco.forge.cloudbees.com/snapshot/snapshot/</url>
+      <id>jvoice-snapshots</id>
+      <name>jVoice releases repository</name>
+      <url>http://bksplatform.artifactoryonline.com/bksplatform/jvoice-snapshot</url>
     </pluginRepository>
   </pluginRepositories>
   <build>
@@ -39,7 +44,7 @@
       <plugin>
         <groupId>com.vectorsf.jvoice</groupId>
         <artifactId>application-builder</artifactId>
-        <version>1.10.0-SNAPSHOT</version>
+        <version>1.12.0-SNAPSHOT</version>
         <executions>
           <execution>
             <phase>generate-resources</phase>
@@ -89,6 +94,7 @@
               <directory>src/main/resources</directory>
               <includes>
                 <include>logback.xml</include>
+                <include>properties/*/*.properties</include>
               </includes>
             </fileset>
           </filesets>

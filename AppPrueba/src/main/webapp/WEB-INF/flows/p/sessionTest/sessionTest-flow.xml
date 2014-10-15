@@ -49,14 +49,15 @@ start-state= "_jVoiceCheckInit" >
 <view-state id="render_inputState" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="print"/>
 </view-state>
+
+
 <action-state id="print">
 	<on-entry>
-		<set name="flowScope.jvoiceCurrentStateName" value="'print'"/>
+	<set name="flowScope.jvoiceCurrentStateName" value="'print'"/>
 	</on-entry>
+
    <evaluate expression="flowScope.it.print()"
    />
-   
-
-	<transition to="Final"></transition>
+		 <transition to="Final"></transition>
 </action-state>
 </flow> 

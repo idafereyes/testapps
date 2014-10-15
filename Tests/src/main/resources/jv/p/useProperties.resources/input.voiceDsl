@@ -1,0 +1,10 @@
+input ^input
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		say wording "Pulse cualquier tecla" 
+}
+

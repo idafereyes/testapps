@@ -34,7 +34,12 @@ start-state= "_jVoiceCheckInit" >
 
 <view-state id="render_test" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="testDsl"/>
+	<transition on="validation" to="validate_test">
+		<set name="flowScope._interpretation" value="requestParameters.interpretation"/>
+	</transition>
 </view-state>
+
+<view-state id="validate_test" view="validation_#{it.validate_test(flowScope._interpretation)}" />
 <action-state id="testDsl">
 	<on-entry>
 		<evaluate expression="jVoiceArchInput" result="flashScope.testDsl"></evaluate>
@@ -59,6 +64,7 @@ start-state= "_jVoiceCheckInit" >
 <view-state id="render_testDsl" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="Final"/>
 </view-state>
+
 <action-state id="testOutput">
 	<on-entry>
 		<set name="flowScope.jvoiceCurrentStateName" value="'testOutput'"/>

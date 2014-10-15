@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_UseProperties" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'useProperties'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="testProperties"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testProperties" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+
+<action-state id="testProperties">
+	<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'testProperties'"/>
+	</on-entry>
+
+   <evaluate expression="flowScope.it.testProperties()"
+   />
+		 <transition to="prueba"></transition>
+</action-state>
+
+<action-state id="printTrace">
+	<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'printTrace'"/>
+	</on-entry>
+
+   <evaluate expression="flowScope.it.printTrace()"
+   />
+		 <transition to="Final"></transition>
+</action-state>
+<view-state id="prueba" view="#{flowProcessor.getRenderer().getView()}">
+	<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'prueba'"/>
+	</on-entry>
+	<transition to="render_prueba"/>
+</view-state>
+
+<view-state id="render_prueba" view="custom/p/useProperties/prueba" >
+	<transition on="success" to="printTrace"/>
+	 	
+</view-state>
+</flow> 

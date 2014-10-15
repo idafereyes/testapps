@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_TestTemplates" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'TestTemplates'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="testTemplate"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testTemplate" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+<action-state id="testTemplate">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.testTemplate"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testTemplate'"/>
+		<set name="flashScope.testTemplate.name" value="'testTemplate'" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<evaluate expression="flashScope.testTemplate.grammars.add(flashScope.grammar1)" />
+		
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatemainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatemainAudios1.wording"/>
+			        <set name="flashScope.testTemplatemainAudios1.wording.text" value="&apos;TTS text&apos;"/>
+			        <evaluate expression="flashScope.testTemplate.mainAudios.add(flashScope.testTemplatemainAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatemainAudios2"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatemainAudios2.wording"/>
+			        <set name="flashScope.testTemplatemainAudios2.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatemainAudios2.condition" value="'attempts == 0'"/><evaluate expression="flashScope.testTemplate.mainAudios.add(flashScope.testTemplatemainAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatemainAudios3"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatemainAudios3.wording"/>
+			        <set name="flashScope.testTemplatemainAudios3.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatemainAudios3.condition" value="insertJavaCondition"/><evaluate expression="flashScope.testTemplate.mainAudios.add(flashScope.testTemplatemainAudios3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatemainAudios4"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatemainAudios4.wording"/>
+			        <set name="flashScope.testTemplatemainAudios4.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatemainAudios4.condition" value="'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"/><evaluate expression="flashScope.testTemplate.mainAudios.add(flashScope.testTemplatemainAudios4)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatemainAudios5"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatemainAudios5.wording"/>
+			        <set name="flashScope.testTemplatemainAudios5.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatemainAudios5.condition" value="'attempts == 0'"/><evaluate expression="flashScope.testTemplate.mainAudios.add(flashScope.testTemplatemainAudios5)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatemainAudios6"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatemainAudios6.wording"/>
+			        <set name="flashScope.testTemplatemainAudios6.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatemainAudios6.condition" value="insertJavaCondition"/><evaluate expression="flashScope.testTemplate.mainAudios.add(flashScope.testTemplatemainAudios6)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatemainAudios7"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatemainAudios7.wording"/>
+			        <set name="flashScope.testTemplatemainAudios7.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatemainAudios7.condition" value="'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"/><evaluate expression="flashScope.testTemplate.mainAudios.add(flashScope.testTemplatemainAudios7)"/>
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatenoMatchAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatenoMatchAudios1.wording"/>
+			        <set name="flashScope.testTemplatenoMatchAudios1.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatenoMatchAudios1.condition" value="'attempts == 0'"/><evaluate expression="flashScope.testTemplate.noMatchAudios.add(flashScope.testTemplatenoMatchAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatenoMatchAudios2"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatenoMatchAudios2.wording"/>
+			        <set name="flashScope.testTemplatenoMatchAudios2.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatenoMatchAudios2.condition" value="insertJavaCondition"/><evaluate expression="flashScope.testTemplate.noMatchAudios.add(flashScope.testTemplatenoMatchAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatenoMatchAudios3"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatenoMatchAudios3.wording"/>
+			        <set name="flashScope.testTemplatenoMatchAudios3.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatenoMatchAudios3.condition" value="'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"/><evaluate expression="flashScope.testTemplate.noMatchAudios.add(flashScope.testTemplatenoMatchAudios3)"/>
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatenoInputAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatenoInputAudios1.wording"/>
+			        <set name="flashScope.testTemplatenoInputAudios1.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatenoInputAudios1.condition" value="'attempts == 0'"/><evaluate expression="flashScope.testTemplate.noInputAudios.add(flashScope.testTemplatenoInputAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatenoInputAudios2"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatenoInputAudios2.wording"/>
+			        <set name="flashScope.testTemplatenoInputAudios2.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatenoInputAudios2.condition" value="insertJavaCondition"/><evaluate expression="flashScope.testTemplate.noInputAudios.add(flashScope.testTemplatenoInputAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatenoInputAudios3"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatenoInputAudios3.wording"/>
+			        <set name="flashScope.testTemplatenoInputAudios3.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatenoInputAudios3.condition" value="'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"/><evaluate expression="flashScope.testTemplate.noInputAudios.add(flashScope.testTemplatenoInputAudios3)"/>
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatematchAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatematchAudios1.wording"/>
+			        <set name="flashScope.testTemplatematchAudios1.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatematchAudios1.condition" value="'attempts == 0'"/><evaluate expression="flashScope.testTemplate.matchAudios.add(flashScope.testTemplatematchAudios1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatematchAudios2"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatematchAudios2.wording"/>
+			        <set name="flashScope.testTemplatematchAudios2.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatematchAudios2.condition" value="insertJavaCondition"/><evaluate expression="flashScope.testTemplate.matchAudios.add(flashScope.testTemplatematchAudios2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.testTemplatematchAudios3"/><evaluate expression="jVoiceArchWording" result="flashScope.testTemplatematchAudios3.wording"/>
+			        <set name="flashScope.testTemplatematchAudios3.wording.text" value="&apos;TTS Text&apos;"/>
+			        <set name="flashScope.testTemplatematchAudios3.condition" value="'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"/><evaluate expression="flashScope.testTemplate.matchAudios.add(flashScope.testTemplatematchAudios3)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.testTemplate)"/>
+	<transition to="render_testTemplate"/>
+</action-state>
+
+<view-state id="render_testTemplate" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="transferTemplate"/>
+</view-state>
+
+<action-state id="outputTemplate">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'outputTemplate'"/>
+		<evaluate expression="jVoiceArchOutput" result="flashScope.outputTemplate"/>
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.outputTemplateaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.outputTemplateaudioItems1.wording"/>
+		<set name="flashScope.outputTemplateaudioItems1.wording.text" value="&apos;TTS text&apos;"/>
+		<evaluate expression="flashScope.outputTemplate.audioItems.add(flashScope.outputTemplateaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.outputTemplateaudioItems2"/><evaluate expression="jVoiceArchWording" result="flashScope.outputTemplateaudioItems2.wording"/>
+		<set name="flashScope.outputTemplateaudioItems2.wording.text" value="&apos;TTS Text&apos;"/>
+		<set name="flashScope.outputTemplateaudioItems2.condition" value="'attempts == 0'"/><evaluate expression="flashScope.outputTemplate.audioItems.add(flashScope.outputTemplateaudioItems2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.outputTemplateaudioItems3"/><evaluate expression="jVoiceArchWording" result="flashScope.outputTemplateaudioItems3.wording"/>
+		<set name="flashScope.outputTemplateaudioItems3.wording.text" value="&apos;TTS Text&apos;"/>
+		<set name="flashScope.outputTemplateaudioItems3.condition" value="insertJavaCondition"/><evaluate expression="flashScope.outputTemplate.audioItems.add(flashScope.outputTemplateaudioItems3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.outputTemplateaudioItems4"/><evaluate expression="jVoiceArchWording" result="flashScope.outputTemplateaudioItems4.wording"/>
+		<set name="flashScope.outputTemplateaudioItems4.wording.text" value="&apos;TTS Text&apos;"/>
+		<set name="flashScope.outputTemplateaudioItems4.condition" value="'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"/><evaluate expression="flashScope.outputTemplate.audioItems.add(flashScope.outputTemplateaudioItems4)"/>
+	</on-entry>
+	
+	<evaluate expression="flowProcessor.process(flashScope.outputTemplate)"/>
+	
+<transition to="transferTemplates"/>
+</action-state>
+
+
+
+<action-state id="transferTemplate">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'transferTemplate'"/>
+		<evaluate expression="jVoiceArchRecord" result="flashScope.transferTemplate" />
+		<set name="flashScope.transferTemplate.fileName" value="&apos;recordFileName&apos;" />
+<evaluate expression="jVoiceArchAudioItem" result="flashScope.transferTemplateaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.transferTemplateaudioItems1.wording"/>
+<set name="flashScope.transferTemplateaudioItems1.wording.text" value="&apos;TTS Text&apos;"/>
+<evaluate expression="flashScope.transferTemplate.audioItems.add(flashScope.transferTemplateaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.transferTemplateaudioItems2"/><evaluate expression="jVoiceArchWording" result="flashScope.transferTemplateaudioItems2.wording"/>
+<set name="flashScope.transferTemplateaudioItems2.wording.text" value="&apos;TTS Text&apos;"/>
+<set name="flashScope.transferTemplateaudioItems2.condition" value="'attempts == 0'"/><evaluate expression="flashScope.transferTemplate.audioItems.add(flashScope.transferTemplateaudioItems2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.transferTemplateaudioItems3"/><evaluate expression="jVoiceArchWording" result="flashScope.transferTemplateaudioItems3.wording"/>
+<set name="flashScope.transferTemplateaudioItems3.wording.text" value="&apos;TTS Text&apos;"/>
+<set name="flashScope.transferTemplateaudioItems3.condition" value="'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"/><evaluate expression="flashScope.transferTemplate.audioItems.add(flashScope.transferTemplateaudioItems3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.transferTemplateaudioItems4"/><evaluate expression="jVoiceArchWording" result="flashScope.transferTemplateaudioItems4.wording"/>
+<set name="flashScope.transferTemplateaudioItems4.wording.text" value="&apos;TTS Text&apos;"/>
+<set name="flashScope.transferTemplateaudioItems4.condition" value="insertJavaCondition"/><evaluate expression="flashScope.transferTemplate.audioItems.add(flashScope.transferTemplateaudioItems4)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.transferTemplate)"/>		
+	<transition to="render_transferTemplate"/>
+</action-state>
+
+<view-state id="render_transferTemplate" view="#{flowProcessor.getRenderer().getView()}" model="lastRecordResult">
+	<transition on="recorded" to="outputTemplate">
+		<evaluate expression="recordingService.saveRecording(lastRecordResult.temprecording, lastRecordResult.fileName)"/>
+	</transition>
+</view-state>
+<action-state id="transferTemplates">
+<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'transferTemplates'"/>
+	<evaluate expression="jVoiceArchBlindTransfer" result = "flashScope.transferTemplates"/>
+	<set name="flashScope.transferTemplates.dest" value="&apos;tel:xxx&apos;"/>
+	<evaluate expression="jVoiceArchAudioItem" result="flashScope.transferTemplatesaudioItems1"/><evaluate expression="jVoiceArchWording" result="flashScope.transferTemplatesaudioItems1.wording"/>
+	<set name="flashScope.transferTemplatesaudioItems1.wording.text" value="&apos;TTS text&apos;"/>
+	<evaluate expression="flashScope.transferTemplates.audioItems.add(flashScope.transferTemplatesaudioItems1)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.transferTemplatesaudioItems2"/><evaluate expression="jVoiceArchWording" result="flashScope.transferTemplatesaudioItems2.wording"/>
+	<set name="flashScope.transferTemplatesaudioItems2.wording.text" value="&apos;TTS Text&apos;"/>
+	<set name="flashScope.transferTemplatesaudioItems2.condition" value="'attempts == 0'"/><evaluate expression="flashScope.transferTemplates.audioItems.add(flashScope.transferTemplatesaudioItems2)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.transferTemplatesaudioItems3"/><evaluate expression="jVoiceArchWording" result="flashScope.transferTemplatesaudioItems3.wording"/>
+	<set name="flashScope.transferTemplatesaudioItems3.wording.text" value="&apos;TTS Text&apos;"/>
+	<set name="flashScope.transferTemplatesaudioItems3.condition" value="insertJavaCondition"/><evaluate expression="flashScope.transferTemplates.audioItems.add(flashScope.transferTemplatesaudioItems3)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.transferTemplatesaudioItems4"/><evaluate expression="jVoiceArchWording" result="flashScope.transferTemplatesaudioItems4.wording"/>
+	<set name="flashScope.transferTemplatesaudioItems4.wording.text" value="&apos;TTS Text&apos;"/>
+	<set name="flashScope.transferTemplatesaudioItems4.condition" value="'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"/><evaluate expression="flashScope.transferTemplates.audioItems.add(flashScope.transferTemplatesaudioItems4)"/><evaluate expression="jVoiceArchAudioItem" result="flashScope.transferTemplatesaudioItems5"/><evaluate expression="jVoiceArchWording" result="flashScope.transferTemplatesaudioItems5.wording"/>
+	<set name="flashScope.transferTemplatesaudioItems5.wording.text" value="&apos;TTS Text&apos;"/>
+	<set name="flashScope.transferTemplatesaudioItems5.condition" value="'attempts == 0'"/><evaluate expression="flashScope.transferTemplates.audioItems.add(flashScope.transferTemplatesaudioItems5)"/>
+</on-entry>
+<evaluate expression="flowProcessor.process(flashScope.transferTemplates)"/>	
+<transition to="render_transferTemplates" />
+
+</action-state>
+
+<view-state id="render_transferTemplates" view="#{flowProcessor.getRenderer().getView()}" model="lastTransferResult">
+
+<transition on="transferred" to="Final"/>
+
+</view-state>
+</flow> 

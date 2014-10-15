@@ -22,9 +22,16 @@ public class LocaleAudios implements Serializable {
 	
 	public Output testLocale() {
 		Output output = jvoiceBeanService.getOutput();
-		output.getAudioItems().add(jvoiceBeanService.getAudioItem("TTS text", new Locale("es", "ES")));
+		output.getAudioItems().add(jvoiceBeanService.getAudioItem("audio", "Text in english"));
+		output.getAudioItems().add(jvoiceBeanService.getAudioItem("audio", null));
+		output.getAudioItems().add(jvoiceBeanService.getAudioItem(null, "Text in english"));
+		output.getAudioItems().add(jvoiceBeanService.getAudioItemWithLocale("Texto en español", new Locale("es", "ES")));
+		output.getAudioItems().add(jvoiceBeanService.getAudioItemWithLocale("audio", "Texto en español", new Locale("es", "ES")));
+		output.getAudioItems().add(jvoiceBeanService.getAudioItemWithLocale("audio", null, new Locale("es", "ES")));
+		output.getAudioItems().add(jvoiceBeanService.getAudioItemWithLocale(null, "Texto en español", new Locale("es", "ES")));
+		output.getAudioItems().add(jvoiceBeanService.getAudioItemWithLocale(null, "Texto en español", null));
+		output.getAudioItems().add(jvoiceBeanService.getAudioItem(null, "Text in english"));
 		return output;
 	}
 
-	// Add your methods here
 }

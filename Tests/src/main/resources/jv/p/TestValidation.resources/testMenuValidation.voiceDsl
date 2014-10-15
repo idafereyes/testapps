@@ -1,0 +1,18 @@
+menu testMenuValidation
+{
+	validation true
+}
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+
+	main:
+		say wording "Probando validación en el menú"  
+}
+
+options{
+	uno : "1"
+	dos : "2"	
+}

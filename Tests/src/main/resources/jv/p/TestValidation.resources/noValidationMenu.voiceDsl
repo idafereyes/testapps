@@ -1,0 +1,15 @@
+menu noValidationMenu
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+
+	main:
+		say wording "Probando sin validación en el menú"  
+}
+
+options{
+	uno : "1"
+	dos : "2"	
+}

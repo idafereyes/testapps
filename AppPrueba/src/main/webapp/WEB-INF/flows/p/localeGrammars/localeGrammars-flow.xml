@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_LocaleGrammars" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'localeGrammars'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="differentLocale"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="differentLocale" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="differentLocale">
+	<evaluate expression="flowProcessor.process(flowScope.it.differentLocale())"/>
+	<transition to="render_differentLocale"/>
+</action-state>
+
+<view-state id="render_differentLocale" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="Final"/>
+	<transition on="validation" to="validate_differentLocale">
+		<set name="flowScope._interpretation" value="requestParameters.interpretation"/>
+	</transition>
+</view-state>
+
+<view-state id="validate_differentLocale" view="validation_#{it.validate_differentLocale(flowScope._interpretation)}" />
+</flow> 

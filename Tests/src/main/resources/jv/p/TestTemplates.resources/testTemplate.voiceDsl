@@ -1,0 +1,65 @@
+input testTemplate
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+
+audios{
+ 	main:	
+ 		say wording "TTS text"
+ 		when ("'attempts == 0'") {
+ 			say wording "TTS Text"	
+ 		}
+ 		when ("insertJavaCondition") {
+ 			say wording "TTS Text"
+ 		}
+ 		
+ 		when ("'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"){
+ 			say wording "TTS Text" 			
+ 		}
+ 		when ("'attempts == 0'") {
+ 			say wording "TTS Text"
+ 		}
+ 		when ("insertJavaCondition") {
+ 			say wording "TTS Text"
+ 		}
+ 		when ("'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"){
+ 			say wording "TTS Text"
+ 		}
+ 		
+ 	
+ 	nomatch:
+ 		when ("'attempts == 0'") {
+ 			say wording "TTS Text"	
+ 		}
+ 		when ("insertJavaCondition") {
+ 			say wording "TTS Text"
+ 		}
+ 		when ("'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"){
+ 			say wording "TTS Text" 			
+ 		}
+ 		
+ 	noinput:
+ 		when ("'attempts == 0'") {
+ 			say wording "TTS Text"	
+ 		}
+ 		when ("insertJavaCondition") {
+ 			say wording "TTS Text"
+ 		}
+ 		
+ 		when ("'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"){
+ 			say wording "TTS Text" 			
+ 		}
+ 	match:
+ 		when ("'attempts == 0'") {
+ 			say wording "TTS Text"	
+ 		}
+ 		when ("insertJavaCondition") {
+ 			say wording "TTS Text"
+ 		}
+ 		when ("'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"){
+ 			say wording "TTS Text" 			
+ 		}
+ 		
+}
+

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_TestValidation" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'TestValidation'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="testValidation"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testValidation" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<action-state id="testValidation">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.testValidation"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testValidation'"/>
+		<set name="flashScope.testValidation.name" value="'testValidation'" />
+		<set name="flashScope.testValidation.bargein" value="&apos;true&apos;" />
+		<set name="flashScope.testValidation.validation" value="&apos;true&apos;" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<evaluate expression="flashScope.testValidation.grammars.add(flashScope.grammar1)" />
+		
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.testValidationmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.testValidationmainAudios1.wording"/>
+			        <set name="flashScope.testValidationmainAudios1.wording.text" value="&apos;Probando validación.&apos;"/>
+			        <evaluate expression="flashScope.testValidation.mainAudios.add(flashScope.testValidationmainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.testValidation)"/>
+	<transition to="render_testValidation"/>
+</action-state>
+
+<view-state id="render_testValidation" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="testProgValidation"/>
+	<transition on="validation" to="validate_testValidation">
+		<set name="flowScope._interpretation" value="requestParameters.interpretation"/>
+	</transition>
+</view-state>
+
+<view-state id="validate_testValidation" view="validation_#{it.validate_testValidation(flowScope._interpretation)}" />
+<action-state id="testProgValidation">
+	<evaluate expression="flowProcessor.process(flowScope.it.testProgValidation())"/>
+	<transition to="render_testProgValidation"/>
+</action-state>
+
+<view-state id="render_testProgValidation" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="noValidation"/>
+	<transition on="validation" to="validate_testProgValidation">
+		<set name="flowScope._interpretation" value="requestParameters.interpretation"/>
+	</transition>
+</view-state>
+
+<view-state id="validate_testProgValidation" view="validation_#{it.validate_testProgValidation(flowScope._interpretation)}" />
+<action-state id="noValidation">
+	<on-entry>
+		<evaluate expression="jVoiceArchInput" result="flashScope.noValidation"></evaluate>
+		<set name="flowScope.jvoiceCurrentStateName" value="'noValidation'"/>
+		<set name="flashScope.noValidation.name" value="'noValidation'" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<evaluate expression="flashScope.noValidation.grammars.add(flashScope.grammar1)" />
+		
+			        <evaluate expression="jVoiceArchAudioItem" result="flashScope.noValidationmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.noValidationmainAudios1.wording"/>
+			        <set name="flashScope.noValidationmainAudios1.wording.text" value="&apos;TTS text&apos;"/>
+			        <evaluate expression="flashScope.noValidation.mainAudios.add(flashScope.noValidationmainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.noValidation)"/>
+	<transition to="render_noValidation"/>
+</action-state>
+
+<view-state id="render_noValidation" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="noValidationProg"/>
+</view-state>
+
+<action-state id="noValidationProg">
+	<evaluate expression="flowProcessor.process(flowScope.it.noValidationProg())"/>
+	<transition to="render_noValidationProg"/>
+</action-state>
+
+<view-state id="render_noValidationProg" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="testMenuValidation"/>
+	<transition on="validation" to="validate_noValidationProg">
+		<set name="flowScope._interpretation" value="requestParameters.interpretation"/>
+	</transition>
+</view-state>
+
+<view-state id="validate_noValidationProg" view="validation_#{it.validate_noValidationProg(flowScope._interpretation)}" />
+<action-state id="testMenuValidation">
+	
+	
+
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'testMenuValidation'"/>
+		<evaluate expression="jVoiceArchMenu" result="flashScope.testMenuValidation"/>
+		<set name="flashScope.testMenuValidation.name" value="'testMenuValidation'" />
+		<set name="flashScope.testMenuValidation.validation" value="&apos;true&apos;" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<evaluate expression="flashScope.testMenuValidation.grammars.add(flashScope.grammar1)" />
+		<evaluate expression="flashScope.testMenuValidation.addValueOption('uno','1')" />
+		<evaluate expression="flashScope.testMenuValidation.addValueOption('dos','2')" />
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.testMenuValidationmainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.testMenuValidationmainAudios1.wording"/>
+		<set name="flashScope.testMenuValidationmainAudios1.wording.text" value="&apos;Probando validación en el menú&apos;"/>
+		<evaluate expression="flashScope.testMenuValidation.mainAudios.add(flashScope.testMenuValidationmainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.testMenuValidation)"/>
+	<transition to="render_testMenuValidation"></transition>
+</action-state>
+
+<view-state id="render_testMenuValidation" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="render_decision_testMenuValidation"/>
+	<transition on="validation" to="validate_testMenuValidation">
+		<set name="flowScope._interpretation" value="requestParameters.interpretation"/>
+	</transition>
+</view-state>
+
+<action-state id="render_decision_testMenuValidation">
+		<evaluate expression="lastInputResult.interpretation"></evaluate>
+		<transition on="1" to="testMenuValidProg"/>
+		<transition on="2" to="testMenuValidProg"/>
+</action-state>
+	<view-state id="validate_testMenuValidation" view="validation_#{it.validate_testMenuValidation(flowScope._interpretation)}" />
+<action-state id="testMenuValidProg">
+<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'testMenuValidProg'"/>
+	<evaluate expression="jVoiceArchMenu" result="flowScope.testMenuValidProg"/>
+</on-entry>
+<evaluate expression="flowProcessor.process(flowScope.it.testMenuValidProg())"/>
+<transition to="render_testMenuValidProg"></transition>
+</action-state>
+
+<view-state id="render_testMenuValidProg" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="render_decision_testMenuValidProg"/>
+	<transition on="validation" to="validate_testMenuValidProg">
+		<set name="flowScope._interpretation" value="requestParameters.interpretation"/>
+	</transition>
+</view-state>
+
+<action-state id="render_decision_testMenuValidProg">
+	<evaluate expression="lastInputResult.interpretation"></evaluate>
+	<transition on="#{flowScope.it.testMenuValidProg().getValueOption('uno')}" to="noValidationMenu"/>
+	<transition on="#{flowScope.it.testMenuValidProg().getValueOption('dos')}" to="noValidationMenu"/>
+</action-state>
+
+<view-state id="validate_testMenuValidProg" view="validation_#{it.validate_testMenuValidProg(flowScope._interpretation)}" />
+<action-state id="noValidationMenu">
+	
+	
+
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentStateName" value="'noValidationMenu'"/>
+		<evaluate expression="jVoiceArchMenu" result="flashScope.noValidationMenu"/>
+		<set name="flashScope.noValidationMenu.name" value="'noValidationMenu'" />
+		
+		<evaluate expression="jVoiceArchGrammar" result="flashScope.grammar1" />
+		<set name="flashScope.grammar1.src" value="'builtin:dtmf/digits'"/>
+		<set name="flashScope.grammar1.mode" value="'dtmf'"/>
+		<evaluate expression="flashScope.noValidationMenu.grammars.add(flashScope.grammar1)" />
+		<evaluate expression="flashScope.noValidationMenu.addValueOption('uno','1')" />
+		<evaluate expression="flashScope.noValidationMenu.addValueOption('dos','2')" />
+		<evaluate expression="jVoiceArchAudioItem" result="flashScope.noValidationMenumainAudios1"/><evaluate expression="jVoiceArchWording" result="flashScope.noValidationMenumainAudios1.wording"/>
+		<set name="flashScope.noValidationMenumainAudios1.wording.text" value="&apos;Probando sin validación en el menú&apos;"/>
+		<evaluate expression="flashScope.noValidationMenu.mainAudios.add(flashScope.noValidationMenumainAudios1)"/>
+	</on-entry>
+	<evaluate expression="flowProcessor.process(flashScope.noValidationMenu)"/>
+	<transition to="render_noValidationMenu"></transition>
+</action-state>
+
+<view-state id="render_noValidationMenu" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="render_decision_noValidationMenu"/>
+</view-state>
+
+<action-state id="render_decision_noValidationMenu">
+		<evaluate expression="lastInputResult.interpretation"></evaluate>
+		<transition on="1" to="noValidationMenuProg"/>
+		<transition on="2" to="noValidationMenuProg"/>
+</action-state>
+<action-state id="noValidationMenuProg">
+<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'noValidationMenuProg'"/>
+	<evaluate expression="jVoiceArchMenu" result="flowScope.noValidationMenuProg"/>
+</on-entry>
+<evaluate expression="flowProcessor.process(flowScope.it.noValidationMenuProg())"/>
+<transition to="render_noValidationMenuProg"></transition>
+</action-state>
+
+<view-state id="render_noValidationMenuProg" view="#{flowProcessor.getRenderer().getView()}">
+	<transition on="match" to="render_decision_noValidationMenuProg"/>
+	<transition on="validation" to="validate_noValidationMenuProg">
+		<set name="flowScope._interpretation" value="requestParameters.interpretation"/>
+	</transition>
+</view-state>
+
+<action-state id="render_decision_noValidationMenuProg">
+	<evaluate expression="lastInputResult.interpretation"></evaluate>
+	<transition on="#{flowScope.it.noValidationMenuProg().getValueOption('uno')}" to="Final"/>
+	<transition on="#{flowScope.it.noValidationMenuProg().getValueOption('dos')}" to="Final"/>
+</action-state>
+
+<view-state id="validate_noValidationMenuProg" view="validation_#{it.validate_noValidationMenuProg(flowScope._interpretation)}" />
+</flow> 

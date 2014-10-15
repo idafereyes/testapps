@@ -28,20 +28,26 @@ start-state= "_jVoiceCheckInit" >
 </view-state>
 <view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
 <action-state id="menuSt">
-	<on-entry>
-		<set name="flowScope.jvoiceCurrentStateName" value="'menuSt'"/>
-		<evaluate expression="jVoiceArchMenu" result="flowScope.menuSt"/>
-	</on-entry>
-	<evaluate expression="flowProcessor.process(flowScope.it.menuSt())"/>
-	<transition to="render_menuSt"></transition>
+<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'menuSt'"/>
+	<evaluate expression="jVoiceArchMenu" result="flowScope.menuSt"/>
+</on-entry>
+<evaluate expression="flowProcessor.process(flowScope.it.menuSt())"/>
+<transition to="render_menuSt"></transition>
 </action-state>
-<view-state id="render_menuSt" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+
+<view-state id="render_menuSt" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="render_decision_menuSt"/>
+	<transition on="validation" to="validate_menuSt">
+		<set name="flowScope._interpretation" value="requestParameters.interpretation"/>
+	</transition>
 </view-state>
-		<action-state id="render_decision_menuSt">
-		<evaluate expression="lastInputResult.interpretation"></evaluate>
-		<transition on="#{flowScope.it.menuSt().getValueOption('1')}" to="Final"/>
-		<transition on="#{flowScope.it.menuSt().getValueOption('2')}" to="Final"/>
-	
+
+<action-state id="render_decision_menuSt">
+	<evaluate expression="lastInputResult.interpretation"></evaluate>
+	<transition on="#{flowScope.it.menuSt().getValueOption('1')}" to="Final"/>
+	<transition on="#{flowScope.it.menuSt().getValueOption('2')}" to="Final"/>
 </action-state>
+
+<view-state id="validate_menuSt" view="validation_#{it.validate_menuSt(flowScope._interpretation)}" />
 </flow> 

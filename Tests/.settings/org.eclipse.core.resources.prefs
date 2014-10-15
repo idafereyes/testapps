@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/generated-sources/wsdl2java=UTF-8
 encoding//src/main/java=UTF-8
+encoding//src/main/resources/properties/propsExample.properties=UTF-8
+encoding//src/main/resources/properties/xmlExample.xml=UTF-8

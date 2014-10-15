@@ -1,0 +1,21 @@
+record transferTemplate
+
+{
+	filename "recordFileName" 
+} 
+
+audios{ 
+	main:
+		say wording "TTS Text"
+		
+		when ("'attempts == 0'") {
+			say wording "TTS Text"	
+		}
+		when ("'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"){
+			say wording "TTS Text" 			
+		}
+		when ("insertJavaCondition") {
+			say wording "TTS Text"
+		}			
+		
+}

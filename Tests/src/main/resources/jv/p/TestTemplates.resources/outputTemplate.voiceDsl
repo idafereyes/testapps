@@ -1,0 +1,19 @@
+output outputTemplate
+{
+	
+}
+
+audios{
+	
+	main:
+		say wording "TTS text"
+		when ("'attempts == 0'") {
+			say wording "TTS Text"	
+		}
+		when ("insertJavaCondition") {
+			say wording "TTS Text"
+		}
+		when ("'' + (insertJavaCondition)  + ' &amp;amp;&amp;amp; attempts == 0'"){
+			say wording "TTS Text" 			
+		}
+}

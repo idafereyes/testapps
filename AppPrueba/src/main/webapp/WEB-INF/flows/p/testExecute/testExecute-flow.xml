@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"	
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+parent="_TestsEventsHandlers/eventsHandlers"
+start-state= "_jVoiceCheckInit" >
+
+<on-start>
+<evaluate expression="com_isb_tests_components_p_TestExecute" result="flowScope.it"></evaluate>
+
+</on-start>
+
+
+<action-state id="_jVoiceCheckInit">
+	<on-entry>
+		<set name="flowScope.jvoiceCurrentFlowName" value="'testExecute'"/>
+	</on-entry>
+	<evaluate expression="jVoiceArchData.initialized" />
+	<transition on="no" to="_jVoiceInit"/>
+	<transition to="testExceptions"/>
+</action-state>
+
+<view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
+	<transition to="testExceptions" >
+		<set name="jVoiceArchData.initialized" value="true"/>
+	</transition>
+</view-state>
+<end-state id="OK" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+
+<action-state id="testExceptions">
+	<on-entry>
+	<set name="flowScope.jvoiceCurrentStateName" value="'testExceptions'"/>
+	</on-entry>
+
+   <evaluate expression="flowScope.it.testOtherException()"
+   />
+	<transition to="OK"/>
+	<transition to="Error"/>
+	<transition on-exception="java.io.IOException" to="OK"></transition>
+</action-state>
+<end-state id="Error" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
+</flow> 

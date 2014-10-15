@@ -26,9 +26,7 @@ start-state= "_jVoiceCheckInit" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>
-<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
-	<output name="result" value="''" />
-</end-state>
+<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
 <action-state id="testLocale">
 	<on-entry>
 		<set name="flowScope.jvoiceCurrentStateName" value="'testLocale'"/>

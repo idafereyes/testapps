@@ -1,0 +1,13 @@
+input testValidation
+{
+	bargein true
+	validation true
+}
+
+grammars{
+	dtmf "builtin:dtmf/digits"
+}
+audios{
+ 	main: 
+ 		say wording "Probando validación." 
+}

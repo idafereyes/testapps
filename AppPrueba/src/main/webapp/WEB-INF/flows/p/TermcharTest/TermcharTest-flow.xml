@@ -26,7 +26,9 @@ start-state= "_jVoiceCheckInit" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>
-<view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
+<end-state id="Final" view="#{flowProcessor.getRenderer().getView()}">
+	<output name="result" value="''" />
+</end-state>
 <action-state id="termcharInputDsl">
 	<on-entry>
 		<evaluate expression="jVoiceArchInput" result="flashScope.termcharInputDsl"></evaluate>
@@ -51,6 +53,7 @@ start-state= "_jVoiceCheckInit" >
 <view-state id="render_termcharInputDsl" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="printLasResult"/>
 </view-state>
+
 <action-state id="termcharGlobalInput">
 	<on-entry>
 		<evaluate expression="jVoiceArchInput" result="flashScope.termcharGlobalInput"></evaluate>
@@ -73,6 +76,7 @@ start-state= "_jVoiceCheckInit" >
 <view-state id="render_termcharGlobalInput" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="printLasResult2"/>
 </view-state>
+
 <action-state id="termcharMenuDsl">
 	
 	
@@ -98,14 +102,14 @@ start-state= "_jVoiceCheckInit" >
 	<transition to="render_termcharMenuDsl"></transition>
 </action-state>
 
-<view-state id="render_termcharMenuDsl" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+<view-state id="render_termcharMenuDsl" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="render_decision_termcharMenuDsl"/>
 </view-state>
-		<action-state id="render_decision_termcharMenuDsl">
+
+<action-state id="render_decision_termcharMenuDsl">
 		<evaluate expression="lastInputResult.interpretation"></evaluate>
 		<transition on="1" to="printLasResult3"/>
 		<transition on="2" to="printLasResult3"/>
-	
 </action-state>
 <action-state id="termcharInputProg">
 	<evaluate expression="flowProcessor.process(flowScope.it.termcharInputProg())"/>
@@ -114,7 +118,12 @@ start-state= "_jVoiceCheckInit" >
 
 <view-state id="render_termcharInputProg" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="printLasResult1"/>
+	<transition on="validation" to="validate_termcharInputProg">
+		<set name="flowScope._interpretation" value="requestParameters.interpretation"/>
+	</transition>
 </view-state>
+
+<view-state id="validate_termcharInputProg" view="validation_#{it.validate_termcharInputProg(flowScope._interpretation)}" />
 <action-state id="termcharMenuGlobal">
 	
 	
@@ -138,63 +147,63 @@ start-state= "_jVoiceCheckInit" >
 	<transition to="render_termcharMenuGlobal"></transition>
 </action-state>
 
-<view-state id="render_termcharMenuGlobal" view="#{flowProcessor.getRenderer().getView()}" model="lastInputResult">
+<view-state id="render_termcharMenuGlobal" view="#{flowProcessor.getRenderer().getView()}">
 	<transition on="match" to="render_decision_termcharMenuGlobal"/>
 </view-state>
-		<action-state id="render_decision_termcharMenuGlobal">
+
+<action-state id="render_decision_termcharMenuGlobal">
 		<evaluate expression="lastInputResult.interpretation"></evaluate>
 		<transition on="1" to="printLasResult4"/>
 		<transition on="2" to="printLasResult4"/>
-	
 </action-state>
+
 <action-state id="printLasResult">
 	<on-entry>
-		<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult'"/>
+	<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult'"/>
 	</on-entry>
+
    <evaluate expression="flowScope.it.printLasResult()"
    />
-   
-
-	<transition to="termcharInputProg"></transition>
+		 <transition to="termcharInputProg"></transition>
 </action-state>
+
 <action-state id="printLasResult1">
 	<on-entry>
-		<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult1'"/>
+	<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult1'"/>
 	</on-entry>
+
    <evaluate expression="flowScope.it.printLasResult()"
    />
-   
-
-	<transition to="termcharGlobalInput"></transition>
+		 <transition to="termcharGlobalInput"></transition>
 </action-state>
+
 <action-state id="printLasResult2">
 	<on-entry>
-		<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult2'"/>
+	<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult2'"/>
 	</on-entry>
+
    <evaluate expression="flowScope.it.printLasResult()"
    />
-   
-
-	<transition to="termcharMenuDsl"></transition>
+		 <transition to="termcharMenuDsl"></transition>
 </action-state>
+
 <action-state id="printLasResult3">
 	<on-entry>
-		<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult3'"/>
+	<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult3'"/>
 	</on-entry>
+
    <evaluate expression="flowScope.it.printLasResult()"
    />
-   
-
-	<transition to="termcharMenuGlobal"></transition>
+		 <transition to="termcharMenuGlobal"></transition>
 </action-state>
+
 <action-state id="printLasResult4">
 	<on-entry>
-		<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult4'"/>
+	<set name="flowScope.jvoiceCurrentStateName" value="'printLasResult4'"/>
 	</on-entry>
+
    <evaluate expression="flowScope.it.printLasResult()"
    />
-   
-
-	<transition to="Final"></transition>
+		 <transition to="Final"></transition>
 </action-state>
 </flow> 

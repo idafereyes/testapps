@@ -2,8 +2,6 @@ package com.isb.tests.components.p;
 
 import java.io.Serializable;
 
-import javax.servlet.annotation.WebServlet;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -17,7 +15,6 @@ import com.vectorsf.jvoiceframework.core.bean.factory.JvoiceBeanService;
 
 @Component("com_isb_tests_components_p_TermcharTest")
 @Scope("prototype")
-@WebServlet
 public class TermcharTest implements Serializable {
 
 	private static final long serialVersionUID = 1L;

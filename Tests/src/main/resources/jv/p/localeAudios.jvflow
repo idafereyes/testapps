@@ -20,17 +20,17 @@
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="org.eclipse.graphiti.pattern.patternType" value="org.eclipse.graphiti.pattern.idpattern"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" width="135" height="28" x="280" y="220" style="/0/@styles.0">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineStyle="UNSPECIFIED" lineVisible="false" width="38" height="28" x="280" y="220" style="/0/@styles.0">
         <properties key="org.eclipse.graphiti.pattern.id.id" value="mainFigure"/>
         <graphicsAlgorithmChildren xsi:type="al:Polygon" lineStyle="UNSPECIFIED" width="48" height="28" style="/0/@styles.1">
           <properties key="org.eclipse.graphiti.pattern.id.id" value="statePolygon"/>
-          <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_final" stretchH="false" stretchV="false" proportional="false">
+          <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="24" height="24" x="10" y="2" id="icon_comp_hangup" stretchH="false" stretchV="false" proportional="false">
             <properties key="org.eclipse.graphiti.pattern.id.id" value="stateImage"/>
           </graphicsAlgorithmChildren>
           <points/>
           <points x="45"/>
           <points x="45" y="10"/>
-          <points x="42" y="14"/>
+          <points x="38" y="14"/>
           <points x="45" y="18"/>
           <points x="45" y="28"/>
           <points y="28"/>
@@ -161,7 +161,7 @@
   </pi:Diagram>
   <operations:Flow id="_CQdv4BPdEeSVd7A3RXwEIw" name="localeAudios" description="localeAudios" helperClass="com.isb.tests.components.p.LocaleAudios">
     <states xsi:type="operations:InitialState" id="_CW8LUBPdEeSVd7A3RXwEIw" name="Initial" outgoingTransitions="_CXqkEBPdEeSVd7A3RXwEIw"/>
-    <states xsi:type="operations:FinalState" id="_CXjPUBPdEeSVd7A3RXwEIw" name="Final" incomingTransitions="_laDv0BPdEeSVd7A3RXwEIw"/>
+    <states xsi:type="operations:FinalState" id="_CXjPUBPdEeSVd7A3RXwEIw" name="Final" incomingTransitions="_laDv0BPdEeSVd7A3RXwEIw" final="true"/>
     <states xsi:type="operations:PromptState" id="_FZD4gBPdEeSVd7A3RXwEIw" name="testLocale" incomingTransitions="_CXqkEBPdEeSVd7A3RXwEIw" outgoingTransitions="_laDv0BPdEeSVd7A3RXwEIw" methodName="testLocale" textual="false">
       <fireableEvents>ok</fireableEvents>
     </states>

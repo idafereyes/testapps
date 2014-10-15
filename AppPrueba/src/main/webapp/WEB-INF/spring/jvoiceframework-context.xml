@@ -49,7 +49,7 @@
 		view-factory-creator="viewFactoryCreator" />
 	
 	<!-- Registro de la factoría de renderers-->
-	<beans:bean id="rendererFactory" class="com.vectorsf.jvoiceframework.flow.render.RendererFactory"/>
+	<beans:bean id="rendererFactory" class="com.vectorsf.jvoiceframework.isban.logger.render.IsbanLoggerRendererFactory"/>
 	
 	
 	<!-- Registro del renderer a partir de la factoría -->
@@ -80,6 +80,14 @@
 	<beans:bean id="jvoiceframework" class="com.vectorsf.jvoiceframework.core.admin.AppConfig">
 	    <aop:scoped-proxy/>
 		<beans:property name="fileName" value="/properties/jvoiceframework.properties"/>
+	</beans:bean>				
+	<beans:bean id="tests_propsExample" class="com.vectorsf.jvoiceframework.core.admin.AppConfig">
+	    <aop:scoped-proxy/>
+		<beans:property name="fileName" value="/properties/Tests/propsExample.properties"/>
+	</beans:bean>				
+	<beans:bean id="tests_xmlExample" class="com.vectorsf.jvoiceframework.core.admin.AppConfig">
+	    <aop:scoped-proxy/>
+		<beans:property name="fileName" value="/properties/Tests/xmlExample.xml"/>
 	</beans:bean>				
 	
 	

@@ -27,12 +27,15 @@ start-state= "_jVoiceCheckInit" >
 	</transition>
 </view-state>
 <view-state id="Final" view="flowRedirect:jVoiceArchFlows/jVoiceArch-end"/>
-<view-state id="customState" view="#{flowProcessor.getRenderer().getView()}" model="">
+<view-state id="customState" view="#{flowProcessor.getRenderer().getView()}">
+	<on-entry>
 	<set name="flowScope.jvoiceCurrentStateName" value="'customState'"/>
+	</on-entry>
 	<transition to="render_customState"/>
 </view-state>
 
-<view-state id="render_customState" view="custom/p/custom/customState">
-	<transition to="Final"/>
+<view-state id="render_customState" view="custom/p/custom/customState" >
+	<transition on="success" to="Final"/>
+	 	
 </view-state>
 </flow> 
