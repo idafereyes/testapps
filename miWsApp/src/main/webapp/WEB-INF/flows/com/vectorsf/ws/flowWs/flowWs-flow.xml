@@ -19,7 +19,7 @@ start-state= "_jVoiceCheckInit" >
 </action-state>
 
 <view-state id="_jVoiceInit" view="#{flowProcessor.getRenderer().getInitView()}" model="jVoiceArchData">
-	<transition to="testWS" >
+	<transition on="success" to="testWS" >
 		<set name="jVoiceArchData.initialized" value="true"/>
 	</transition>
 </view-state>

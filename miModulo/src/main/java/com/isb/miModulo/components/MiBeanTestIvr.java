@@ -31,7 +31,7 @@ public class MiBeanTestIvr implements Serializable{
 		
 		System.out.println("********testWs");
 
-		TestIvrPortTypeHTTP webservice = webServiceProvider.getClient(TestIvrPortTypeHTTP.class, "TestIvrPortTypeHTTP");
+		TestIvrPortTypeHTTP webservice = webServiceProvider.getClient(TestIvrPortTypeHTTP.class, "TestIvrSecond");
 		
 		ObjectFactory obj = new ObjectFactory();
 		

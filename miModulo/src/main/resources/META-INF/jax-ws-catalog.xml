@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-<system systemId="http://localhost/wsdl/canalWebServiceDONOCS.wsdl" uri="wsdl/canalWebServiceDONOCS/canalWebServiceDONOCS.wsdl" />
 <system systemId="http://localhost/wsdl/TestIvr_vDraft.wsdl" uri="wsdl/TestIvr_vDraft/TestIvr_vDraft.wsdl" />
 <system systemId="http://localhost/wsdl/TestXslt_vDraft.wsdl" uri="wsdl/TestXslt_vDraft/TestXslt_vDraft.wsdl" />
 </catalog>
